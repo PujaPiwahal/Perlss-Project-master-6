@@ -1,0 +1,16 @@
+<div class="header">
+    <h1 mat-dialog-title>Save and Exit</h1>
+    <mat-icon (click)="cancel()">highlight_off</mat-icon>
+</div>
+<div mat-dialog-content>
+    <p>Your information has been saved. You can resume your application from the dashboard.</p>
+
+    <p>Click the "Continue" button to navigate to your dashboard.</p>
+
+    <p>Click the "Cancel" button to stay on the current page.</p>
+
+    <div class="buttons">
+        <button mat-flat-button color="primary" (click)="continue()" class="mat-focus-indicator perlss-click-button mat-flat-button mat-button-base mat-primary">Continue</button>
+        <button mat-flat-button color="primary" (click)="cancel()" class="perlss-click-button-white-noborder">Cancel</button>
+    </div>
+</div>

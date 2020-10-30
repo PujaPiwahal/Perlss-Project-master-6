@@ -1,0 +1,477 @@
+<div class="popup-header-container">
+  <div class="row">
+    <div class="col-md-8">
+      <h4> Multiple Complex Health Conditions Review Form </h4>
+    </div>
+    <div class="col-md-4">
+      <div style="text-align: right;">
+        <mat-icon class="popup-close-icon" (click)="closePopup()">highlight_off</mat-icon>
+        <div class="required-class">
+          *Required
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-divider class="perlss-horizontal-divider"></mat-divider>
+<div class="note-container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-label>Please ensure the potential applicant does not appear to qualify for potential enrollment in an open
+        Priority Category before submitting a request for review of Multiple Complex Health Conditions. If a potential
+        applicant appears to meets criteria for both an open Priority Category and Multiple Complex Health Conditions –
+        you must proceed with an application for potential enrollment in the appropriate open Priority Category.
+      </mat-label>
+    </div>
+  </div>
+</div>
+
+<div class="form-container">
+  <b> Multiple Complex Health Conditions Components (Potential Applicant must meet ALL components.)</b>
+  <form [formGroup]="multipleComplexEfillForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person has multiple complex chronic or acquired health
+            conditions.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().complxChrHlthCondSw.hasError('required') && (getFormData().complxChrHlthCondSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="complxChrHlthCondSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person’s health conditions
+            present significant barriers or challenges to employment and community integration without
+            supports available in ECF CHOICES.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().hlthSignifiBarEmpSw.hasError('required') && (getFormData().hlthSignifiBarEmpSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="hlthSignifiBarEmpSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person is in urgent need of
+            supports in order to maintain the current living arrangement and delay or prevent the need
+            for more expensive services.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().urgentNeedOfSuppSw.hasError('required') && (getFormData().urgentNeedOfSuppSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="urgentNeedOfSuppSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person’s conditions are expected to continue.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().condExpctdContSw.hasError('required') && (getFormData().condExpctdContSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="condExpctdContSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-label>"Please complete the information below and submit with all supporting
+      documentation to TennCare, via designated process, for referral to the Interagency
+      Review Committee.</mat-label>
+    <br>
+    <mat-label>
+      Please do not provide repetitive information in multiple response boxes below. Each
+      area needs to be addressed specific to the information being requested."
+    </mat-label>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Please explain why this person does not appear to qualify for
+            enrollment in an open Priority Category:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().qualEnrolPriCatTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().qualEnrolPriCatTxt.errors.maxLength == null && !getFormData().qualEnrolPriCatTxt.errors?.invalidName && !getFormData().qualEnrolPriCatTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().qualEnrolPriCatTxt.touched && getFormData().qualEnrolPriCatTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().qualEnrolPriCatTxt.errors?.invalidName && !getFormData().qualEnrolPriCatTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput  formControlName="qualEnrolPriCatTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Detail regarding each complex health condition, including
+            diagnosis, when the condition began, severity of symptoms, expected duration, etc.:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().cmpxHlthCondDiagTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().cmpxHlthCondDiagTxt.errors.maxLength == null && !getFormData().cmpxHlthCondDiagTxt.errors?.invalidName && !getFormData().cmpxHlthCondDiagTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().cmpxHlthCondDiagTxt.touched && getFormData().cmpxHlthCondDiagTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().cmpxHlthCondDiagTxt.errors?.invalidName && !getFormData().cmpxHlthCondDiagTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="cmpxHlthCondDiagTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Treatment being received for each health condition:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().treatRcvdHlthCndTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().treatRcvdHlthCndTxt.errors.maxLength == null && !getFormData().treatRcvdHlthCndTxt.errors?.invalidName && !getFormData().treatRcvdHlthCndTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().treatRcvdHlthCndTxt.touched && getFormData().treatRcvdHlthCndTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().treatRcvdHlthCndTxt.errors?.invalidName && !getFormData().treatRcvdHlthCndTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="treatRcvdHlthCndTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>How the health conditions impact the person’s daily life:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().hlthCndDlyLifeTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().hlthCndDlyLifeTxt.errors.maxLength == null && !getFormData().hlthCndDlyLifeTxt.errors?.invalidName && !getFormData().hlthCndDlyLifeTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().hlthCndDlyLifeTxt.touched && getFormData().hlthCndDlyLifeTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().hlthCndDlyLifeTxt.errors?.invalidName && !getFormData().hlthCndDlyLifeTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="hlthCndDlyLifeTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>How the health conditions present barriers or challenges to
+            employment and community integration:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().hlthCndBarEmpTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().hlthCndBarEmpTxt.errors.maxLength == null && !getFormData().hlthCndBarEmpTxt.errors?.invalidName && !getFormData().hlthCndBarEmpTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().hlthCndBarEmpTxt.touched && getFormData().hlthCndBarEmpTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().hlthCndBarEmpTxt.errors?.invalidName && !getFormData().hlthCndBarEmpTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="hlthCndBarEmpTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Options for support that have been tried that did not work
+            (include evaluations/assessments/authorizations for use of technology where appropriate, other paid or
+            unpaid caregivers, etc.):
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().optDidNotWorkTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().optDidNotWorkTxt.errors.maxLength == null && !getFormData().optDidNotWorkTxt.errors?.invalidName && !getFormData().optDidNotWorkTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().optDidNotWorkTxt.touched && getFormData().optDidNotWorkTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().optDidNotWorkTxt.errors?.invalidName && !getFormData().optDidNotWorkTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="optDidNotWorkTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>How the person is being supported now (include who provides
+            support, whether the support is paid or unpaid, etc.):
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().prsnSuppTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().prsnSuppTxt.errors.maxLength == null && !getFormData().prsnSuppTxt.errors?.invalidName && !getFormData().prsnSuppTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().prsnSuppTxt.touched && getFormData().prsnSuppTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().prsnSuppTxt.errors?.invalidName && !getFormData().prsnSuppTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="prsnSuppTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Anticipated changes in these supports, and the expected
+            timing of such changes:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().antiChngsExpTimeTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().antiChngsExpTimeTxt.errors.maxLength == null && !getFormData().antiChngsExpTimeTxt.errors?.invalidName && !getFormData().antiChngsExpTimeTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().antiChngsExpTimeTxt.touched && getFormData().antiChngsExpTimeTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().antiChngsExpTimeTxt.errors?.invalidName && !getFormData().antiChngsExpTimeTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="antiChngsExpTimeTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Recent events that led to the person needing additional
+            support to maintain the current living arrangement and delay or prevent the need for more expensive
+            services:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().perNeedAddSupTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().perNeedAddSupTxt.errors.maxLength == null && !getFormData().perNeedAddSupTxt.errors?.invalidName && !getFormData().perNeedAddSupTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().perNeedAddSupTxt.touched && getFormData().perNeedAddSupTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().perNeedAddSupTxt.errors?.invalidName && !getFormData().perNeedAddSupTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="perNeedAddSupTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Other supports that are available/resources for support that
+            have been explored, or that could be developed:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().othrSuppResTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().othrSuppResTxt.errors.maxLength == null && !getFormData().othrSuppResTxt.errors?.invalidName && !getFormData().othrSuppResTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().othrSuppResTxt.touched && getFormData().othrSuppResTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().othrSuppResTxt.errors?.invalidName && !getFormData().othrSuppResTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="othrSuppResTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Intake Assessor Observations:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().intAssesObsrvTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().intAssesObsrvTxt.errors.maxLength == null && !getFormData().intAssesObsrvTxt.errors?.invalidName && !getFormData().intAssesObsrvTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().intAssesObsrvTxt.touched && getFormData().intAssesObsrvTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().intAssesObsrvTxt.errors?.invalidName && !getFormData().intAssesObsrvTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="intAssesObsrvTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label><b>Please check all supporting
+              documentation being provided with this request:
+            </b>
+          </mat-label>
+        </div>
+        <div class="radio-container">
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="verifTrgtPopulatinSw"
+              (change)="onDocumentCheck($event)">Verification of target population</mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="adaptBehLsaResSw"
+              (change)="onDocumentCheck($event)"> Adaptive Behavior / Life Skills Assessment results </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="legalDocumentsSw"
+              (change)="onDocumentCheck($event)"> Legal documents</mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="mediDocumentationSw"
+              (change)="onDocumentCheck($event)"> Medical documentation (including but not limited to support of
+              diagnosis) </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="physClinicalNoteSw"
+              (change)="onDocumentCheck($event)"> Physician / clinical note(s) </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="otherSw"
+              (change)="onOtherDocumentsCheck($event)">Other : </mat-checkbox> &nbsp;
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="otherDesc" placeholder="Other Documents">
+              <mat-error *ngIf="getFormData().otherDesc.errors !== null">
+                <mat-error
+                  *ngIf="getFormData().otherDesc.errors.maxLength == null && !getFormData().otherDesc.errors?.invalidName && !getFormData().otherDesc.errors.required">
+                  Cannot exceed 2000 characters</mat-error>
+                <mat-error *ngIf="getFormData().otherDesc.touched && getFormData().otherDesc.errors.required">{{customValidation.A1}}</mat-error>
+                <mat-error *ngIf="getFormData().otherDesc.errors?.invalidName && !getFormData().otherDesc.errors.required">{{customValidation.A2}}
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-label>Signatures below indicate an attestation that the information provided in this
+      request form is accurate as provided by the potential applicant or informant and as observed
+      by the person completing this form.
+    </mat-label>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Electronic Signature
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="electronicSignature">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: right;">
+        <button type="submit" mat-flat-button color="primary" class="perlss-click-button">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<form [formGroup]="functionalAssessmentSummaryForm" class="responsive">
+
+	<div class="page">
+		<mat-radio-group (change)="onChoice($event)" formControlName="pageChoice">
+			<mat-label>Choice of KB or Standard Form:</mat-label>
+			<mat-radio-button value="KB">KB</mat-radio-button>
+			<mat-radio-button value="Standard">Standard</mat-radio-button>
+		</mat-radio-group>
+	</div>
+	<div class="bottomBar">
+
+		<button mat-flat-button color="primary" (click)="back()" class="perlss-click-button-white">BACK</button>
+		<button mat-flat-button color="primary" (click)="saveAndExit()" class="perlss-click-button-white-noborder">SAVE
+			AND EXIT</button>
+		<button mat-flat-button color="primary" class="perlss-click-button" (click)="next()">NEXT</button>
+	</div>
+
+</form>

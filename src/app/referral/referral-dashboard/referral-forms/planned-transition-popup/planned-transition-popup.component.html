@@ -1,0 +1,154 @@
+<div class="header">
+  <h1 mat-dialog-title>Planned Transition to Community Living Form</h1>
+  <mat-icon (click)="closePopup()">highlight_off</mat-icon>
+</div>
+
+<form [formGroup]="myForm" (ngSubmit)="submit()" class="dialogContent">
+  <div class="scroller noPad">
+
+    <div class="message">
+      <p>Potential applicants for the Planned Transition to Commmunity Living reserve capacity group must be at least
+        21 years of age and live with their family (not a foster family). Upon approval by CMS, this criterion
+        may apply on a case by case basis to adults ages 18-20 with I/DD living with their family. The following
+        section shall be completed during the Intake visit to document the circumstances under which the
+        above-named person is believed to meet criteria requiring support to plan for transition to
+        community living due to the declining health of the primary caregiver. This information shall be reviewed by
+        the Interagency Review Committee to determine whether the person will proceed with application for
+        enrollment in the Employment and Community First
+        CHOICES program in available reserve capacity set aside for such purposes.</p>
+
+      <p> Please ensure that the potential applicant does not appear to qualify for potential enrollment in an open
+        Priority Category before submitting a request for review of the Planned Transition to Community Living.
+        If a potential applicant appears to meet criteria fdor both and open Priority Category and Planned
+        Transition to Community Living &mdash; you must proceed with an aplication
+        for potential enrollment in the appropriate open Priorty Category.</p>
+    </div>
+    <div class="padded">
+      <h2>Please identify all Planned Transition to Community Living critera that are applicable:</h2>
+      <div class="control">
+        <label class="req" id="naturalOnlyFamilySw_label">
+          The person lives at home with the natural family or the only 'family' the person knows.
+        </label>
+        <mat-error *ngIf="f.naturalOnlyFamilySw.touched && f.naturalOnlyFamilySw.hasError('required')">
+          {{customValidation.A1}}
+        </mat-error>
+        <mat-radio-group formControlName="naturalOnlyFamilySw" attr.aria-labelledby="naturalOnlyFamilySw_label">
+          <mat-radio-button value="Y">Yes</mat-radio-button>
+          <mat-radio-button value="N">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="control">
+        <label class="req" id="cannotLiveIndSuppSw_label" for="cannotLiveIndSuppSw">
+          The person is not able to live independently without appropriate supports in place.
+        </label>
+        <mat-error *ngIf="f.cannotLiveIndSuppSw.touched  && f.cannotLiveIndSuppSw.hasError('required')">
+          {{customValidation.A1}}
+        </mat-error>
+        <mat-radio-group formControlName="cannotLiveIndSuppSw" attr.aria-labelledby="cannotLiveIndSuppSw_label">
+          <mat-radio-button value="Y">Yes</mat-radio-button>
+          <mat-radio-button value="N">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="control">
+        <label class="req" id="caregiverPoorHlthSw_label" for="caregiverPoorHlthSw">
+          The person's primary caregiver is in poor and declining health such that they are not likely to be able to
+          continue caring for/supporting the person in the near future (i.e., within a year).
+        </label>
+        <mat-error *ngIf="f.caregiverPoorHlthSw.touched && f.caregiverPoorHlthSw.hasError('required')">
+          {{customValidation.A1}}
+        </mat-error>
+        <mat-radio-group formControlName="caregiverPoorHlthSw" attr.aria-labelledby="caregiverPoorHlthSw_label">
+          <mat-radio-button value="Y">Yes</mat-radio-button>
+          <mat-radio-button value="N">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="control">
+        <label class="req" id="needSupSmoothTranSw_label" for="needSupSmoothTranSw">
+          The person needs support to assist the person and caregiver with planning for a smooth transition to
+          community living to avoid a potential crisis situation in the near future (i.e., within a year).
+        </label>
+        <mat-error *ngIf="f.needSupSmoothTranSw.touched  && f.needSupSmoothTranSw.hasError('required')">
+          {{customValidation.A1}}
+        </mat-error>
+        <mat-radio-group formControlName="needSupSmoothTranSw" attr.aria-labelledby="needSupSmoothTranSw_label">
+          <mat-radio-button value="Y">Yes</mat-radio-button>
+          <mat-radio-button value="N">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="control">
+        <label class="req" id="willPartPlnndTranSw_label" for="willPartPlnndTranSw">
+          The person and caregiver understand and are willing to participate in support that will assist in a planned
+          transition to community living.
+        </label>
+        <mat-error *ngIf="f.willPartPlnndTranSw.touched  && f.willPartPlnndTranSw.hasError('required')">
+          {{customValidation.A1}}
+        </mat-error>
+        <mat-radio-group formControlName="willPartPlnndTranSw" attr.aria-labelledby="willPartPlnndTranSw_label">
+          <mat-radio-button value="Y">Yes</mat-radio-button>
+          <mat-radio-button value="N">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      
+    </div>
+    <hr>
+    <div class="padded">
+      <p>Please complete the information below and submit with all supporting documentation to TennCare,
+        via designated process, for referral to the Interagency Review Committee.</p>
+      <p>Please do not provide repetitive information in multiple response boxes below. Each area needs to
+        be addressed specific to the information being requested.</p>
+
+      <div class="textArea" *ngFor="let item of info; let i=index">
+        <label [for]="item.id">{{ item.label }}</label>
+        <textarea [id]="item.id" attr.index="{{i}}" (keyup)="updateInfo($event)">{{item.text}}</textarea>
+        <p>{{item.text.length}}/2000</p>
+      </div>
+
+      <div class="checkbox-group">
+        <mat-label>Please check all supporting documentation being provided with this request:</mat-label>
+        <mat-checkbox id="verifTargetPopulnSw" formControlName="verifTargetPopulnSw">Verification of target population
+        </mat-checkbox>
+        <mat-checkbox id="adaptBehLsaResSw" formControlName="adaptBehLsaResSw">Adapative Behavior/Life Skills
+          Assessment
+          results
+        </mat-checkbox>
+        <mat-checkbox id="legalDocumentsSw" formControlName="legalDocumentsSw">Legal Documents</mat-checkbox>
+        <mat-checkbox id="physClinicalNoteSw" formControlName="physClinicalNoteSw">Physician / clinical notes
+        </mat-checkbox>
+        <div class="inline">
+          <mat-checkbox id="otherSw" value="true" (click)="otherClick()" formControlName="otherSw">Other:
+          </mat-checkbox>
+          <div class="inline-wrapper">
+            <ng-container *ngIf="otherClicked">
+              <input formControlName="otherDescription" placeHolder="Other Documentation" type="text"
+                [ngClass]="{ 'is-invalid': f.otherSw.value=='true' && !f.otherDescription.value && !f.otherDescription.touched }" />
+            </ng-container>
+            <ng-container *ngIf="!otherClicked">
+              <input formControlName="otherDescription" class="disabled" type="text" disabled>
+            </ng-container>
+            <mat-error *ngIf="f.otherSw.value && !f.otherDescription.value &&f.otherDescription.touched">
+              {{customValidation.A1}}</mat-error>
+          </div>
+        </div>
+      </div>
+
+      <div class="control w40">
+        <mat-form-field appearance="outline" class="w40">
+          <mat-label class="req">Electronic Signature</mat-label>
+          <input matInput placeholder="Electronic Signature" formControlName="electronicSignature"
+            [ngClass]="{ 'is-invalid': f.electronicSignature.touched  && !f.electronicSignature.value }" />
+          <mat-error *ngIf="f.electronicSignature.touched  && !f.electronicSignature.value">{{customValidation.A1}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </div>
+  <div class="buttons">
+    <button color="primary" type="submit"
+      class="mat-focus-indicator mat-flat-button mat-button-base mat-primary">Submit</button>
+  </div>
+</form>

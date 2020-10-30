@@ -1,0 +1,35 @@
+import { RefLivingArrangement } from './RefLivingArrangement';
+export class RefAppContact {
+    constructor(
+      public cellPhNum: string,
+      public desgnPhNum: string,
+      public designeeSw: string,
+      public dsgnAddrLine1: string,
+      public dsgnAddrLine2: string,
+      public dsgnAddressFormatCd: string,
+      public dsgnCity: string,
+      public dsgnCntyCd: string,
+      public dsgnFirstName: string,
+      public dsgnLastName: string,
+      public dsgnMailSw: string,
+      public dsgnMidInitial: string,
+      public dsgnMilitaryAddrCd: string,
+      public dsgnMilitaryPoCd: string,
+      public dsgnStateCd: string,
+      public dsgnZipExtn: string,
+      public dsgnZipcode: string,
+      public email: string,
+      public homePhNum: string,
+      public id: string,
+      public interprtSw: string,
+      public langCd: string,
+      public personId: string,
+      public prefLangTypeCd: string,
+      public prefPhoneTypCd: string,
+      public refId: string,
+      public relationshipCd: string,
+      public reqPageId: string,
+      public workPhNum: string,
+      public refLivingArrangementVO: RefLivingArrangement
+    ) { }
+}

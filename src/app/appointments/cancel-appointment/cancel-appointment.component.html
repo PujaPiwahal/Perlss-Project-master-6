@@ -1,0 +1,51 @@
+<div class="row-header">
+  <span class="col-lg-9">
+    <h3>Cancel Appointment</h3>
+  </span>
+  <span class="col-lg-3 text-right close-icon">
+    <mat-icon (click)=close()>highlight_off</mat-icon>
+  </span>
+  <div class="col required">
+    *Required
+  </div>
+</div>
+<hr />
+
+<div>
+  <form [formGroup]="cancelForm" (ngSubmit)="cancelAppointment()">
+    <mat-label class="primary-field-content">
+      <mat-label class="required-color">*</mat-label>
+      Reason for Cancellation
+    </mat-label>
+    <div class="field-content">
+      <mat-form-field appearance="outline">
+        <select id="cancellationReason" formControlName="cancellationReason" matNativeControl required>
+          <option *ngFor="let row of cancellationReasons" [value]="row.name">
+            {{row.value}}
+          </option>
+        </select>
+        <mat-error *ngIf="f.cancellationReason.touched && f.cancellationReason.errors?.required">
+          {{customValidation.A1}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+   <div>
+      <mat-label class="primary-field-content">
+        Notes
+      </mat-label>
+      <div class="field-content">
+        <textarea #notesInput id="notesInput" maxlength="2000" formControlName="notes" rows="5" cols="45"></textarea>
+      </div>
+    </div>
+    <div class="text-area-hint">{{notesInput.value?.length || 0 }}/2000</div>
+
+    <div class="button-content">
+        <button type="button" mat-flat-button (click)="close()" class="back-button-content">
+          GO BACK</button>
+        <button type="submit" mat-flat-button color="primary" class="perlss-click-button">
+          CANCEL APPOINTMENT</button>
+    </div>
+
+  </form>
+</div>

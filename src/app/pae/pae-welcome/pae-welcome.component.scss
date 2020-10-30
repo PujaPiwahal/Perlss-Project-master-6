@@ -1,0 +1,1267 @@
+form.responsive {
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  .applicantName {
+    &::before {
+      content: "APPLICANT NAME:";
+      display: inline-block;
+      font-weight: 600;
+      margin-right: 0.3vw;
+      padding: 0;
+    }
+    z-index: 2;
+    position: absolute;
+    background: white;
+    top: 1vw;
+    right: 3vw;
+    width: auto;
+    font-size: .8vw;
+    line-height: 0.9vw;
+    height: auto;
+    border: 2px solid #999999;
+    font-size: 1.2vw;
+    padding: .6vw 1vw .6vw .8vw;
+  }
+  .showRequired::after {
+    font-family: 'Open Sans';
+    font-size: 1vw;
+    content: "*Required";
+    color: #e21515;
+    float: right;
+    margin: .8vw 3.2vw 0 0;
+  }
+
+  .row.wide {
+    padding: 1.2vw 0;
+
+    .perlss-click-button {
+      width: calc(100% - 2vw);
+    }
+  }
+
+  h3 {
+    font-size: 1vw;
+    font-family: 'Open Sans';
+    margin: 1.3vw 0 .7vw 0 !important;
+    font-weight: 600;
+    color: rgba(218, 15, 15, 0.938);
+
+    + div {
+      padding-left: 1vw;
+      width: calc(100% - 1vw);
+    }
+
+    &.lineAbove {
+      
+      margin-left: 0.2vw;
+
+      &::before {
+        content: "";
+        display: block;
+        margin: 1vw 0 0.5vw 0;
+
+        padding: 0;
+        border-top: 1px solid #CCCCCC;
+      }
+    }
+
+  }
+
+  p { 
+    font-size: 1vw;
+    width: calc(100% - 4vw);
+    margin: 0 0 0.5vw 0.1vw;
+  }
+
+  .activityTable {
+    width: calc(100% - 3vw);
+    margin: 0 0 0.5vw 0.05vw;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    > thead  > th {
+      overflow: hidden;
+      font-size: 1vw;
+      padding: 0.7vw 1vw;
+      height: 2vw;
+      background: #cdddf4;
+      vertical-align: middle;
+      font-weight: 600;
+      text-align: center;
+   
+      &:first-child  {
+        text-align: left;
+        border-top-left-radius: 0.5vw;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.5vw;
+      }
+    }
+
+    > tbody > tr {
+
+      > td {
+        font-size: 0.9vw;
+        text-align: center;
+        padding: 0.7vw 1vw;
+        border-right: 2px solid #cdddf4;
+        border-bottom: 2px solid #cdddf4;
+  
+        &:first-child  {
+          text-align: left;
+          border-left: 2px solid #cdddf4;
+        }
+      }
+
+      &:last-child > td:first-child {
+        border-bottom-left-radius: 0.5vw;
+      }
+      
+      &:last-child > td:last-child {
+        border-bottom-right-radius: 0.5vw;
+      }
+    } 
+  }
+  
+  .perlss-horizontal-divider{
+    padding: 0.1vw;
+    width: calc(100% - 0.1vw);
+  }
+
+  .bottomBar {
+    width: auto;
+    padding: 1vw 3vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    height: calc(4.1vw - 1px);
+    z-index: 3;
+    border-top: 1px solid #CCCCCC;
+
+    button.perlss-click-button-white-noborder,
+    button.perlss-click-button, button.perlss-click-button-white {
+      font-size: .9vw;
+      padding: 0.1vw 0.5vw !important;
+      min-width: 4vw;
+      float: left;
+      padding: .2vw .2vw;
+      margin: 0 2vw 0 0;
+
+      &:last-child {
+        float: right;
+        margin: 0;
+      }
+    }
+  }
+  
+  .mat-card-header {
+  
+    > h1 {
+      font-size: 2vw;
+      margin: 0 0 0.5vw 0;
+    }
+  }
+
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+
+  mat-radio-group.mat-radio-group {
+
+    padding: 0;
+    margin: 0;
+
+    > mat-label {
+      display: block;
+      margin: 0 0 0.5vw 0.9vw;
+
+      + mat-error {
+        margin: -0.3vw 0 0.3vw 0.6vw;
+      }
+    }
+
+    mat-error {
+      font-size: 0.8vw;
+    }
+   
+    > mat-radio-button  {
+      display: block;
+      margin-left: 1.2vw;
+    }
+
+    div.mat-radio-label-content {
+      font-size: 1vw;
+      display: inline-block;
+      padding: 0;
+      margin: 0.05vw 0 0 .4vw;
+    }
+    
+  }
+  
+  mat-horizontal-stepper {
+  
+    .mat-step-icon {
+      font-size: 1.4vw;
+      height: 2vw;
+      width: 2vw;
+    }
+  
+    .mat-step-label {
+      font-size: 1.2vw;
+    }
+  } 
+  
+  .mat-card-header.showRequired::after {
+    right: 3.2vw;
+  }
+ 
+  h1 {
+    font-size: 2.2vw;
+    margin: 2vw 0 0 0;
+  }
+  
+  h3 {
+    margin: 0 0 2vw 0;
+    font-size: 1.3vw; 
+  }
+}
+
+mat-checkbox + mat-icon.red-icon {
+  padding-left: 0.2vw;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 4vw;
+  left: 0;
+  padding: 2vw 3vw;
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  .testButtons {
+    padding: 3vw;
+    button {
+      margin: 1vw;
+      font-size: 1vw;
+      padding: .3vw .6vw;
+      border-radius: 0.1vw;
+      border: none;
+    }
+
+    textarea {
+      width: 80%;
+      height: 20vw;
+    }
+  }
+  
+  &.noPad {
+    padding: 0;
+  }
+
+  .padded {
+    margin: 0 3vw 2vw 3vw;
+    width: calc(100% - 6vw);
+    height: auto;
+    overflow: hidden;
+  }
+
+  mat-label {
+    font-size: 1.2vw;
+  }
+
+  .row {
+    height: auto;
+    overflow: hidden;
+    height: auto;
+    margin: 0;
+    padding: 0;    
+  }
+
+  div.select, mat-radio-group {
+
+    padding: 0;
+    margin: 0 1.2vw 1.2vw 0 !important;
+    overflow: hidden;
+    height: auto;
+
+    > mat-error {
+      font-size: 0.8vw;
+      margin: 0 0 0 1.2vw;
+      display: block;
+    }
+
+    mat-label {
+       margin: 0 0 0 0.8vw;
+    }
+
+    > select {
+
+      background-color: white;
+      border: thin solid blue;
+      border-radius: 4px;
+      display: inline-block;
+      font: inherit;
+      line-height: 1.5em;
+      padding: 0.5em 3.5em 0.5em 1em;
+
+      display: block;
+      width: 20vw;
+      margin: 0.3vw 0 0 1.2vw;
+      font-size: 1.2vw;
+      padding: 0.3vw 0.6vw;
+      color: #888888;
+      border: 1px solid #666666;
+    }
+  }
+
+  .row > .float {
+    float: left;
+    margin: 0 2vw 0 0;
+  }
+
+  .greenBorder {
+     border: 2px solid green;
+     padding: 0.2vw .5vw;
+     margin: 0.4vw 0 0 3vw;
+     height: 4vw;
+     overflow: hidden;
+     width: auto;
+
+     > label {
+       margin: 1.2vw 0 0 0;
+       padding: 0;
+       line-height: 1.2vw;
+       font-size: 1.1vw;
+       display: inline-block;
+       color: #666666;
+     }
+
+     > p {
+      display: inline-block;
+      width: 7vw;
+      text-align: center;
+      height: 1.9vw;
+      padding: 0.2vw;
+      margin: 0 0 0 0.5vw;
+     }
+  }
+
+  .applicantData {
+
+    width: 100%;
+    padding: 2vw 3vw;
+    margin: 0;
+    background: #f6faff;
+  
+    overflow: hidden;
+    height: auto;
+
+    > hr {
+      height: 2px;
+      margin: .5vw 0.5vw 1.5vw .5vw;
+      padding: 0;
+      width: calc(100% - 1vw);
+      border-top: 1px solid #a0bcdd;;
+    }
+
+    > div {
+      width: calc(100% - 0.4vw);
+      margin: 0 0.2vw;
+      overflow: hidden;
+      height: auto;
+      
+      > div {
+        margin: 0;
+        width: calc(50% - 1vw);
+        height: auto;
+        float: left;
+        // border-top: 2px solid #cfdbee;
+
+        + div {
+          float: right;
+        }
+      
+        > label {
+          float: left;
+          font-size: 1vw;
+          font-weight: 700;
+          width: calc(40%);
+          display: block;
+          margin: 0.2vw 0 0 0.1vw;
+          color: #444444;
+        }
+
+        > div { 
+          background: #ffffff;
+          font-size: 1vw;
+          padding: 0.3vw 0.6vw;
+          height: 2.2vw;
+          float: right;
+          margin: 0 0 1.2vw 0;
+          width: calc(60% - .8vw);
+
+
+          &.tbd {
+            color: #a30e0e;
+          }
+
+        }
+      }
+    } 
+  }
+
+  div.textAreaWide {
+    width: calc(100% - 4vw);
+    padding: 0;
+    margin: 0;
+    display: block;
+    height: auto;
+    > textarea {
+      display: block;
+      margin: 0.3vw 0 .5vw 1.9vw;
+      padding: 0.3vw;
+      width: calc(100% - 2.6vw);
+      height: 6vw;
+      border: 1px solid #888888;
+    }
+  }
+  .req {
+
+    text-indent: -0.4vw;
+    margin-left: 1vw;
+
+    &::before {
+      content: "*";
+      color: #e21515;
+      position: relative;
+      display: inline-block;
+      font-size: 1.3vw;
+      width: 0.5vw;
+      top: 0.2vw;
+    }
+  }
+  
+  .width30 {
+    width: 30%;
+  }
+
+  .width40 {
+    width: 40%;
+  }
+
+  .width60 {
+    width: 60%;
+  }
+
+  .note {
+
+    background: #e4f1fb;
+    padding: 0.8vw 1vw;
+    width: calc(100% - 2vw);
+    margin: 0 0 1vw 0.05vw;
+    width: calc(100% - 3vw);
+    padding: 0.8vw;
+
+    &.red {
+      > p > span {
+        color: red;
+      }
+    }
+
+    > p > span {
+      font-weight: 700;
+    }
+
+    &:first-child {
+      margin-top: 3vw;
+    }
+  
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 1.1vw;
+    }
+  
+  }
+
+  .message {
+    padding: 0.2vw 0;
+    > label {
+      width: 20vw;
+    }
+  }
+
+  h3 + mat-radio-group {
+    top: -.5vw;
+  }  
+
+  mat-divider {
+    margin: 1vw 0;
+  }
+
+  p {
+    padding: 0 0 .7vw 0;
+  }
+
+  div, p, mat-label, mat-checkbox-label {
+    font-size: 1.2vw;
+  }
+  
+  &.fullWidth {
+    width: calc(100% - 20vw);
+    max-width: calc(100% - 20vw);
+  }
+
+  .solitaryCheckbox {
+    
+    mat-checkbox {
+
+      margin: 0;
+      padding: 0 0 0 0.5vw;
+  
+      mat-label {
+        margin-top: 0.3vw;
+        display: inline-block;
+      }
+
+      .mat-checkbox-frame, .mat-checkbox-background {
+        height: 1.2vw;
+        width: 1.2vw;
+      }
+    }
+  }
+      
+  .textArea {
+    > textarea {
+      border: 1px solid #777777;
+      width: 100%;
+      height: 7vw;
+      padding: 0.3vw;
+      font-size: 1vw;
+    }
+
+    p { 
+      color: #666666;
+      font-size: 0.9vw;
+      text-align: right;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .alert {
+
+    border: 1px solid red;
+    padding: 1vw;
+    width: 60%;
+    margin: 2vw 0;
+
+    > label {
+      
+      display: block;
+      float: left;
+      display: block;
+      color: red;
+      font-weight: 700;
+      font-size: 1.1vw;
+      margin: 0 0.5vw 0 0;
+      padding: 0;
+      height: 100%;
+    
+      &::before {
+        content: "error_outline";
+        font-family: 'Material Icons';
+        display: block;
+        float: left;
+        height: 3vw;
+        width: 3vw;
+        color: red;
+        font-size: 2.5vw;
+        margin: 0 0.15vw 0 0;
+        padding: 0;
+        position: relative;
+        top: -1vw;
+      }
+    }
+   
+    > p {
+        font-size: 1vw;
+        width: calc(100% - 4vw);
+        display: block;
+        margin: 0.1vw 0 0 2vw;
+        padding:0;
+    }
+  }
+
+  .padded {
+    padding: 1.2vw 0;
+  }
+
+  .spaceAbove1 {
+    padding-top: 0.5vw;
+  }
+
+  .spaceAbove2 {
+    padding-top: 1vw;
+  }
+
+  .spaceAbove3 {
+    padding-top: 1.5vw;
+  }
+
+  div, div.row {
+
+    &.indent1 {
+      margin-left: 0.1vw;
+      width: calc(100% - 0.1vw);
+    }
+  
+    &.indent2 {
+      margin: 0 0 0 .3vw;
+      width: calc(100% - .3vw);
+    }
+  
+    &.indent3 {
+      margin: 0 0 0 0.9vw;
+      width: calc(100% - 0.9vw);
+    }
+  } 
+  
+  .spaceBelow2 {
+    padding-bottom: 2vw;
+  }
+
+
+  .blockHeading {
+    font-size : 1.7vw;
+    padding-bottom:1.5vw;
+  }
+}
+
+table.searchPersonTable {
+  margin: 3vw 0 3vw 0;
+
+  tr.addressRow {
+    > td {
+      > div {
+        > div {
+          height: 5vw;
+          font-size: 1.2vw;
+          line-height: 1.4vw;
+          width: calc((100% - 18vw) / 3);
+          padding-bottom: 0.4vw;
+    
+          > * {
+            font-size: 1.0vw;
+            line-height: 1.2vw;
+            margin: 0.7vw 0 0 0;
+          }
+
+          > p {
+            margin: 0.3vw 0 0 0;
+          }
+    
+          &:last-child {
+            width: 18vw;
+          
+            > div {
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              width: 100%;
+              margin: 0;
+              padding: 0;
+
+              > button.perlss-click-button-white {
+                font-size: 1vw;
+                padding: 0.1vw 0.5vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropDownIcons {
+  mat-icon {
+    font-size: 4vw;
+  }
+}
+
+mat-checkbox.mat-checkbox.checkbox-element.mat-accent {
+
+  margin: 0 0 0 0.8vw;
+  padding: 0;
+  
+	> label.mat-checkbox-layout {
+
+    margin: 0;
+    padding: 0;
+
+		> .mat-checkbox-inner-container {
+
+      height: 1.1vw;
+      width: 1.1vw;
+      margin: 0 .5vw 0 0.5vw;
+			
+			> div.mat-checkbox-frame {
+        color: green;
+      }
+      > div.mat-checkbox-background {
+        color: green;
+      }
+    }
+		span.mat-checkbox-label {
+      font-size: 1vw;
+      display: inline-block;
+      font-weight: 400;
+      margin: 0;
+      position: relative;
+      top: -0.2vw;
+      padding: 0;
+      line-height: 1.2vw;
+    }
+  }
+}
+
+.checkbox-group {
+  
+  padding: 0.7vw 0 0 0;
+  
+   
+  mat-label {
+    padding: 0.1vw 0 0.5vw 0.1vw;
+    display: block;
+    margin: 0;
+    font-weight: 500;
+    font-size: 1vw;
+    + mat-error {
+      padding: 0;
+      margin: -0.3vw 0 0 0.1vw;
+    }
+  }
+
+  mat-error {
+    font-size:0.8vw;
+  }
+
+   mat-checkbox {
+    margin-left: 1.6vw;
+    width: 20vw;
+
+    &.w2 {
+      width: 43vw;
+    }
+
+    label.mat-checkbox-layout {
+      margin-right: 2vw;
+    }
+    mat-label {
+      margin-right: 2vw;
+    }
+  }
+}
+
+.checkbox-list {
+
+  padding: 0 0 1vw 0;
+    
+  > mat-label {
+    padding: 1vw 0 .5vw 0;
+  }
+
+  .row {
+    padding: 0 0 0 2vw;
+    width: calc(100% - 2vw);
+  }
+
+  textarea {
+    width: calc(100% - 3vw);
+  }
+}
+
+.checkbox-list.stacked,
+mat-radio-group.stacked,
+.stackedButtons .page mat-radio-group {
+
+  margin-left: 0.4vw;
+  margin-top: 1vw;
+  width: calc(100% - 2vw);
+
+  > label, > mat-label {
+    & + mat-radio-button, & + mat-checkbox {
+      padding-top: 0.5vw;
+    }
+  }
+
+  > mat-radio-button, > mat-checkbox {
+    padding: 0 0 .3vw 0.7vw;
+  }
+}
+
+
+
+
+//**SetFixed**
+//   autogenerated using SetFixed tool (converts vw to px)
+// **********************************************************
+@media(max-width: 1280px) {
+
+  form.responsive {
+
+    .showRequired::after {
+      font-size: 13px;
+      margin: 10.5px 41px 0 0;
+    }
+
+    .row.wide {
+      padding: 15.5px 0;
+
+      .perlss-click-button {
+        width: calc(100% - 26px);
+      }
+    }
+
+    h3 {
+      font-size: 13px;
+      margin: 17px 0 9px 0 !important;
+
+      + div {
+        padding-left: 13px;
+        width: calc(100% - 13px);
+      }
+
+      &.lineAbove {
+        margin-left: 3px;
+
+        &::before {
+          margin: 13px 0 6.5px 0;
+        }
+      }
+    }
+
+    p { 
+      font-size: 13px;
+      width: calc(100% - 51.5px);
+      margin: 0 0 6.5px 1.5px;
+    }
+
+    .activityTable {
+      width: calc(100% - 38.5px);
+      margin: 0 0 6.5px 1px;
+
+      > thead  > th {
+        font-size: 13px;
+        padding: 9px 13px;
+        height: 26px;
+
+        &:first-child  {
+          border-top-left-radius: 6.5px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 6.5px;
+        }
+      }
+
+      > tbody > tr {
+
+        > td {
+          font-size: 12px;
+          padding: 9px 13px;
+        }
+
+        &:last-child > td:first-child {
+          border-bottom-left-radius: 6.5px;
+        }
+
+        &:last-child > td:last-child {
+          border-bottom-right-radius: 6.5px;
+        }
+      }
+    }
+
+    .perlss-horizontal-divider{
+      padding: 1.5px;
+      width: calc(100% - 1.5px);
+    }
+
+    .bottomBar {
+      padding: 13px 38.5px;
+      height: 32px;
+
+    button.perlss-click-button-white-noborder,
+      button.perlss-click-button, button.perlss-click-button-white {
+        font-size: 12px;
+        padding: 1.5px 6.5px !important;
+        min-width: 51.5px;
+        padding: 3px 3px;
+        margin: 0 26px 0 0;
+    }
+    }
+
+    .mat-card-header {
+
+      > h1 {
+        font-size: 26px;
+        margin: 0 0 6.5px 0;
+      }
+    }
+
+    mat-radio-group.mat-radio-group {
+
+      > mat-label {
+        margin: 0 0 6.5px 6.5px;
+        font-size: 13px;
+
+        + mat-error {
+          margin: 6.5px
+        }
+      }
+
+      mat-error {
+        font-size: 8px;
+      }
+
+      > mat-radio-button  {
+        margin-left: 15.5px;
+      }
+
+      div.mat-radio-label-content {
+        font-size: 13px;
+        margin: 1px 0 0 5.5px;
+      }
+    }
+
+    mat-horizontal-stepper {
+
+      .mat-step-icon {
+        font-size: 18px;
+        height: 26px;
+        width: 26px;
+      }
+
+      .mat-step-label {
+        font-size: 15.5px;
+      }
+    }
+
+    .mat-card-header.showRequired::after {
+      right: 41px;
+    }
+
+    h1 {
+      font-size: 28.5px;
+      margin: 26px 0 0 0;
+    }
+
+    h3 {
+      margin: 0 0 26px 0;
+      font-size: 17px; 
+    }
+  }
+
+  mat-checkbox + mat-icon.red-icon {
+    padding-left: 3px;
+  }
+
+  .page {
+    bottom: calc(40px + 26px);
+    padding: 26px 38.5px;
+
+    .req {
+      text-indent: -5.5px;
+      margin-left: 13px;
+
+      &::before {
+        font-size: 17px;
+        width: 6.5px;
+        top: 3px;
+      }
+    }
+
+    .note {
+      padding: 10.5px 13px;
+      width: calc(100% - 26px);
+      margin: 0 0 13px 1px;
+      width: calc(100% - 38.5px);
+      padding: 12px;
+
+      p {
+        font-size: 12px;
+        top: 4px;
+      }
+    }
+
+    .message {
+      padding: 3px 0;
+
+      > label {
+        width: 256px;
+      }
+    }
+
+    h3 + mat-radio-group {
+      top: -6.5px;
+    }
+
+    mat-divider {
+      margin: 13px 0;
+    }
+
+    p {
+      padding: 0 0 9px 0;
+    }
+
+    div, p, mat-label, mat-checkbox-label {
+      font-size: 15.5px;
+    }
+
+    &.fullWidth {
+      width: calc(100% - 256px);
+      max-width: calc(100% - 256px);
+    }
+
+    .padded {
+      padding: 15.5px 0;
+    }
+
+    .spaceAbove1 {
+      padding-top: 6.5px;
+    }
+
+    .spaceAbove2 {
+      padding-top: 13px;
+    }
+
+    .spaceAbove3 {
+      padding-top: 19.5px;
+    }
+
+    div, div.row {
+
+      &.indent1 {
+        margin-left: 1.5px;
+        width: calc(100% - 1.5px);
+      }
+
+      &.indent2 {
+        margin: 0 0 0 4px;
+        width: calc(100% - 4px);
+      }
+
+      &.indent3 {
+        margin: 0 0 0 12px;
+        width: calc(100% - 12px);
+      }
+    }
+
+    .spaceBelow2 {
+      padding-bottom: 26px;
+    }
+
+    mat-radio-group {
+      padding: 0 0 13px 0;
+
+      label, mat-label {
+        padding: 0 13px 0 0;
+      }
+
+      mat-radio-button {
+
+        label { 
+          padding: 0 6.5px 0 0;
+        }
+      }
+    }
+
+    mat-radio-group.itemsBelow {  
+
+      label, mat-label {
+
+        & + mat-radio-button {
+          padding-left: 6.5px;
+        }
+      }
+
+      > mat-label, > label {
+        padding-bottom: 3px;
+      }
+    }
+
+    .col-md-6 {
+
+      > mat-radio-group.itemsBelow {
+        top: -6.5px;
+      }
+    }
+
+    .blockHeading {
+      font-size : 22px;
+      padding-bottom:19.5px;
+    }
+  }
+
+  table.searchPersonTable {
+    margin: 38.5px 0 38.5px 0;
+
+    tr.addressRow {
+
+      > td {
+
+        > div {
+
+          > div {
+            height: 64px;
+            font-size: 15.5px;
+            line-height: 18px;
+            width: calc((100% - 230.5px) / 3);
+            padding-bottom: 5.5px;
+
+            > * {
+              font-size: 13px;
+              line-height: 15.5px;
+              margin: 9px 0 0 0;
+            }
+
+            > p {
+              margin: 4px 0 0 0;
+            }
+
+            &:last-child {
+              width: 230.5px;
+
+              > div {
+
+                > button.perlss-click-button-white {
+                  font-size: 13px;
+                  padding: 1.5px 6.5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .dropDownIcons {
+
+    mat-icon {
+      font-size: 51.5px;
+    }
+  }
+
+  .row.header {
+      width: calc(100% - 26px);
+      padding: 6.5px 0 6.5px;
+
+      .applicantName {
+        font-size: 15.5px;
+        padding: 10.5px 13px 4px 10.5px;
+
+        label {
+
+          &::after {
+            padding: 0 3px;
+          }
+        }
+      }
+  }
+
+  mat-checkbox.mat-checkbox.checkbox-element.mat-accent {
+    margin: 0 0 0 10.5px;
+
+  	> label.mat-checkbox-layout {
+
+  		> .mat-checkbox-inner-container {
+        height: 14.5px;
+        width: 14.5px;
+        margin: 0 6.5px 0 06.5px;
+  		}
+
+  		span.mat-checkbox-label {
+        font-size: 13px;
+        top: -3px;
+        line-height: 15.5px;
+  		}
+  	}
+  }
+
+  .checkbox-group, .stackedButtons .checkbox-group {
+    padding: 9px 0 0 0;
+
+    > mat-label {
+        padding: 0 0 6.5px 1.5px;
+        font-size: 13px;
+    }
+
+     mat-checkbox {
+      margin-left: 20.5px;
+      width: 256px;
+
+      &.w2 {
+        width: 550.5px;
+      }
+
+      label.mat-checkbox-layout {
+        margin-right: 26px;
+      }
+
+      mat-label {
+        margin-right: 26px;
+      }
+     }
+  }
+
+  .checkbox-list {
+    padding: 0 0 13px 0;
+
+    > mat-label {
+      padding: 13px 0 6.5px 0;
+    }
+
+    .row {
+      padding: 0 0 0 26px;
+      width: calc(100% - 26px);
+    }
+
+    textarea {
+      width: calc(100% - 38.5px);
+    }
+  }
+
+.checkbox-list.stacked,
+mat-radio-group.stacked,
+  .stackedButtons .page mat-radio-group {
+    margin-left: 5.5px;
+    margin-top: 13px;
+    width: calc(100% - 26px);
+
+    > label, > mat-label {
+
+      & + mat-radio-button, & + mat-checkbox {
+        padding-top: 6.5px;
+      }
+    }
+
+    > mat-radio-button, > mat-checkbox {
+      padding: 0 0 4px 9px;
+    }
+}
+}

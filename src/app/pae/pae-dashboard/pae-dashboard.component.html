@@ -1,0 +1,326 @@
+<div class="dashboard-container">
+  <div class="dashboard-card-container">
+    <div class="row">
+      <div class="col-md-4" (click)="startNewPae()">
+        <mat-card class="dashboard-card">
+          <mat-card-content>
+            <mat-icon class="dashboard-icon">note_add</mat-icon>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="submit-text"> SUBMIT A NEW PAE </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card class="dashboard-card">
+          <mat-card-title class="dashboard-card-header">New PAE</mat-card-title>
+          <mat-divider class="dashboard-card-divider"></mat-divider>
+          <mat-card-content>
+            <div class="pending-submission">Total Pending Submission</div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="due-text"><u>0</u></div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card class="dashboard-card">
+          <mat-card-title class="dashboard-card-header">My PAE Submissions (Last 30 Days)</mat-card-title>
+          <mat-divider class="dashboard-card-divider"></mat-divider>
+          <mat-card-content>
+            <div class="row">
+              <div class="col">
+                Pending Adjudication
+              </div>
+              <div class="col">
+                <span class="due-number"><u>0</u></span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col">
+                Approved
+              </div>
+              <div class="col">
+                <span class="past-due-number"><u>0</u></span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="total-container">
+              <div class="row">
+                <div class="col">
+                  Denied
+                </div>
+                <div class="col">
+                  <span class="total-pending-number"><u>0</u></span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <br>
+  <mat-divider class="perlss-section-divider"></mat-divider>
+
+  <div class="pae-queue-container">
+    <div class="row">
+      <div class="col-md-9">
+        <h2>PAE Queues</h2>
+      </div>
+      <div class="col-md-3" style="text-align: right;">
+        <button mat-stroked-button color="primary" class="perlss-click-button" (click)="myOpenTasks()">MY OPEN
+          TASKS</button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="isMyOpenTasksClicked" class="row">
+      <div class="col-md-12">
+        <table id="pae-queue-table" aria-describedBy="false">
+          <tr>
+            <th id="status">Queue Name</th>
+            <th id="count">Count</th>
+          </tr>
+          <tr>
+            <td>ECF CHOICES PAE Enrollment Queue</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Katie Beckett Part A PAE Queue</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <mat-divider class="perlss-section-divider"></mat-divider>
+
+  <div class="pae-search-container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-accordion #accordion="matAccordion" [multi]="true">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Additional PAE Filter Criteria
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-container">
+              <form [formGroup]="paeSearch" (ngSubmit)="paeAdditionalSearch()">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <ng-container>
+                      <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Person Search</mat-label>
+                        <input matInput formControlName="searchText"
+                          placeholder="Search by Applicant Name, Date Of Birth, SSN, Person ID, County" />
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Referral ID</mat-label>
+                        <input matInput formControlName="referralId" placeholder="Referral ID" />
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>PAE ID</mat-label>
+                        <input matInput formControlName="paeId" placeholder="PAE ID" />
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>PAE Status</mat-label>
+                        <mat-select formControlName="paeStatus">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let paeStatus of paeStatusList" [value]="paeStatus.code">
+                            {{paeStatus.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Grand Region</mat-label>
+                        <mat-select formControlName="grandRegion">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let grandRegion of grandRegionList" [value]="grandRegion.code">
+                            {{grandRegion.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Enrollment Group</mat-label>
+                        <mat-select formControlName="enrollmentGroup">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let enrollmentGroup of enrollmentGroupList" [value]="enrollmentGroup.code">
+                            {{enrollmentGroup.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <button mat-stroked-button color="primary" class="perlss-click-button" type="submit">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider class="perlss-section-divider"></mat-divider>
+  <div *ngIf="searchReferralClicked" class="search-table-container">
+    <h2>Search Results</h2>
+    <br>
+    <table id="referralTable" aria-describedby="false" mat-table [dataSource]="dataSource" multiTemplateDataRows
+      class="mat-elevation-z0">
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef id="firstName">Person Name </th>
+        <td mat-cell *matCellDef="let element"> <u>{{element.firstName}} {{element.midInitial}} {{element.lastName}}</u>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ssn">
+        <th mat-header-cell *matHeaderCellDef id="ssn">SSN</th>
+        <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="grandRegion">
+        <th mat-header-cell *matHeaderCellDef id="grandRegion">Grand Region</th>
+        <td mat-cell *matCellDef="let element"> {{element.grandRegion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paeId">
+        <th mat-header-cell *matHeaderCellDef id="paeId">PAE ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.paeId}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="enrollmentGroup">
+        <th mat-header-cell *matHeaderCellDef id="enrollmentGroup">Enrollment Group</th>
+        <td mat-cell *matCellDef="let element"> {{element.enrollmentGroup}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paeStatus">
+        <th mat-header-cell *matHeaderCellDef id="paeStatus">PAE Status</th>
+        <td mat-cell *matCellDef="let element"> {{element.paeStatus}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <table class="table table-borderless" aria-describedby="false">
+              <tr>
+                <td>
+                  <strong>Date of Birth</strong>
+                  <div>{{element.birthDate}}</div>
+                </td>
+                <td>
+                  <strong>Person ID</strong>
+                  <div>{{element.personId}}</div>
+                </td>
+                <td>
+                  <strong>Reassignment Due</strong>
+                  <div>{{element.reassignmentDue}}</div>
+                  <div *ngIf="(element.taskQueue === '' || element.taskQueue === undefined)">---</div>
+                </td>
+                <td>
+                  <strong>Slot Status</strong>
+                  <div>{{element.slotStatus}}</div>
+                  <div *ngIf="(element.taskStatus === '' || element.taskStatus === undefined)">---</div>
+                </td>
+                <td>
+                  <button mat-stroked-button *ngIf="element.paeStatus === 'PS'"
+                    class="expandable-row-button">CONTINUE</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>County</strong>
+                  <div>{{element.county}}</div>
+                </td>
+                <td>
+                  <strong>Referral ID</strong>
+                  <div>{{element.refId}}</div>
+                </td>
+                <td>
+                  <strong>Appeal Filed</strong>
+                  <div>{{element.appealFiled}}</div>
+                  <div *ngIf="(element.appealFiled === '' || element.appealFiled === undefined)">---</div>
+                </td>
+                <td>
+                  <strong>Assigned User</strong>
+                  <div>{{element.assignedUser}}</div>
+                  <div *ngIf="(element.assignedUser === '' || element.assignedUser === undefined)">---</div>
+                </td>
+                <td>
+                  <button mat-stroked-button *ngIf="element.paeStatus === 'PS'"
+                    class="expandable-row-button-white">DELETE</button>
+                  <button mat-stroked-button *ngIf="element.taskStatus === 'CL'"
+                    class="expandable-row-button-white">VIEW DETAILS</button>
+                    <button mat-stroked-button *ngIf="element.paeStatus === 'NW' && element.taskStatus === 'NW'"
+                    class="expandable-row-button" (click)="initiateIntakeClicked()">INITIATE PAE</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Task Queue</strong>
+                  <div>{{element.taskQueue}}</div>
+                </td>
+                <td>
+                  <strong>Recieved in Queue</strong>
+                  <div>{{element.recievedInQueue}}</div>
+                </td>
+                <td>
+                  <strong>Task Status</strong>
+                  <div>{{element.taskStatus}}</div>
+                </td>
+                <td>
+                  <strong>Task Completion</strong>
+                  <div>{{element.taskCompletion}}</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+        [class.expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+    <br>
+  </div>
+
+</div>

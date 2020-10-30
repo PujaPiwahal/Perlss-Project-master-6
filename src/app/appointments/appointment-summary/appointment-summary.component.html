@@ -1,0 +1,109 @@
+<div class="row-header">
+  <span class="col-lg-9">
+    <h4>Appointment Summary</h4>
+  </span>
+  <span class="col-lg-3 text-right close-icon">
+    <mat-icon (click)=closeDialog()>highlight_off</mat-icon>
+  </span>
+</div>
+<hr />
+
+<div class="field-content" *ngIf="appointmentSummary">
+  <div class="row">
+    <div class="col-5">
+      <strong>Person's Name:</strong>
+    </div>
+    <div class="col-5">
+      <a [routerLink]="" (click)="passTheSalt()" >{{appointmentSummary.personName}}</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Date of Birth:</strong>
+    </div>
+    <div class="col-5">
+     {{appointmentSummary.dobDt | date}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Referral ID:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.refId}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>PAE ID:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.paeId}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Appointment Type:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.appointmentTypeCd}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Intake Due Date:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.appointmentDate | date}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Contact Method:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.contactMethodCd}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Contact Time:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.appointmentDate | date}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Location:</strong>
+    </div>
+    <div class="col-5">
+      <ng-container *ngIf="appointmentSummary.applicantAddressVO && appointmentSummary.applicantAddressVO.length > 0">{{appointmentSummary.applicantAddressVO[0]?.addrLine1}},{{appointmentSummary.applicantAddressVO[0]?.city}},{{appointmentSummary.applicantAddressVO[0]?.stateCd}},{{appointmentSummary.applicantAddressVO[0]?.zipcode}} </ng-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Referral Type:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.referralTypeCd}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <strong>Appointment Status:</strong>
+    </div>
+    <div class="col-5">
+      {{appointmentSummary.appointmentStatusCd}}
+    </div>
+  </div>
+</div>
+
+<div class="update-app">
+  <button mat-flat-button color="primary" (click)="updateAppointment()" class="perlss-click-button">UPDATE APPOINTMENT</button>
+</div>
+<div class="Cancel-app">
+  <button type="button" mat-flat-button (click)="cancelAppointment()" class="cancel-button-content">CANCEL APPOINTMENT</button>
+</div>
+
+

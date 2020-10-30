@@ -1,0 +1,434 @@
+<div class="popup-header-container">
+  <div class="row">
+    <div class="col-md-8">
+      <h4> Sustain Current Family Living Arrangements Review Form </h4>
+    </div>
+    <div class="col-md-4">
+      <div style="text-align: right;">
+        <mat-icon class="popup-close-icon" (click)="closePopup()">highlight_off</mat-icon>
+        <div class="required-class">
+          *Required
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-divider class="perlss-horizontal-divider"></mat-divider>
+<div class="note-container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-label><p>The following section shall be completed during the Intake visit to document the circumstances under 
+          which the above-named person is believed to meet criteria requiring supports to sustain the current family 
+          living arrangement. This information shall be reviewed by the Interagency Review Committee to determine whether 
+          the person will proceed with application for enrollment in the Employment and Community First CHOICES program 
+          in available reserve capacity set aside for such purposes.Please ensure the potential applicant does not appear 
+          to qualify for potential enrollment in an open Priority Category before submitting a request for review of Planned 
+          Transition to Community Living. If a potential applicant appears to meets criteria for both an open Priority 
+          Category and Planned Transition to Community Living – you must proceed with an application for potential enrollment 
+          in the appropriate open Priority Category.</p>
+          
+          <p>Please ensure the potential applicant does not appear to qualify for potential enrollment in an open
+          Priority Category before submitting a request for review of Supports to Sustain Current Family Living
+          Arrangements. If an applicant appears to meet criteria for both an open Priority Category and Supports 
+          to Sustain Current Family Living Arrangements – you must proceed with an application for potential 
+          enrollment in the appropriate open Priority Category.</p>
+      </mat-label>
+    </div>
+  </div>
+</div>
+  
+<div class="form-container">
+  <b> Please identify all Support Sustained Current Family Living Arrangement criteria that are applicable:</b>
+  <form [formGroup]="susCurrFamLivArrForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person lives at home with natural family or the only ‘family’ the person knows. 
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().naturalFamPrsonSw.hasError('required') && (getFormData().naturalFamPrsonSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="naturalFamPrsonSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person has significant medical and or behavioral needs that family caregivers 
+            are struggling to meet, and as a result, the person is at significant risk of being placed outside the home. 
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().medBehNeedsStruggSw.hasError('required') && (getFormData().medBehNeedsStruggSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="medBehNeedsStruggSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person’s primary caregiver(s) are able and willing to continue caring 
+            for/supporting the person if some supports are provided in the home to assist the family in supporting the person.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().primCarWillngSuppSw.hasError('required') && (getFormData().primCarWillngSuppSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="primCarWillngSuppSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The person/family is in urgent need of supports that would be available in ECF 
+            in order to maintain the current family living arrangement and delay or prevent the need for more expensive services.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().prsnUrgntSuppSw.hasError('required') && (getFormData().prsnUrgntSuppSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="prsnUrgntSuppSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-label>Please complete the information below and submit with all supporting
+      documentation to TennCare, via designated process, for referral to the Interagency
+      Review Committee.</mat-label>
+    <br><br>
+    <mat-label>
+      Please do not provide repetitive information in multiple response boxes below. Each
+      area needs to be addressed specific to the information being requested.
+    </mat-label>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Please explain why this person does not appear to qualify for
+            enrollment in an open Priority Category:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().prsnDsntQualifyTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().prsnDsntQualifyTxt.errors.maxLength == null && !getFormData().prsnDsntQualifyTxt.errors?.invalidName && !getFormData().prsnDsntQualifyTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().prsnDsntQualifyTxt.touched && getFormData().prsnDsntQualifyTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().prsnDsntQualifyTxt.errors?.invalidName && !getFormData().prsnDsntQualifyTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput  formControlName="prsnDsntQualifyTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Detail regarding current health condition of the person’s caregiver including diagnosis, 
+            when the condition began, severity of symptoms and current and expected progression of decline:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().currHlthCondnTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().currHlthCondnTxt.errors.maxLength == null && !getFormData().currHlthCondnTxt.errors?.invalidName && !getFormData().currHlthCondnTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().currHlthCondnTxt.touched && getFormData().currHlthCondnTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().currHlthCondnTxt.errors?.invalidName && !getFormData().currHlthCondnTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="currHlthCondnTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Detail current treatment / therapies being received for each medical and/or behavioral health condition:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().trtmntThrpyRcvdTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().trtmntThrpyRcvdTxt.errors.maxLength == null && !getFormData().trtmntThrpyRcvdTxt.errors?.invalidName && !getFormData().trtmntThrpyRcvdTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().trtmntThrpyRcvdTxt.touched && getFormData().trtmntThrpyRcvdTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().trtmntThrpyRcvdTxt.errors?.invalidName && !getFormData().trtmntThrpyRcvdTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="trtmntThrpyRcvdTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Recent events that led to the family’s struggle to maintain current level of support:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().evntsFamStruggTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().evntsFamStruggTxt.errors.maxLength == null && !getFormData().evntsFamStruggTxt.errors?.invalidName && !getFormData().evntsFamStruggTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().evntsFamStruggTxt.touched && getFormData().evntsFamStruggTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().evntsFamStruggTxt.errors?.invalidName && !getFormData().evntsFamStruggTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="evntsFamStruggTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>How the person is being supported now (include who provides support, whether the support is 
+            paid or unpaid, etc.):
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().howPrsnIsSuppTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().howPrsnIsSuppTxt.errors.maxLength == null && !getFormData().howPrsnIsSuppTxt.errors?.invalidName && !getFormData().howPrsnIsSuppTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().howPrsnIsSuppTxt.touched && getFormData().howPrsnIsSuppTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().howPrsnIsSuppTxt.errors?.invalidName && !getFormData().howPrsnIsSuppTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="howPrsnIsSuppTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Options that have been tried that did not work (include home health, behavioral therapy/support services, 
+            evaluation / assessment for use of technology, other referrals and services provided that failed, etc.):
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().optDidNotWorkTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().optDidNotWorkTxt.errors.maxLength == null && !getFormData().optDidNotWorkTxt.errors?.invalidName && !getFormData().optDidNotWorkTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().optDidNotWorkTxt.touched && getFormData().optDidNotWorkTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().optDidNotWorkTxt.errors?.invalidName && !getFormData().optDidNotWorkTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="optDidNotWorkTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Anticipated changes in these supports, and the expected timing of such changes:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().antiChngsExpTimeTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().antiChngsExpTimeTxt.errors.maxLength == null && !getFormData().antiChngsExpTimeTxt.errors?.invalidName && !getFormData().antiChngsExpTimeTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().antiChngsExpTimeTxt.touched && getFormData().antiChngsExpTimeTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().antiChngsExpTimeTxt.errors?.invalidName && !getFormData().antiChngsExpTimeTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="antiChngsExpTimeTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Other supports that are available / resources that have been explored or that could be developed:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().othrSuppResAvalTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().othrSuppResAvalTxt.errors.maxLength == null && !getFormData().othrSuppResAvalTxt.errors?.invalidName && !getFormData().othrSuppResAvalTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().othrSuppResAvalTxt.touched && getFormData().othrSuppResAvalTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().othrSuppResAvalTxt.errors?.invalidName && !getFormData().othrSuppResAvalTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="othrSuppResAvalTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Describe your observations of the current circumstance and reason for Sustain Current 
+            Family Living Arrangements criteria request:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().rsnCurrFamArrangTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().rsnCurrFamArrangTxt.errors.maxLength == null && !getFormData().rsnCurrFamArrangTxt.errors?.invalidName && !getFormData().rsnCurrFamArrangTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().rsnCurrFamArrangTxt.touched && getFormData().rsnCurrFamArrangTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().rsnCurrFamArrangTxt.errors?.invalidName && !getFormData().rsnCurrFamArrangTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="rsnCurrFamArrangTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label><b>Please check all supporting
+              documentation being provided with this request:
+            </b>
+          </mat-label>
+        </div>
+        <div class="radio-container">
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="verifTrgtPopulnSw"
+              (change)="onDocumentCheck($event)">Verification of target population</mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="adaptBehLsaResSw"
+              (change)="onDocumentCheck($event)"> Adaptive Behavior / Life Skills Assessment results </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="legalDocumentsSw"
+              (change)="onDocumentCheck($event)"> Legal documents</mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="physClinicalNoteSw"
+              (change)="onDocumentCheck($event)"> Physician / clinical note(s) </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox class="checkbox-element" formControlName="otherSw"
+              (change)="onOtherDocumentsCheck($event)">Other : </mat-checkbox> &nbsp;
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="otherDesc" placeholder="Other Documents">
+              <mat-error *ngIf="getFormData().otherDesc.errors !== null">
+                <mat-error
+                  *ngIf="getFormData().otherDesc.errors.maxLength == null && !getFormData().otherDesc.errors?.invalidName && !getFormData().otherDesc.errors.required">
+                  Cannot exceed 2000 characters</mat-error>
+                <mat-error *ngIf="getFormData().otherDesc.touched && getFormData().otherDesc.errors.required">{{customValidation.A1}}</mat-error>
+                <mat-error *ngIf="getFormData().otherDesc.errors?.invalidName && !getFormData().otherDesc.errors.required">{{customValidation.A2}}
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-label>Signatures below indicate an attestation that the information provided in this
+      request form is accurate as provided by the potential applicant or informant and as observed
+      by the person completing this form.
+    </mat-label>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Electronic Signature
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="electronicSignature">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12" style="text-align: right;">
+        <button type="submit" mat-flat-button color="primary" class="perlss-click-button">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+</div>
+  

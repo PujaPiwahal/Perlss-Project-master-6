@@ -1,0 +1,32 @@
+export class RefEmergentCircumstancesReview{
+    constructor(
+         public reqPageId: string,
+         public intakeOutcomeId: string,
+         public abuseCurrLivSw: string,
+         public adaptBehLsaResSw: string,
+         public addCurrEmrgTxt: string,
+         public adltTransCustdySw: string,
+         public anticipateChngSupTxt: string,
+         public behHlthCrisisPrevSw: string,
+         public caregvrPermIncapSw: string,
+         public caregvrRecentIncapSw: string,
+         public criticalCircumTxt: string,
+         public currTreatBehCondTxt: string,
+         public electronicSignature: string,
+         public enrolEcfTranLongSw: string,
+         public howPersonIsSuppTxt: string,
+         public intAssessorObservTxt: string,
+         public justification: string,
+         public legalDocumentsSw: string,
+         public optTriedNotWorkTxt: string,
+         public otherDesc: string,
+         public otherSw: string,
+         public othrSuppAvailTxt: string,
+         public ovr21AdltEnrolEcfSw: string,
+         public physClinicalNoteSw: string,
+         public rcntEvntCurCircuTxt: string,
+         public servUrgntNeededSw: string,
+         public supportNeededTxt: string,
+         public verifTrgtPoplationSw: string
+    ) { }
+}

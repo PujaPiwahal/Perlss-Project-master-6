@@ -1,0 +1,42 @@
+<div class="popup-header-container">
+  <div class="row">
+    <div class="col">
+      <h4> Attention </h4>
+    </div>
+    <div class="col">
+      <div style="text-align: right;">
+        <mat-icon class="popup-close-icon" (click)="closePopup()" >highlight_off</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-divider class="perlss-horizontal-divider"></mat-divider>
+
+<div class="popup-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        "You are about to delete a record.
+        </div>
+        <br>
+        <div>
+        Click the "Delete" button to confirm.
+        </div>
+        <br>
+        <div>
+        Click the "Cancel" button to keep the record."
+        </div>
+        <br>
+        <br>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col" style="text-align: right;">
+      <button mat-stroked-button class="popup-click-button-white" [mat-dialog-close]="false">CANCEL</button>
+    </div>
+    <div class="col" style="text-align: right;">
+      <button mat-flat-button color="primary" class="popup-click-button" [mat-dialog-close]="true">DELETE</button>
+    </div>
+  </div>
+</div>

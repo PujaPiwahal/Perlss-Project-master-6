@@ -1,0 +1,60 @@
+.body-font-style {
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #f6faff;
+  border-radius: 5px;
+  border-color: #ced4da;
+}
+
+.red-icon {
+  color: red;
+  transform: scale(0.8);
+}
+
+.page-sub-heading {
+  font-weight: bold;
+  color: #ed6053;
+  font-size: 24px;
+}
+
+.sub-heading {
+  font-family: "Permian Slab";
+  letter-spacing: 50;
+  font-weight: bold;
+  font-size: 32px;
+  color: #174a7c;
+}
+
+.required {
+  display: inline-block;
+  float: right;
+  color: #ed6053;
+  font-family: "Open Sans";
+  font-size: 14px;
+  margin-top: 20px;
+}
+.required-color {
+  color: #ed6053;
+}
+
+.perlss-section-divider {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+  min-width: fit-content;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #f6faff;
+  border-radius: 5px;
+  border-color: #ced4da;
+}
+

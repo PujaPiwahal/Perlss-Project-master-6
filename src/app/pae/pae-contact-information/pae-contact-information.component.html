@@ -1,0 +1,309 @@
+<div class="row" style="width: 100%; padding-bottom: 50px;">
+  <div class="col-md-8" style="width: 100% !important;">
+    <div class="applicant-sub-heading">
+      Applicant Contact Details
+    </div>
+  </div>
+  <div class="col-md-4">
+    <table id="applicantName">
+      <tr>
+        <th> <b>APPLICANT NAME : </b> Jessica Jones</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div style="width: 95%;">
+  <form [formGroup]="myForm" (ngSubmit)="next()">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label> Email Address </mat-label>
+          <input matInput formControlName="emailAddress" placeholder="Email Address"
+            [ngClass]="{ 'is-invalid': f.emailAddress.touched && f.emailAddress.errors }" required>
+          <mat-error *ngIf="f.emailAddress.errors">
+            <mat-error *ngIf="f.emailAddress.touched && f.emailAddress.errors.required">{{customValidation.A1}}
+            </mat-error>
+            <mat-error *ngIf="f.emailAddress.errors?.invalidEmail && !f.emailAddress.errors.required">
+              {{customValidation.A9}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label> Cell Phone </mat-label>
+          <input matInput formControlName="cellPhone" placeholder="Cell Phone"
+            [ngClass]="{ 'is-invalid': f.cellPhone.touched && f.cellPhone.errors }">
+          <mat-error *ngIf="f.cellPhone.errors">
+            <mat-error *ngIf="f.cellPhone.errors.required">{{customValidation.A1}}</mat-error>
+            <mat-error
+              *ngIf="f.cellPhone.errors.maxLength == null && !f.cellPhone.errors?.invalidPhone && !f.cellPhone.errors.required">
+              Cannot exceed 10 characters</mat-error>
+            <mat-error *ngIf="f.cellPhone.errors?.invalidPhone && !f.cellPhone.errors.required">{{customValidation.A8}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label> Home Phone </mat-label>
+          <input matInput formControlName="homePhone" placeholder="Home Phone"
+            [ngClass]="{ 'is-invalid': f.homePhone.touched && f.homePhone.errors }">
+          <mat-error *ngIf="f.homePhone.errors">
+            <mat-error *ngIf="f.homePhone.touched && f.homePhone.errors.required">{{customValidation.A1}}</mat-error>
+            <mat-error
+              *ngIf="f.homePhone.errors.maxLength == null && !f.homePhone.errors?.invalidPhone && !f.homePhone.errors.required">
+              Cannot exceed 10 characters</mat-error>
+            <mat-error *ngIf="f.homePhone.errors?.invalidPhone && !f.homePhone.errors.required">{{customValidation.A8}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label> Work Phone </mat-label>
+          <input matInput formControlName="workPhone" placeholder="Work Phone"
+            [ngClass]="{ 'is-invalid': f.workPhone.touched && f.workPhone.errors }">
+          <mat-error *ngIf="f.workPhone.errors">
+            <mat-error *ngIf="f.workPhone.touched && f.workPhone.errors.required">{{customValidation.A1}}</mat-error>
+            <mat-error
+              *ngIf="f.workPhone.errors.maxLength == null && !f.workPhone.errors?.invalidPhone && !f.workPhone.errors.required">
+              Cannot exceed 10 characters</mat-error>
+            <mat-error *ngIf="f.workPhone.errors?.invalidPhone && !f.workPhone.errors.required">{{customValidation.A8}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>
+            <mat-label class="required-color">*</mat-label>Preferred Phone Type
+          </mat-label>
+          <select (change)="onPhoneTypeChange(prefPhoneType.value)" #prefPhoneType matNativeControl
+            formControlName="prefPhoneTypCd" required
+            [ngClass]="{ 'is-invalid': f.prefPhoneTypCd.touched && f.prefPhoneTypCd.errors }">
+            <option value="cellPhone">Cell Phone</option>
+            <option value="homePhone">Home Phone</option>
+            <option value="workPhone">Work Phone</option>
+          </select>
+          <mat-error *ngIf="f.prefPhoneTypCd.errors">
+            <mat-error *ngIf="f.prefPhoneTypCd.touched && f.prefPhoneTypCd.errors.required">{{customValidation.A1}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="question-container">
+      <div class="row">
+        <div class="col-md-12">
+          Does the applicant want someone else (we call this person a Designee) to get letters we mail from TennCare?
+        </div>
+      </div>
+    </div>
+
+    <div class="radio-option-container">
+      <div class="row">
+        <div class="col-md-12">
+          <mat-radio-group (change)="onChange($event)">
+            <div>
+              <mat-radio-button [checked]=true value="yes">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="no">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf=isDesignee>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              <mat-label class="required-color">*</mat-label>Designee First Name
+            </mat-label>
+            <input matInput formControlName="designeeFirstName" placeholder="Designee First Name"
+              [ngClass]="{ 'is-invalid': f.designeeFirstName.touched && f.designeeFirstName.errors }">
+            <mat-error *ngIf="f.designeeFirstName.errors">
+              <mat-error
+                *ngIf="f.designeeFirstName.errors.maxLength == null && !f.designeeFirstName.errors?.invalidName && !f.designeeFirstName.errors.required">
+                Cannot exceed 45 characters</mat-error>
+              <mat-error *ngIf="f.designeeFirstName.touched && f.designeeFirstName.errors.required">
+                {{customValidation.A1}}
+              </mat-error>
+              <mat-error *ngIf="f.designeeFirstName.errors?.invalidName && !f.designeeFirstName.errors.required">
+                {{customValidation.A2}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label> Designee Middle Initial </mat-label>
+            <input matInput formControlName="designeeMiddleName" placeholder="Designee Middle Initial"
+              [ngClass]="{ 'is-invalid': f.designeeMiddleName.touched && f.designeeMiddleName.errors }">
+            <mat-error *ngIf="f.designeeMiddleName.errors">
+              <mat-error
+                *ngIf="f.designeeMiddleName.errors.maxLength == null && !f.designeeMiddleName.errors?.invalidName && !f.designeeMiddleName.errors.required">
+                Cannot exceed 45 characters</mat-error>
+              <mat-error *ngIf="f.designeeMiddleName.touched && f.designeeMiddleName.errors.required">
+                {{customValidation.A1}}
+              </mat-error>
+              <mat-error *ngIf="f.designeeMiddleName.errors?.invalidName && !f.designeeMiddleName.errors.required">
+                {{customValidation.A2}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              <mat-label class="required-color">*</mat-label> Designee Last Name
+            </mat-label>
+            <input matInput formControlName="designeeLastName" placeholder="Designee Last Initial"
+              [ngClass]="{ 'is-invalid': f.designeeLastName.touched && f.designeeLastName.errors }">
+            <mat-error *ngIf="f.designeeLastName.errors">
+              <mat-error
+                *ngIf="f.designeeLastName.errors.maxLength == null && !f.designeeLastName.errors?.invalidName && !f.designeeLastName.errors.required">
+                Cannot exceed 45 characters</mat-error>
+              <mat-error *ngIf="f.designeeLastName.touched && f.designeeLastName.errors.required">
+                {{customValidation.A1}}
+              </mat-error>
+              <mat-error *ngIf="f.designeeLastName.errors?.invalidName && !f.designeeLastName.errors.required">
+                {{customValidation.A2}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              <mat-label class="required-color">*</mat-label>Designee Relationship
+            </mat-label>
+            <input matInput formControlName="designeeRelationship" placeholder="Designee Relationship"
+              [ngClass]="{ 'is-invalid': f.designeeRelationship.touched && f.designeeRelationship.errors }">
+            <mat-error *ngIf="f.designeeRelationship.errors">
+              <mat-error *ngIf="f.designeeRelationship.touched && f.designeeRelationship.errors.required">
+                {{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-8">
+          <mat-checkbox class="checkbox-element">
+            Has legal rights to the child's record?
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <div class="row">
+          <div class="col-md-12">
+            Does the Applicant or their designee need interpretor service?
+          </div>
+        </div>
+      </div>
+
+      <div class="radio-option-container">
+        <div class="row">
+          <div class="col-md-12">
+            <mat-radio-group>
+              <div>
+                <mat-radio-button [checked]=true value="yes">Yes</mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button value="no">No</mat-radio-button>
+              </div>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>
+            <mat-label class="required-color">*</mat-label> Language
+          </mat-label>
+          <input matInput formControlName="language" placeholder="For what language"
+            [ngClass]="{ 'is-invalid': f.language.touched && f.language.errors }">
+          <mat-error *ngIf="f.language.errors">
+            <mat-error *ngIf="f.language.touched && f.language.errors.required">{{customValidation.A1}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="question-container">
+        <div class="row">
+          <div class="col-md-12">
+            Is the designee mailing address different from the applicant's mailing address?
+          </div>
+        </div>
+      </div>
+
+      <div class="radio-option-container">
+        <div class="row">
+          <div class="col-md-12">
+            <mat-radio-group>
+              <div>
+                <mat-radio-button [checked]=true value="yes">Yes</mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button value="no">No</mat-radio-button>
+              </div>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <div class="row">
+          <div class="col-md-12">
+            Is the designee contact information different from the applicant's contact details?
+          </div>
+        </div>
+      </div>
+
+      <div class="radio-option-container">
+        <div class="row">
+          <div class="col-md-12">
+            <mat-radio-group>
+              <div>
+                <mat-radio-button [checked]=true value="yes">Yes</mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button value="no">No</mat-radio-button>
+              </div>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-left: 2px; padding-top: 50px;">
+      <div class="col-md-2" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+          class="perlss-click-button-white">BACK</button>
+      </div>
+      <div class="col-md-4" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+          class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+      </div>
+      <div class="col-md-6" style="text-align: right;">
+        <button mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;"
+          class="perlss-click-button">NEXT</button>
+      </div>
+    </div>
+
+  </form>
+</div>

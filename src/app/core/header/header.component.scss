@@ -1,0 +1,35 @@
+.center-fit {
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
+  width: 100%;
+}
+.container-fullwidth{
+  width:100%;
+  overflow-x: hidden;
+}
+.sub-nav-bar{
+  color: rgb(23,74,124);
+  font-family: "Open Sans";
+  padding: 5px;
+  margin-bottom: 0;
+  height: 40px;
+}
+
+#perlss-welcome-text {
+  margin: 0.1vw 0 0 0.5vw;
+  font-size: 14px;
+  font-family: 'Open Sans';
+  font-weight: 600;
+}
+
+button {
+  font-size: 10px;
+  border: none;
+  border-radius: 2px;
+  padding: 3px 6px;
+  margin: 0 5px;
+  position: relative;
+  top: -7px;
+}
+

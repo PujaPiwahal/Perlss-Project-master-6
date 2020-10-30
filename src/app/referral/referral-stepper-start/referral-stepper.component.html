@@ -1,0 +1,11 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper labelPosition="bottom" [selectedIndex]="currentForm">
+  <ng-template matStepperIcon="edit">
+    <mat-icon>done</mat-icon>
+  </ng-template>
+  <mat-step label="Start Referral" ><app-referral-start (completedStart)="selectedIndex($event)"></app-referral-start></mat-step>
+  <mat-step label="Applicant Information" ><app-ref-applicant (completedApplicant)="selectedIndex($event)" ></app-ref-applicant></mat-step>
+  <mat-step label="Contact Information"><app-ref-contact (completedContact)="selectedIndex($event)"></app-ref-contact></mat-step>
+  <mat-step label="School and Work"><app-referral-school-work (completedSchoolWork)="selectedIndex($event)"></app-referral-school-work></mat-step>
+  <mat-step label="Care and Support"><app-ref-care-and-support (completedCareAndSupport)="selectedIndex($event)"></app-ref-care-and-support></mat-step>
+  <mat-step label="Submit Referral"><app-referral-submit (completedSubmit)="selectedIndex($event)"></app-referral-submit></mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,144 @@
+.perlss-sidenav-container {
+  left: 0;
+  right: 0;
+  background: #eee;
+  width: 100%;
+
+}
+
+mat-card{
+  box-shadow: none !important;
+}
+
+.perlss-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+ }
+
+.perlss_page_content{
+  padding: 3vw;
+  border-left: solid 15px #EEEEEE;
+  border-bottom: solid 15px #EEEEEE;
+  min-height: 70vh;
+}
+
+.perlss-account-card{
+  min-height: 80px;
+  max-height: 80px;
+  max-width: 260px;
+  position: relative;
+  top: 10%;
+  transform: translateY(20%);
+}
+.perlss-page-header-card{
+  min-height: 80px;
+  transform: translateY(12%);
+}
+
+.perlss-sideMenu-open{
+  width:280px;
+
+}
+.perlss-sideMenu-closed{
+  width:70px;
+}
+.perlss-sidenav-content{
+  background-color: white;
+  margin-left: 280px;
+  z-index: 3;
+  mat-card{
+    border-left: solid 15px #EEEEEE !important;
+  }
+}
+.perlss-section-divider{
+  border-left: solid 15px #EEEEEE !important;
+}
+.profile-account-circle{
+  font-size: 35px;
+  color: rgb(23,74,124);
+}
+.perlss-page-header{
+  color: #ED6053;
+  font-family: "Open Sans";
+  font-size: 24px;
+}
+.sidenav-menu-toggle-icon{
+  font-size: 35px;
+  cursor: pointer;
+  color: #ED6053;
+}
+.sidenav-menu-toggle-icon-closed{
+  font-size: 35px;
+  cursor: pointer;
+  color: #ED6053;
+}
+.perlss-account-name{
+  color: #174A7C;
+  font-family: "Open Sans";
+
+}
+.mat-card-subtitle {
+  color: #174A7C;
+  font-family: "Open Sans";
+}
+#sideNavMenu-main{
+  margin-left: 5px;
+  padding: 15px;
+  font-family: "Open Sans";
+  font-weight: 600;
+}
+
+.sidenav-menu-icon {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  width: 60px;
+  position: fixed;
+}
+.sidenav-menu-details{
+  margin-left: 25px;
+  padding-bottom: 15px;
+  color: #303F47;
+  cursor: pointer;
+  font-size: 15px;
+}
+.sideNavMenu-icon {
+  color: #303F47;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.perlss-sideMenu-highlighted{
+  background-color: #CFDEF3;
+}
+
+.active{
+  background-color: #CFDEF3;
+  border-color: #CFDEF3;
+}
+#sideNavMenu-main .row {
+  flex-wrap: nowrap !important;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  color: #1B365D;
+  cursor: pointer;
+}
+.sideNavMenu-dropdown {
+  font-size: 17px;
+  font-weight: bold;
+  padding-bottom: 25px;
+  font-family: "Open Sans";
+  cursor: pointer;
+  letter-spacing: 3pt;
+}
+.sideNavMenu-dropdown-icon{
+  padding-top:2px;
+  color: #04537D;
+  cursor: pointer;
+}
+.side-nav-divider {
+  border-color: #D4E4F5;
+  width: 100%;
+}
+
+

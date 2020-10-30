@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <div mat-dialog-actions class="align_close_btn">
+      <span class="material-icons" mat-dialog-close>close</span>
+    </div>
+    <div class="align_contact_us">
+      <h2 mat-dialog-title>List of HCBS and ECF Services</h2>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>
+
+<mat-dialog-content class="mat-typography align_inner_main_section">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="heading">{{benefitsTitle}}</h2>
+    </div>
+  </div>
+  <mat-list role="list" *ngFor="let benefits of benefitsList.default" >
+    <mat-list-item role="listitem"><mat-checkbox class="example-margin">{{benefits.benefits}}</mat-checkbox></mat-list-item>
+  </mat-list>
+  <mat-paginator [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
+</mat-dialog-content>

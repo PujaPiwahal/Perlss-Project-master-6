@@ -1,0 +1,23 @@
+.applicant-sub-heading {
+  font-weight: bold;
+  color: #EE3524;
+  font-size: 22px;
+  margin-top: 30px;
+}
+
+#applicantName {
+  border: 2px solid;
+  border-color: #4D7E20;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.checkbox-element {
+  position: relative;
+  top: 20%;
+  transform: translateY(-20%);
+}
+.required-color {
+  color: #EE3524;
+}

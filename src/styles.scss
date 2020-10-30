@@ -1,0 +1,253 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/theming";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@include mat-core();
+app-pae {
+  position: absolute;
+  top: calc(8.843537vw + 44px);
+  right: 0;
+  bottom: 103px;
+  left: 0;
+  padding: 0;
+  margin:0;
+  overflow: hidden;
+
+  .mat-drawer-inner-container {
+
+      margin: 0;
+      padding: 0;
+
+      > mat-card {
+        width: 100%;
+        height: 112px;
+        padding: 0;
+        border-radius: 0;
+      }
+
+
+  }
+}
+
+app-leftnav {
+  height: auto;
+  top: calc(8.843537vw + 44px);
+  right: 0;
+  left: 0;
+
+  mat-card {
+    border-radius: 0 !important;
+  }
+}
+
+mat-sidenav-container.perlss-sidenav-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding:0;
+}
+
+.ng-dropdown-panel .scroll-host {
+  position: absolute !important;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.perlss-horizontal-divider{
+  padding: 2px;
+  margin: 0;
+  box-shadow: inset 0 6px 6px -6px rgba(0, 0, 0, 0.5);
+  color: #D1D3D4;
+}
+
+app-footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  a {
+    font-size: 14px;
+  }
+
+}
+
+.perlss-icon{
+  color: #EA5E52;
+}
+
+.perlss-click-button{
+  background-color: #174A7C !important;
+  color: white !important;
+}
+
+.perlss-click-button-white{
+  background-color: white !important;
+  color: #174A7C !important;
+  border: 1px solid #1B365D !important;
+}
+
+.perlss-click-button-white-noborder{
+  background-color: white !important;
+  color: #174A7C !important;
+}
+
+@font-face {
+  font-family: 'Permian Slab';
+  src: url(./assets/fonts/PermianSlabSerifTypeface-webfont.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Permian Slab';
+  src: url(./assets/fonts/PermianSlabSerifTypeface-Bold-webfont.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(./assets/fonts/OpenSans-Bold-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url(./assets/fonts/OpenSans-BoldItalic-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url(./assets/fonts/OpenSans-Italic-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url(./assets/fonts/OpenSans-Regular-webfont.woff) format('woff');
+}
+
+h1 {
+  font-family: 'Permian Slab';
+  letter-spacing: 50;
+  font-weight: bold;
+  font-size: 32px;
+  color: #174A7C;
+}
+
+h2 {
+  font-family: 'Permian Slab',serif;
+  letter-spacing: 50;
+  font-weight: normal;
+  font-size: 28px;
+  color: #174A7C;
+}
+
+h3 {
+  font-family: 'Permian Slab',serif;
+  letter-spacing: 50;
+  font-weight: normal;
+  font-size: 24px;
+  color: #174A7C;
+}
+
+h4 {
+  font-family: 'Permian Slab',serif;
+  letter-spacing: 50;
+  font-weight: normal;
+  font-size: 20px;
+  color: #174A7C;
+}
+
+h5 {
+  font-family: 'Open Sans';
+  letter-spacing: 50;
+  font-weight: normal;
+  font-size: 18px;
+  color: #6E7073;
+}
+
+h6 {
+  font-family: 'Permian Slab';
+  letter-spacing: 50;
+  font-weight: bold !important;
+  font-size: 17px;
+  color: #174A7C;
+}
+
+h7 {
+  font-family: 'Open Sans';
+  letter-spacing: 50;
+  font-weight: normal;
+  font-size: 15px;
+  color:#6E7073
+}
+
+h8 {
+  font-family: 'Open Sans';
+  letter-spacing: 50;
+  font-weight: normal;
+  font-size: 14px;
+  color: #6E7073
+}
+
+body:not(mat-icon) {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  color: #6E7073;
+}
+
+$perlsspalette: (
+  50 : #e3e9ef,
+  100 : #b9c9d8,
+  200 : #8ba5be,
+  300 : #5d80a3,
+  400 : #3a6590,
+  500 : #174a7c,
+  600 : #144374,
+  700 : #113a69,
+  800 : #0d325f,
+  900 : #07224c,
+  A100 : #81aaff,
+  A200 : #4e88ff,
+  A400 : #1b66ff,
+  A700 : #0255ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$perlss-app-primary: mat-palette($mat-indigo);
+$perlss-app-accent: mat-palette($perlsspalette, 600, 500, 900);
+$perlss-app-warn: mat-palette($mat-red);
+$perlss-app-theme: mat-light-theme($perlss-app-primary, $perlss-app-accent, $perlss-app-warn);
+@include mat-checkbox-theme($perlss-app-theme);
+@include mat-radio-theme($perlss-app-theme);
+
+.dialog-success {
+  background-color: #4D7E20;
+  color: #fff;
+}
+.dialog-error{
+  background-color: #EA5E52;
+  color: #fff;
+}
+.kb-event {
+  background-color: #4C90D3 !important;
+  color: #fff !important;
+  cursor: pointer;
+}
+.ecf-event {
+  cursor: pointer;
+  background-color: #4D7E20 !important;
+  color: #fff !important;
+}
+.fc-event-title{
+  text-align: center !important;
+}

@@ -1,0 +1,433 @@
+<div class="dashboard-container">
+  <div class="dashboard-card-container">
+    <div class="row">
+      <div class="col-md-4" (click)="startReferral()">
+        <mat-card class="dashboard-card">
+          <mat-card-content>
+            <mat-icon class="dashboard-icon">note_add</mat-icon>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="submit-text"> SUBMIT A NEW REFERRAL </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card class="dashboard-card">
+          <mat-card-title class="dashboard-card-header">New ECF Referrals</mat-card-title>
+          <mat-divider class="dashboard-card-divider"></mat-divider>
+          <mat-card-content>
+            <div class="pending-submission">Pending Submission</div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="due-text"><u>{{pendingReferralCount}}</u></div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card class="dashboard-card">
+          <mat-card-title class="dashboard-card-header">Intake Visit</mat-card-title>
+          <mat-divider class="dashboard-card-divider"></mat-divider>
+          <mat-card-content>
+            <div class="row">
+              <div class="col">
+                Due in next 5 days
+              </div>
+              <div class="col">
+                <span class="due-number"><u>{{futureDues5Days}}</u></span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col">
+                Intake Visit Past Due
+              </div>
+              <div class="col">
+                <span class="past-due-number"><u>{{pastDuesPendingCount}}</u></span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="total-container">
+              <div class="row">
+                <div class="col">
+                  Total Pending
+                </div>
+                <div class="col">
+                  <span class="total-pending-number"><u>{{totalPendingCount}}</u></span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="alertPastDue" class="alert-container">
+    <div class="row">
+      <div class="col-md-12">
+        <span class="red-text">
+          <mat-icon>info</mat-icon>&nbsp;&nbsp;<strong>ALERT : </strong>
+        </span>
+        <mat-label> You seem to have referrals pending intake past due for more than 20 days.
+          Please make sure to review these referrals past due and take an action accordingly.</mat-label>
+      </div>
+    </div>
+  </div>
+  <br>
+  <button mat-stroked-button color="primary" (click)="isSupervisor()">Is Supervisor</button>
+  <div *ngIf="isSupervisorSwitch" class="supervisor-container">
+
+    <div class="row">
+      <div class="col-md-9">
+        <table id="supervisor-table" aria-describedBy="false" >
+          <tr>
+            <th id="status">ECF Referral Status </th>
+            <th id="count">Count</th>
+          </tr>
+          <tr *ngFor="let ecfStatus of ecfReferralStatusCount | keyvalue; index as i;">
+            <td *ngFor="let ecfStatus2 of ecfStatus.value | keyvalue;">{{ecfMap.get(ecfStatus2.key)}}</td>
+            <td *ngFor="let ecfStatus2 of ecfStatus.value | keyvalue;">{{ecfStatus2.value}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <pre><strong>By Region</strong></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusRegion('')">Statewide</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusRegion('west')">West</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusRegion('east')">East</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusRegion('middle')">Middle</button></pre>
+        <pre><mat-divider></mat-divider></pre>
+        <pre><strong>By Entity</strong></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusEntity('')">All</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusEntity('DIDD')">DIDD</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusEntity('ASCN')">Ascend</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusEntity('AMGP')">Amerigroup</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusEntity('BLCR')">Bluecare</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="ecfStatusEntity('UHC')">United Healthcare</button></pre>
+      </div>
+    </div>
+
+    <br>
+    <mat-divider class="perlss-section-divider"></mat-divider>
+
+    <div class="row">
+      <div class="col-md-9">
+        <table id="supervisor-table" aria-describedBy="false">
+          <tr>
+            <th id="status">KB Referral Status </th>
+            <th id="count">Count</th>
+          </tr>
+          <tr *ngFor="let kbStatus of kbReferralStatusCount | keyvalue; index as i;">
+            <td *ngFor="let kbStatus2 of kbStatus.value | keyvalue;">{{ecfMap.get(kbStatus2.key)}}</td>
+            <td *ngFor="let kbStatus2 of kbStatus.value | keyvalue;">{{kbStatus2.value}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <pre><strong>By Region</strong></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="kbStatusRegion('')">Statewide</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="kbStatusRegion('west')">West</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="kbStatusRegion('east')">East</button></pre>
+        <pre><button mat-stroked-button class="perlss-click-button-white" (click)="kbStatusRegion('middle')">Middle</button></pre>
+      </div>
+    </div>
+  </div>
+  <mat-divider class="perlss-section-divider"></mat-divider>
+
+  <div class="referral-queue-container">
+    <div class="row">
+      <div class="col-md-9">
+        <h2>Referral Queues</h2>
+      </div>
+      <div class="col-md-3" style="text-align: right;">
+        <button mat-stroked-button color="primary" class="perlss-click-button" (click)="myOpenTasks()">MY OPEN
+          TASKS</button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="isMyOpenTasksClicked" class="row">
+      <div class="col-md-12">
+        <table id="supervisor-table" aria-describedBy="false">
+          <tr>
+            <th id="status">Queue Name</th>
+            <th id="count">Count</th>
+          </tr>
+          <tr>
+            <td>New ECF Referral Review - DIDD</td>
+            <td>{{ecfReferralQueue}}</td>
+          </tr>
+          <tr>
+            <td>New Katie Beckett Referral Review - DIDD</td>
+            <td>{{kbReferralQueue}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="referral-search-container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-accordion #accordion="matAccordion" [multi]="true">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Additional Referral Filter Criteria
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-container">
+              <form [formGroup]="referralSearch" (ngSubmit)="referralAdditionalSearch()">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <ng-container>
+                      <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Person Search</mat-label>
+                        <input matInput formControlName="searchText"
+                          placeholder="Search by Applicant Name, Date Of Birth, SSN, Person ID, County" />
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Referral ID</mat-label>
+                        <input matInput formControlName="referralId" placeholder="Referral ID" />
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Referral Status</mat-label>
+                        <mat-select formControlName="referralStatus">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let referralStatus of referralStatusList" [value]="referralStatus.name">
+                            {{referralStatus.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline" style="width:100% !important">
+                        <mat-label>Referral Recieved Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="referralRecievedDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Grand Region</mat-label>
+                        <mat-select formControlName="grandRegion">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let grandRegion of grandRegionList" [value]="grandRegion.name">
+                            {{grandRegion.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Task Queue</mat-label>
+                        <mat-select formControlName="taskQueue">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let taskQueue of taskQueueList" [value]="taskQueue.name">
+                            {{taskQueue.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                  <div class="col-md-6">
+                    <ng-container>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Task Status</mat-label>
+                        <mat-select formControlName="taskStatus">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let taskStatus of taskStatusList" [value]="taskStatus.name">
+                            {{taskStatus.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <button mat-stroked-button color="primary" class="perlss-click-button" type="submit">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+  <mat-divider class="perlss-section-divider"></mat-divider>
+  <div *ngIf="searchReferralClicked" class="search-table-container">
+    <h2>Search Results</h2>
+    <br>
+    <table id="referralTable" aria-describedby="false" mat-table [dataSource]="dataSource" multiTemplateDataRows
+      class="mat-elevation-z0">
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef id="firstName">Person Name </th>
+        <td mat-cell *matCellDef="let element"> <u>{{element.firstName}} {{element.midInitial}} {{element.lastName}}</u>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ssn">
+        <th mat-header-cell *matHeaderCellDef id="ssn">SSN</th>
+        <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="refId">
+        <th mat-header-cell *matHeaderCellDef id="refId">Referral ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.refId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="grandRegion">
+        <th mat-header-cell *matHeaderCellDef id="grandRegion">Grand Region</th>
+        <td mat-cell *matCellDef="let element"> {{element.grandRegion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="submissionDt">
+        <th mat-header-cell *matHeaderCellDef id="submissionDt">Submission Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.submissionDt}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="intakeDueDate">
+        <th mat-header-cell *matHeaderCellDef id="intakeDueDate">Intake Due Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.intakeDueDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="refStatus">
+        <th mat-header-cell *matHeaderCellDef id="refStatus">Referral Status</th>
+        <td mat-cell *matCellDef="let element"> {{ecfMap.get(element.refStatus)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <table class="table table-borderless" aria-describedby="false">
+              <tr>
+                <td>
+                  <strong>Date of Birth</strong>
+                  <div>{{element.birthDate}}</div>
+                </td>
+                <td>
+                  <strong>Person ID</strong>
+                  <div>{{element.personId}}</div>
+                </td>
+                <td *ngIf="!(element.refStatus === 'PS' || 
+                             element.refStatus === 'TP' || 
+                             element.refStatus === 'CP' || 
+                             element.refStatus === 'EN' || 
+                             element.refStatus === 'UC' || 
+                             element.refStatus === 'IE' || 
+                             element.refStatus === 'RE' ||
+                            element.refStatus === 'CL') || (element.taskStatus === 'CL')">
+                  <strong>Task Queue</strong>
+                  <div>{{element.taskQueue}}</div>
+                  <div *ngIf="(element.taskQueue === '' || element.taskQueue === undefined)">---</div>
+                </td>
+                <td *ngIf="!(element.refStatus === 'PS' || 
+                            element.refStatus === 'TP' || 
+                            element.refStatus === 'CP' || 
+                            element.refStatus === 'EN' || 
+                            element.refStatus === 'UC' || 
+                            element.refStatus === 'IE' || 
+                            element.refStatus === 'RE' ||
+                          element.refStatus === 'CL') || (element.taskStatus === 'CL')">
+                  <strong>Task Status</strong>
+                  <div>{{element.taskStatus}}</div>
+                  <div *ngIf="(element.taskStatus === '' || element.taskStatus === undefined)">---</div>
+                </td>
+                <td>
+                  <button mat-stroked-button *ngIf="element.refStatus === 'PS'"
+                    class="expandable-row-button">CONTINUE</button>
+                  <button mat-stroked-button *ngIf="element.refStatus === 'NW' && element.taskStatus === 'NW'"
+                    class="expandable-row-button" (click)="initiateIntakeClicked()">INITIATE INTAKE</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>County</strong>
+                  <div>{{element.county}}</div>
+                </td>
+                <td>
+                  <strong>Assigned User</strong>
+                  <div>testing</div>
+                </td>
+                <td  *ngIf="!(element.refStatus === 'PS' || 
+                              element.refStatus === 'TP' || 
+                              element.refStatus === 'CP' || 
+                              element.refStatus === 'EN' || 
+                              element.refStatus === 'UC' || 
+                              element.refStatus === 'IE' || 
+                              element.refStatus === 'RE' ||
+                            element.refStatus === 'CL') || (element.taskStatus === 'CL')">
+                  <strong>Recieved in Queue</strong>
+                  <div>{{element.receivedInQueue}}</div>
+                  <div *ngIf="(element.receivedInQueue === '' || element.receivedInQueue === undefined)">---</div>
+                </td>
+                <td  *ngIf="!(element.refStatus === 'PS' || 
+                              element.refStatus === 'TP' || 
+                              element.refStatus === 'CP' || 
+                              element.refStatus === 'EN' || 
+                              element.refStatus === 'UC' || 
+                              element.refStatus === 'IE' || 
+                              element.refStatus === 'RE' ||
+                              element.refStatus === 'CL') || (element.taskStatus === 'CL')">
+                  <strong>Task Completion</strong>
+                  <div>{{element.taskCompletion}}</div>
+                  <div *ngIf="(element.taskCompletion === '' || element.taskCompletion === undefined)">---</div>
+                </td>
+                <td>
+                  <button mat-stroked-button *ngIf="element.refStatus === 'PS'"
+                    class="expandable-row-button-white" (click)="deleteButtonClicked(element.refId)">DELETE</button>
+                  <button mat-stroked-button *ngIf="!(element.refStatus === 'PS' || 
+                                                        element.refStatus === 'TP' || 
+                                                        element.refStatus === 'CP' || 
+                                                        element.refStatus === 'EN' || 
+                                                        element.refStatus === 'UC' || 
+                                                        element.refStatus === 'IE' || 
+                                                        element.refStatus === 'RE' ||
+                                                        element.refStatus === 'CL' ||
+                                                        element.refStatus === 'NW')"
+                    class="expandable-row-button">CONTINUE</button>
+                  <button mat-stroked-button
+                    *ngIf="element.taskStatus === 'NW' || element.taskStatus === 'AS' || element.taskStatus === 'IP'"
+                    class="expandable-row-button-white">UPDATE TASK</button>
+                  <button mat-stroked-button *ngIf="element.taskStatus === 'CL'"
+                    class="expandable-row-button-white">VIEW DETAILS</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+        [class.expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+    <br>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<ng-select [items]="meidicalDiagnosis" bindLabel="name"
+  placeholder="Multi Select item" appendTo="body" multiple="true">
+</ng-select>
+<br>
+<div style="width: 50%">
+<ng-select bindLabel="name" placeholder="Select item" autofocus bindValue="id" >
+  <mat-select formControlName="levelIntelDisabilityCd">
+    <mat-option value="L">Low</mat-option>
+    <mat-option value="M">Moderate</mat-option>
+    <mat-option value="H">High</mat-option>
+  </mat-select>
+</ng-select></div>

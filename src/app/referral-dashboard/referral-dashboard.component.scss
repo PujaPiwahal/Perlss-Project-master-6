@@ -1,0 +1,119 @@
+.submit-text{
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: #1B365C;
+  padding: .5vw;
+}
+
+.due-text{
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: #F39B1F;
+  padding: .5vw;
+}
+
+.due-number{
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  font-size: 1rem;
+  color: #F39B1F;
+  padding: .5vw;
+
+}
+
+.past-due-number{
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  font-size: 1rem;
+  color: #FF0C0C;
+  padding: .5vw;
+}
+
+.total-container {
+  background-color: #f5f5f5;
+}
+
+.dashboard-card-header{
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: #1B365C;
+  background-color: #CDDDF4;
+}
+
+.dashboard-container{
+  padding : 2.5vw;
+}
+
+.dashboard-card{
+  min-height: 40vh;
+  text-align: center;
+  cursor: pointer;
+}
+
+.perlss-click-orange-button{
+  background-color:#ED6053;
+  color: white;
+}
+.dashboard-icon{
+  color: #ED6053;
+  font-size: 20vh;
+  display: inline;
+}
+
+mat-card.dashboard-card{
+  border-top-left-radius: .4vw;
+  border-bottom-left-radius: .4vw;
+  border-top-right-radius: .4vw;
+  border-bottom-right-radius: .4vw;
+  border-radius: .4vw;
+  border: 2px solid #174A7C;
+  padding: 0px;
+}
+
+mat-card-title.dashboard-card-header {
+  padding: .4vw;
+  margin: 0px;
+}
+
+mat-card-content {
+
+  font-family: 'Open Sans';
+  font-size: 1rem;
+  font-weight: 900;
+
+  .row{
+    padding: 1vw;
+    .col{
+      .total-container{
+        padding: 0px;
+        margin-top: 0.4vh;
+        .total-pending-number{
+          text-align: center;
+          font-family: 'Open Sans';
+          font-weight: 900;
+          font-size: 1rem;
+          color: #1B365C;
+          padding: .5vw;
+        }
+      }
+    }
+  }
+}
+
+.pending-submission{
+  padding-top: 5vw;
+}
+
+mat-divider.dashboard-card-divider {
+  border-color: #174A7C;
+  border-top-width: .1vw;
+}
+

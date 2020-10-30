@@ -1,0 +1,84 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #F6FAFF;
+  border-radius: 5px;
+  border-color: #CED4DA;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+.required-color {
+  color: #EE3524;
+}
+
+.applicant-sub-heading {
+  font-weight: bold;
+  color: #547E1A;
+  font-size: 28px;
+}
+.perlss-section-divider {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px
+}
+
+#applicant-physical-address {
+  margin-left: 5px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+#searchPersonTable {
+  width: 100%;
+  -moz-box-shadow: 0 0 1px 1px #888;
+  -webkit-box-shadow: 0 0 1px 1px#888;
+  box-shadow: 0 0 1px 1px #888;
+}
+#searchPersonTable th {
+  text-align: center;
+  color: #547E1A;
+  padding: 25px;
+}
+
+#addressTable {
+  text-align: center;
+  width: 100%;
+  -moz-box-shadow: 0 0 1px 1px #888;
+  -webkit-box-shadow: 0 0 1px 1px#888;
+  box-shadow: 0 0 1px 1px #888;
+}
+#addressTable td {
+  padding: 20px;
+}
+#searchPersonTable tr {
+  border: 0.5px solid #174A7C;
+}
+
+#searchPersonTable td{
+  text-align: center;
+  background-color: #EDF4FB;
+  padding: 10px;
+}
+.pae-app-container {
+  margin: 0 50px;
+}
+
+.page-sub-heading {
+  color: #ed6053;
+  font-size: 18px;
+}
+.stack-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.stack-radio-button {
+  margin: 5px;
+}
+.search-person-button{
+  font-size: 18px;
+  height: 50px;
+  width: 100%
+}

@@ -1,0 +1,239 @@
+<form [formGroup]="paeFallHistory2Form" class="responsive" (ngSubmit)="saveFallHistory()">
+
+  <div class="applicantName">Jessica Jones</div>
+  <div class="page">
+    <h2>Fall History Information</h2>
+    <p>Please provide available information for falls occurring within the last 6 months. All fields are not required,
+      but providing all the details available will help ensure that the correct LOC is approved for this person.
+    </p>
+    <br><br>
+    <div>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-label><b>
+              <mat-label class="required-color">*</mat-label> How many falls did the applicant experience in the last 6
+              months?
+            </b></mat-label>
+        </div>
+      </div>
+      <br>
+      <div class="row" style="width:95%">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline">
+            <mat-label></mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="accordion-header">
+          <mat-panel-title class="panel-title">
+            Fall Date: 03/23/2020
+          </mat-panel-title>
+          <mat-panel-description class="panel-description">
+            VIEW DETAILS
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:100% !important">
+              <mat-label>
+                <mat-label class="required-color"></mat-label>Location of Fall
+              </mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:100% !important">
+              <mat-label>
+                <mat-label class="required-color"></mat-label>Date of Fall
+              </mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:100% !important">
+              <mat-label>
+                <mat-label class="required-color"></mat-label>Factors Contributing to Fall
+              </mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:100% !important">
+              <mat-label>
+                <mat-label class="required-color"></mat-label>Time of Fall
+              </mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br><br>
+    <div>
+      <button (click)="toggleShow()">ADD FALL DETAILS</button>
+    </div><br>
+    <div *ngIf="isShown">
+      <mat-label><b>
+          <mat-label class="required-color">*</mat-label> Location of Fall
+        </b></mat-label>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" style="width: 80%;">
+            <mat-label></mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" style="width:100% !important">
+            <mat-label>
+              <mat-label class="required-color">*</mat-label>Date Of Fall
+            </mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fallDt" [min]="minDate" [max]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="getFormData().fallDt.errors != null">
+              <mat-error *ngIf="paeFallHistory2Form.get('fallDt').hasError('required')">
+                {{customValidation.A1}}
+              </mat-error>
+              <mat-error *ngIf="getFormData().fallDt.errors.matDatepickerMax">{{customValidation.A5}}</mat-error>
+              <mat-error *ngIf="getFormData().fallDt.errors.matDatepickerMin">{{customValidation.A6}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" style="width:100% !important">
+            <mat-label> Time of Fall </mat-label>
+            <select matNativeControl aria-placeholder="Select an option">
+              <option value="DayTime">DayTime</option>
+              <option value="Evening">Evening</option>
+              <option value="NightTim">NightTime</option>
+            </select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 2px;">
+        <b>
+          <mat-label class="required-color">*</mat-label> Factors contributing to Fall:
+        </b>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-checkbox class="checkbox-element">
+            Environment
+          </mat-checkbox>
+        </div>
+        <div class="col-md-6">
+          <mat-checkbox class="checkbox-element">
+            Low Blood Sugar
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-checkbox class="checkbox-element">
+            Medicine
+          </mat-checkbox>
+        </div>
+
+        <div class="col-md-6">
+          <mat-checkbox class="checkbox-element">
+            Impaired Vision
+          </mat-checkbox>
+        </div>
+      </div>
+      <br><br>
+      <mat-label><b>
+          <mat-label class="required-color">*</mat-label> Additional Factors
+        </b></mat-label>
+
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" style="width: 30%;">
+            <mat-label></mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" style="margin-left: 5px; padding-top: 20px;">
+        <mat-label><b>
+            <mat-label class="required-color">*</mat-label> Was an injury sustained related to fall?
+          </b></mat-label>
+      </div><br>
+
+      <div class="row">
+        <mat-radio-group>
+          <div class="row" style="margin-left: 15px;">
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+          </div>
+
+          <div class="row" style="margin-left: 15px;">
+            <mat-radio-button value="no">No</mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+      <br>
+      <mat-label><b>
+          <mat-label class="required-color">*</mat-label> Describe the applicant's sustained injuries.
+        </b></mat-label>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" style="width: 80%;">
+            <mat-label></mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <br>
+      <mat-label><b>
+          <mat-label class="required-color">*</mat-label> What mechanisms are in place to prevent falls?
+        </b></mat-label>
+
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" style="width: 80%;">
+            <mat-label></mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <br>
+      <mat-label><b>
+          <mat-label class="required-color">*</mat-label>Why were these prevention mechanisms unsuccessful?
+        </b></mat-label>
+
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" style="width: 80%;">
+            <mat-label></mat-label>
+            <input matInput>
+          </mat-form-field>
+          <div class="row" style="margin-left: 2px; padding-top: 10px; width:95%;">
+            <div class="col-md-1" style="text-align: left;">
+              <button mat-flat-button color="primary" class="perlss-click-button-orange">SAVE</button>
+            </div>
+            <div class="col-md-4" style="text-align: left;">
+              <button mat-flat-button color="primary" class="perlss-click-button-white-noborder">CANCEL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottomBar">
+    <button mat-flat-button color="primary" class="perlss-click-button-white">BACK</button>
+    <button mat-flat-button color="primary" class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+    <button mat-flat-button color="primary" class="perlss-click-button">NEXT</button>
+  </div>
+</form>

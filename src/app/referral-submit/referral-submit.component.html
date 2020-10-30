@@ -1,0 +1,201 @@
+<div>
+   <mat-label class="sub-heading">Submit Referral</mat-label>
+   <div class="required">*Required</div>
+   <mat-divider></mat-divider>
+   <div class="body-font-style">
+    <mat-card >
+     <div><b>Note:</b> "You" in the application is the person who wants services.</div>
+     <div style="margin-left: 32px;">
+       <mat-icon class="red-icon">info</mat-icon> This is a tool tip icon used across the application for short descriptions.
+     </div>
+   </mat-card>
+   <br><br>
+<form [formGroup]="refSubmissionForm">
+   <div class="row">
+       <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 90%;">
+                <mat-label> <mat-label class="required-color">*</mat-label>Who is submitting this referral form? </mat-label>
+                <select matNativeControl formControlName="whoIsSubmittingCd" (change)="onSelect($event)">
+                    <option value="FAML">Family Member</option>
+                    <option value="SELF">Self</option>
+                    <option value="OTHR">Other</option>
+                    <option value="MCO">MCO</option>
+                </select>
+            </mat-form-field>
+        </div>
+   </div>
+
+  <div class="row" *ngIf="submitter=='FAML' || submitter=='OTHR'">
+    <div class="col-md-6">
+    <mat-form-field appearance="outline" style="width: 90%;">
+      <mat-label> <mat-label class="required-color">*</mat-label>Relationship </mat-label>
+      <select matNativeControl  formControlName="relationshipCd" aria-placeholder="Select an option">
+        <option value="FAML">Family Member</option>
+        <option value="SELF">Self</option>
+      </select>
+    </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row" *ngIf="submitter=='MCO'">
+    <div class="col-md-6">
+      <div class="row" style="margin-left: 5px;">
+        <label id="example-radio-group-label"><b><label style="color:#ED6053">*</label>Would you like to expedite the review process?</b></label>
+      </div>
+      <div class="row">
+        <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="expeditedReviewSw" >
+          <div class="row" style="margin-left: 15px;">
+            <mat-radio-button value="Y">Yes</mat-radio-button>
+          </div>
+          <div class="row" style="margin-left: 15px;">
+            <mat-radio-button value="N">No</mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+    </div>
+</div>
+
+  <div class="row" *ngIf="submitter=='MCO'">
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 90%;">
+                <mat-label><mat-label class="required-color">*</mat-label>Date Of Admission</mat-label>
+                <input matInput [matDatepicker]="dateOfAdmissionpicker" formControlName="admissionDt"  >
+                <mat-datepicker-toggle matSuffix [for]="dateOfAdmissionpicker"></mat-datepicker-toggle>
+                <mat-datepicker #dateOfAdmissionpicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 90%;">
+                <mat-label><mat-label class="required-color">*</mat-label>Planned Transition Date</mat-label>
+                <input matInput [matDatepicker]="transitionDatePicker" formControlName="planTransitionDt"  >
+                <mat-datepicker-toggle matSuffix [for]="transitionDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #transitionDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+
+  <div class="row">
+      <div class="col-md-6">
+      <mat-form-field appearance="outline" style="width: 90%;">
+        <mat-label> <mat-label class="required-color">*</mat-label>Who should we contact about this referral? </mat-label>
+        <select matNativeControl  formControlName="refContactCd" (change)="onContactPersonSelect($event)">
+          <option value="OTHR">Other</option>
+          <option value="SELF">Self</option>
+        </select>
+    <mat-error *ngIf="f.refContactCd.errors">
+              <mat-error *ngIf="f.refContactCd.touched && f.refContactCd.errors.required">{{customValidation.A1}}</mat-error>
+            </mat-error>
+      </mat-form-field>
+      </div>
+  </div>
+<div *ngIf="contactPerson=='OTHR'">
+  <div class="row" >
+      <div class="col-md-6" >
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label> <mat-label class="required-color">*</mat-label>Name of the person </mat-label>
+          <input matInput formControlName="refContactName" placeholder="Referral Contact Name"
+    [ngClass]="{ 'is-invalid': f.refContactName.touched && f.refContactName.errors }">
+    <mat-error *ngIf="f.refContactName.errors">
+                <mat-error
+                *ngIf="f.refContactName.errors.maxLength == null && !f.refContactName.errors?.invalidName && !f.refContactName.errors.required">
+                Cannot exceed 45 characters</mat-error>
+                <mat-error *ngIf="f.refContactName.touched && f.refContactName.errors.required">{{customValidation.A1}}
+                </mat-error>
+                <mat-error *ngIf="f.refContactName.errors?.invalidName && !f.refContactName.errors.required">
+                {{customValidation.A2}}</mat-error>
+              </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+          <mat-form-field appearance="outline" style="width: 90%;">
+            <mat-label> <mat-label class="required-color">*</mat-label>Relationship </mat-label>
+            <select matNativeControl  formControlName="othRelationshipCd" aria-placeholder="Select an option">
+              <option value="MOO">Mother</option>
+              <option value="FAO">Father</option>
+              <option value="BRO">Brother</option>
+              <option value="SIS">Sister</option>
+              <option value="DAU">Daughter</option>
+            </select>
+          </mat-form-field>
+        </div>
+  </div>
+
+  <div class="row" >
+
+    <div class="col-md-6" >
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label> Email Address </mat-label>
+          <input matInput formControlName="emailAddr" placeholder="Email Address">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+          <mat-form-field appearance="outline" style="width: 90%;">
+            <mat-label> <mat-label class="required-color">*</mat-label>Phone Number </mat-label>
+            <input matInput formControlName="phNum" placeholder="(xxx)-xxx-xxxx"
+      [ngClass]="{ 'is-invalid': f.phNum.touched && f.phNum.errors }">
+      <mat-error *ngIf="f.phNum.errors">
+              <mat-error *ngIf="f.phNum.touched && f.phNum.errors.required">{{customValidation.A1}}</mat-error>
+              <mat-error
+                *ngIf="f.phNum.errors.maxLength == null && !f.phNum.errors?.invalidPhone && !f.phNum.errors.required">
+                Cannot exceed 10 characters</mat-error>
+              <mat-error *ngIf="f.phNum.errors?.invalidPhone && !f.phNum.errors.required">{{customValidation.A8}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+  </div>
+</div>
+    <mat-divider></mat-divider>
+<br><br>
+    <mat-label class="page-sub-heading">Electronic Signature</mat-label>
+<br>
+    <div class="row">
+        <div class="col-md-12">
+        <mat-label><b>Please read the statement below and sign that you understand.</b></mat-label>
+    </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+        <mat-label>I have been truthful in filling out this form. I understand this form may be used to help me (or the person I am helping) apply for Medicaid benefits in the Employment and Community First CHOICES program. I also understand that giving false information on purpose that helps someone get Medicaid benefits they don’t qualify for is an act of fraud under state and federal law. I could be fined or sent to jail.</mat-label>
+    </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-12">
+        <mat-label><b><mat-label class="required-color">*</mat-label> I have read and understand the statement above. I agree to submit this application by electronic means.
+            By typing my name below and signing this application electronically, I understand that an electronic
+            signature has the same legal effect and can be enforced in the same ways as a written signature.</b></mat-label>
+    </div>
+</div>
+  <br>
+  <div class="row">
+      <div class="col-md-12">
+      <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label></mat-label>
+          <input matInput formControlName="signature" >
+     <mat-error *ngIf="f.signature.errors">
+              <mat-error *ngIf="f.signature.touched && f.signature.errors.required">{{customValidation.A1}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+        </div>
+  </div>
+
+    <div class="row" style="margin-left: 2px; padding-top: 50px;">
+        <div class="col-md-2" style="text-align: left;">
+          <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" (click)="back()" class="perlss-click-button-white" >BACK</button>
+        </div>
+        <div class="col-md-4" style="text-align: left;">
+            <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" (click)="saveAndExit()" class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+          </div>
+        <div class="col-md-6" style="text-align: right;">
+          <button mat-flat-button color="primary" style="font-size: 24px;  padding: 15px 35px;" (click)="next()" class="perlss-click-button">NEXT</button>
+        </div>
+    </div>
+
+</form>
+</div>
+</div>

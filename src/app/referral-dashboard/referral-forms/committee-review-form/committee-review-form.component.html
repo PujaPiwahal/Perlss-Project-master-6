@@ -1,0 +1,244 @@
+<div class="popup-header-container">
+  <div class="row">
+    <div class="col-md-8">
+      <h4> Committee Review Form - Group 8</h4>
+    </div>
+    <div class="col-md-4">
+      <div style="text-align: right;">
+        <mat-icon class="popup-close-icon" (click)="closePopup()">highlight_off</mat-icon>
+        <div class="required-class">
+          *Required
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-divider class="perlss-horizontal-divider"></mat-divider>
+<div class="note-container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-label>The following section shall be completed during the Intake visit to document the circumstances under
+        which the above-named person is believed to meet "Emergent" criteria. This information shall be
+        reviewed by the Interagency Review Committee to determine whether the person will proceed with
+        application for enrollment in the Employment and Community First CHOICES program in available
+        reserve capacity set aside for such purposes:
+      </mat-label>
+    </div>
+  </div>
+</div>
+
+<div class="form-container">
+  <form [formGroup]="committeeReviewForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Divider
+              "The following section shall be completed during the Intake visit to document the circumstances under which the above-named person is believed to meet Group 8 Reserve Capacity criteria.  This information and all supporting documentation shall be reviewed by the Interdisciplinary Review Committee to determine whether
+              the person will proceed with application for enrollment in the Employment and Community First CHOICES program in Group 8 in available reserve capacity set aside for such purposes:"
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().indvTransCrimJustSw.hasError('required') && (getFormData().indvTransCrimJustSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="indvTransCrimJustSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            Description of documententation attached:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The applicant has experienced immediate or recent transition from a family home, exhibits severe psychiatric or behavioral symptoms that place the person or others at significant risk of harm or that threaten the sustainability of the person living in the community and their family is no longer capable of supporting the individual due to the severity and frequency of behaviors; OR
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().indvTransFamilyHmSw.hasError('required') && (getFormData().indvTransFamilyHmSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="indvTransFamilyHmSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            Description of documententation attached:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().indvTransFamilyHmTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().indvTransFamilyHmTxt.errors.maxLength == null && !getFormData().indvTransFamilyHmTxt.errors?.invalidName && !getFormData().indvTransFamilyHmTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().indvTransFamilyHmTxt.touched && getFormData().indvTransFamilyHmTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().indvTransFamilyHmTxt.errors?.invalidName && !getFormData().indvTransFamilyHmTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput  formControlName="indvTransFamilyHmTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>The applicant has experienced immediate or recent transition from a family home, exhibits severe psychiatric or behavioral symptoms that place the person or others at significant risk of harm or that threaten the sustainability of the person living in the community and their family is no longer capable of supporting the individual due to the severity and frequency of behaviors; OR
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().indvAgingOutFosterSw.hasError('required') && (getFormData().indvAgingOutFosterSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="indvAgingOutFosterSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            Description of documententation attached:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().indvAgingOutFosterTxt.errors !== null">
+          <mat-error
+            *ngIf="getFormData().indvAgingOutFosterTxt.errors.maxLength == null && !getFormData().indvAgingOutFosterTxt.errors?.invalidName && !getFormData().indvAgingOutFosterTxt.errors.required">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().indvAgingOutFosterTxt.touched && getFormData().indvAgingOutFosterTxt.errors.required">{{customValidation.A1}}</mat-error>
+          <mat-error *ngIf="getFormData().indvAgingOutFosterTxt.errors?.invalidName && !getFormData().indvAgingOutFosterTxt.errors.required">{{customValidation.A2}}
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput  formControlName="indvAgingOutFosterTxt"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>"There is a recommendation for Group 8 benefits from the MCO Behavioral Supports Director, MCO Behavioral Health Director, and/or MCO ECF CHOICES Director or the DIDD Qualified Mental Health Professional.
+          </mat-label>
+        </div>
+        <div *ngIf="getFormData().mcoRecommSw.hasError('required') && (getFormData().mcoRecommSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-label>
+            IF yes, recommendation must be attached.
+          </mat-label>
+          <mat-radio-group formControlName="mcoRecommSw">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+
+    <mat-label>Signatures below indicate an attestation that the information provided in this
+      request form is accurate as provided by the potential applicant or informant and as observed
+      by the person completing this form.
+    </mat-label>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Electronic Signature
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="electronicSignature">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>ECF Qualified Assessor Code
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="ecfQualAssessor">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Credentials
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="credentialsCd">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: right;">
+        <button type="submit" mat-flat-button color="primary" class="perlss-click-button">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+</div>

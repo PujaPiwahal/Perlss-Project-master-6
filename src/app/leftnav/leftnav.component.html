@@ -1,0 +1,309 @@
+<mat-sidenav-container class="perlss-sidenav-container">
+  <mat-sidenav mode="side" opened id="perlss-sidenavbar" [disableClose]="true" [class.perlss-sideMenu-open]="isSideNavToggled"
+               [class.perlss-sideMenu-closed]="!isSideNavToggled">
+    <mat-card>
+      <mat-card-header class="perlss-account-card">
+        <div mat-card-avatar *ngIf="isSideNavToggled">
+          <mat-icon class="profile-account-circle">account_circle</mat-icon>
+        </div>
+        <div mat-card-avatar *ngIf="!isSideNavToggled">
+          <mat-icon [class.perlss-sideMenu-open]="isSideNavToggled"
+                    [class.sidenav-menu-toggle-icon-closed]="!isSideNavToggled" (click)="toggleSideNav()">format_indent_increase</mat-icon>
+        </div>
+        <mat-card-title class="perlss-account-name">{{currentUser.firstName}} {{currentUser.lastName}}</mat-card-title>
+        <mat-card-subtitle>TennCare</mat-card-subtitle>
+        <div>
+          <mat-icon class="sidenav-menu-toggle-icon" (click)="toggleSideNav()">format_indent_decrease</mat-icon>
+        </div>
+      </mat-card-header>
+    </mat-card>
+    <mat-divider></mat-divider>
+
+    <div id="sideNavMenu-main">
+      <div class="row" (click)="toggleDropDown('main')" *ngIf="isSideNavToggled">
+        <div class="col">
+          <span class="sideNavMenu-dropdown">MAIN</span>
+        </div>
+        <div class="col-4">
+          <mat-icon class="sideNavMenu-dropdown-icon" *ngIf="isMainDropDownToggled">
+            arrow_drop_down
+          </mat-icon>
+          <mat-icon class="sideNavMenu-dropdown-icon" *ngIf="!isMainDropDownToggled">
+            arrow_drop_up
+          </mat-icon>
+        </div>
+      </div>
+      <div class="row" (click)="toggleDropDown('main')" *ngIf="!isSideNavToggled">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon style="margin-left: 7px;">more_horiz</mat-icon>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="userDetails" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">home</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Home</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="inbox" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">assignment_turned_in</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Inbox</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="referral" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">person_add</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Referral</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="appointments" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">event_available</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Appointments</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled" routerLink="pae" routerLinkActive="active" #rla="routerLinkActive"
+      (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">content_paste</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">PAE</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="documents" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">folder_open</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Documents</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="notices" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">mail_outline</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Notices</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="transitions" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">swap_horiz</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Transitions</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="changeManagement" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">settings</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Change Management</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="referralListManagement" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">recent_actors</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Referral List Management</div>
+      </div>
+
+      <div class="row" *ngIf="isMainDropDownToggled"  routerLink="waitingListManagement" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">access_time</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Waiting List Management</div>
+      </div>
+
+      <hr class="side-nav-divider">
+
+      <div class="row" (click)="toggleDropDown('ltssFunctions')" *ngIf="isSideNavToggled">
+        <div class="col">
+          <span class="sideNavMenu-dropdown">LTSS FUNCTIONS</span>
+        </div>
+        <div class="col-4">
+          <mat-icon class="sideNavMenu-dropdown-icon" *ngIf="isLtssFunctionsDropDownToggled">
+            arrow_drop_down
+          </mat-icon>
+          <mat-icon class="sideNavMenu-dropdown-icon" *ngIf="!isLtssFunctionsDropDownToggled">
+            arrow_drop_up
+          </mat-icon>
+        </div>
+      </div>
+      <div class="row" (click)="toggleDropDown('ltssFunctions')" *ngIf="!isSideNavToggled">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon style="margin-left: 7px;">more_horiz</mat-icon>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="isLtssFunctionsDropDownToggled"  routerLink="adjudicationSearch" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">gavel</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Adjudication</div>
+      </div>
+
+      <div class="row" *ngIf="isLtssFunctionsDropDownToggled"  routerLink="enrollmentSearch" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">enhanced_encryption</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Enrollment</div>
+      </div>
+
+      <div class="row" *ngIf="isLtssFunctionsDropDownToggled"  routerLink="enrollmentDetail" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">enhanced_encryption</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Enrollment Details</div>
+      </div>
+
+      <div class="row" *ngIf="isLtssFunctionsDropDownToggled"  routerLink="appeals" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">record_voice_over</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Appeals</div>
+      </div>
+
+      <div class="row" *ngIf="isLtssFunctionsDropDownToggled"  routerLink="reports" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">insert_chart</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Reports</div>
+      </div>
+
+      <div class="row" *ngIf="isLtssFunctionsDropDownToggled"  routerLink="slotManagement" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">border_all</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Slot Management</div>
+      </div>
+
+      <hr class="side-nav-divider">
+
+      <div class="row" (click)="toggleDropDown('admin')" *ngIf="isSideNavToggled">
+        <div class="col">
+          <span class="sideNavMenu-dropdown">ADMIN</span>
+        </div>
+        <div class="col-4">
+          <mat-icon class="sideNavMenu-dropdown-icon" *ngIf="isAdminDropDownToggled">
+            arrow_drop_down
+          </mat-icon>
+          <mat-icon class="sideNavMenu-dropdown-icon" *ngIf="!isAdminDropDownToggled">
+            arrow_drop_up
+          </mat-icon>
+        </div>
+      </div>
+      <div class="row" (click)="toggleDropDown('admin')" *ngIf="!isSideNavToggled">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon style="margin-left: 9px;">more_horiz</mat-icon>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="manageUserProfiles" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">assignment_ind</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Manage User Profiles</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="manageUserRoles" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">group</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Manage User Roles</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="mapBusinessFunctions" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">remove_red_eye</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Map Business Functions</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="mapTaskQueues" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">check_box</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Map Task Queues</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="workLoadManagement" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">equalizer</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Work Load Management</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="qualifiedAssessors" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">beenhere</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Qualified Assessors</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="personReconciliation" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon">fingerprint</mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Person Reconciliation</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled"  routerLink="auditHistory" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon class="sideNavMenu-icon"></mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Audit Search</div>
+      </div>
+
+      <div class="row" *ngIf="isAdminDropDownToggled" routerLink="auditDetails" routerLinkActive="active" #rla="routerLinkActive"
+           (click)="setPageHeader()" [class.perlss-sideMenu-highlighted]="rla.isActive">
+        <div [class.col-2]="isSideNavToggled">
+          <mat-icon></mat-icon>
+        </div>
+        <div class="sidenav-menu-details">Audit Details</div>
+      </div>
+
+      <hr class="side-nav-divider">
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="perlss-sidenav-content">
+    <mat-card>
+      <mat-card-header class="perlss-page-header-card">
+        <h1>{{pageHeader}}</h1>
+      </mat-card-header>
+    </mat-card>
+    <mat-divider class="perlss-section-divider"></mat-divider>
+    <div class="perlss_page_content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

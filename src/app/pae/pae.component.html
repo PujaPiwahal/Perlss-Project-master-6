@@ -1,0 +1,78 @@
+<mat-sidenav-container class="perlss-sidenav-container">
+
+  <mat-sidenav mode="side" opened id="perlss-sidenavbar" [disableClose]="true">
+    <mat-card>
+      <div class="perlss-account-card">
+        <div class="row" (click)="backtoPaeHome()">
+          <div class="col-2">
+            <mat-icon class ="sidenav-menu-icon">keyboard_arrow_left</mat-icon>
+          </div>
+          <div class="col">
+            <div class = "pae-back">BACK TO PAE HOME</div>
+          </div>
+        </div>
+
+      </div>
+    </mat-card>
+
+    <div class="sideNavMenu-main">
+      <div>
+        <div class="row" *ngFor="let menuItem of menuData">
+
+            <div *ngIf="menuItem.active" class="parent" (click)="toggle(menuItem.id)"
+              routerLink="{{ menuItem.id }}">
+              <mat-icon *ngIf="!menuItem.completed">filter_tilt_shift</mat-icon>
+              <mat-icon class="green" *ngIf="menuItem.completed">check_circle</mat-icon>
+              <p>{{menuItem.text}}</p>
+              <mat-icon *ngIf="menuItem.children && menuItem.selected ">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="menuItem.children && !menuItem.selected ">arrow_drop_down</mat-icon>
+            </div>
+
+            <div *ngIf="!menuItem.active" class="parent"  (click)="toggle(menuItem.id)" >
+              <mat-icon *ngIf="!menuItem.completed">filter_tilt_shift</mat-icon>
+              <mat-icon class="green" *ngIf="menuItem.completed">check_circle</mat-icon>
+              <p>{{menuItem.text}}</p>
+              <mat-icon *ngIf="menuItem.children && menuItem.selected ">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="menuItem.children && !menuItem.selected ">arrow_drop_down</mat-icon>
+            </div>
+
+            <div *ngIf="menuItem.selected && menuItem.children?.length > 0">
+
+              <div *ngFor="let menuSubItem of menuItem.children">
+                <ng-container *ngIf="!menuSubItem.hidden">
+                  <div *ngIf="menuSubItem.active && !menuSubItem.disabled"
+                    [ngClass]="{'selectedChild': menuSubItem.selected }"
+                    routerLink="{{menuSubItem.id}}"
+                    routerLinkActive="active" #rla="routerLinkActive" (click)="setPageHeader()">
+                    <div>{{menuSubItem.text}}</div>
+                  </div>
+                  <div *ngIf="!menuSubItem.active || menuSubItem.disabled"
+                    [ngClass]="{'selectedChild': menuSubItem.selected, 'disabled': menuSubItem.disabled }"
+                    (click)="setPageHeader()">
+                    <div>{{menuSubItem.text}}</div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div *ngIf="menuItem.selected && menuItem.children?.length === 0">
+              <p>Menu items to be added here</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="perlss-sidenav-content">
+    <mat-card>
+      <mat-card-header class="perlss-page-header-card">
+        <h1>{{pageHeader}}</h1>
+        <div *ngIf="showRequired" class="required"><span>*</span>Required</div>
+      </mat-card-header>
+    </mat-card>
+    <div class="perlss_page_content">
+      <div *ngIf="pageError" class="pageError">{{ pageError }}</div>
+      <router-outlet *ngIf="!pageError"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

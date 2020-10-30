@@ -1,0 +1,153 @@
+<form [formGroup]="paeCapabilitiesPartTwoForm" (ngSubmit)="savePaeCapabilities()" class="responsive">
+
+  <div class="applicantName">Jessica Jones</div>
+
+  <div class="page">
+
+    <h3>Vision</h3>
+    <div class="row">
+      <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="visCap">
+        <mat-label class="req">Indicate the applicant's visual capability:</mat-label>
+        <mat-radio-button value="seesAdequately">
+          Sees adequately in all or most situaltions.
+        </mat-radio-button>
+        <mat-radio-button value="capableLargePrints">
+          Capable of seeing large print, simple pictures, and obstacles, but not details.
+        </mat-radio-button>
+        <mat-radio-button value="cannotFindWay">Cannot find way around without feeling or using cane.</mat-radio-button>
+        <mat-radio-button value="totallyBlind">Totally blind.</mat-radio-button>
+        <div *ngIf="getFormData().visCap.hasError('required') && getFormData().visCap.touched">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <h3 class="lineAbove">Orientation</h3>
+
+    <div class="row">
+      <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="isOriented">
+        <mat-label id="example-radio-group-label" class="req">Is applicant oriented to
+          person (remembers name; recognizes family)
+          or place (knows where he/she is, able to locate common area in living environment)?
+        </mat-label>
+        <mat-radio-button value="oriented">Oriented to person and/or place.</mat-radio-button>
+        <mat-radio-button value="occasionallyDisoriented">Occasionally disoriented to person and/or place.
+        </mat-radio-button>
+        <mat-radio-button value="disoriented">Disriented to person and/or place</mat-radio-button>
+        <div *ngIf="getFormData().isOriented.hasError('required') && getFormData().isOriented.touched">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <h3 class="lineAbove">Expressive Communication</h3>
+
+    <div class="row">
+      <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="isExpressive">
+        <mat-label id="example-radio-group-label" class="req">Can applicant express basic
+          needs and wants (ie, assistance with
+          toileting, presence of pain)?:</mat-label>
+        <mat-radio-button value="capable">Capable of communicating information to others (eg., presence of pain,
+          need for assitance with toileting).</mat-radio-button>
+        <mat-radio-button value="usuallyCapable">Usually capable of communicating basic needs to others but may
+          have
+          some difficulty.</mat-radio-button>
+
+        <mat-radio-button value="usuallyIncapable">Usually incapable of communicating basic needs (verbally or
+          nonverbally) to others.</mat-radio-button>
+        <div *ngIf="getFormData().isExpressive.hasError('required') && getFormData().isExpressive.touched">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <h3 class="lineAbove">Receptive Communication</h3>
+
+    <div class="row">
+      <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="isReceptive">
+        <mat-label class="req">Can applicant understand and
+          follow very simple instructions (ie, how to perform basic activities
+          of daily living) without continual staff intervention?:</mat-label>
+        <mat-radio-button value="capable">Capable of understanding and following simple instructions (1-3 steps).
+        </mat-radio-button>
+        <mat-radio-button value="usuallyCapable">Usually capable of understanding and following simple
+          instructions (1-3 steps).</mat-radio-button>
+
+        <mat-radio-button value="usuallyIncapable">Usually incapable of understanding and following simple
+          instructions (1-3 steps).</mat-radio-button>
+        <div *ngIf="getFormData().isReceptive.hasError('required') && getFormData().isReceptive.touched">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <h3 class="lineAbove">
+      Prescription Medication, Ability To Self-Administer (oral/ophthalmic/topical/inhaler)
+    </h3>
+
+    <div class="row">
+      <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="canSelfAdminister">
+        <mat-label id="example-radio-group-label" class="req">Indicate applicant's ability
+          to self-administer medication:</mat-label>
+        <mat-radio-button value="doesntTake">Takes no prescription medications.</mat-radio-button>
+        <mat-radio-button value="capableWithoutAssist">Capable of taking or using prescription medications without
+          assistance or supervision.</mat-radio-button>
+        <mat-radio-button value="capableWithAssistance">Capable of taking or using prescription medications when
+          limited assistance or supervision
+          is provided (i.e., reminding when to take, encouragement to take, <br> reading labels, opening bottels,
+          reassuring perso of correct dose).
+        </mat-radio-button>
+        <mat-radio-button value="continualSupervision">Repeatedly is noncompliant with medically necessary
+          prescription medications and requires continual
+          supervision and very strong encouragement to achieve <br> medication compliance.
+        </mat-radio-button>
+        <mat-radio-button value="notSelfAdministered">Requires prescription medications which, in accordance with
+          accepted medical practice, are not routinely
+          self-administered.
+        </mat-radio-button>
+        <div *ngIf="getFormData().canSelfAdminister.hasError('required') && getFormData().canSelfAdminister.touched">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+      </mat-radio-group>
+    </div>
+    <h3 class="lineAbove">Behavior</h3>
+
+    <div class="row">
+      <mat-radio-group (change)="onChange($event)" formControlName="hasDisorder">
+        <mat-label class="req">Does this person have a behavior disorder of such
+          severity that the absence of an ongoing program of behavior modification therapy would reasonably <br> be
+          expected to
+          seriously endanger the life of the person,
+          to result in severe self-inflicted injury, to cause severe injury to others, or to seriously endanger
+          the lives of others?
+        </mat-label>
+        <mat-radio-button value="Y">Yes</mat-radio-button>
+        <mat-radio-button value="N">No</mat-radio-button>
+        <div *ngIf="getFormData().hasDisorder.hasError('required') && getFormData().hasDisorder.touched">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <div class="row" *ngIf="hasIssues">
+      <div class="textAreaWide">
+        <mat-label class="req">Describe the behavior:</mat-label>
+        <textarea matInput formControlName="behavior"
+          [ngClass]="{ 'is-invalid': getFormData().behavior.touched && getFormData().behavior.errors }"></textarea>
+        <mat-error *ngIf="getFormData().behavior.errors !== null">
+          <mat-error
+            *ngIf="getFormData().behavior.errors.maxLength == null && !getFormData().behavior.hasError('required')">
+            Cannot exceed 2000 characters</mat-error>
+          <mat-error *ngIf="getFormData().behavior.hasError('required') && getFormData().behavior.touched">
+            {{customValidation.A1}}</mat-error>
+        </mat-error>
+      </div>
+    </div>
+  </div>
+  <div class="bottomBar">
+    <button mat-flat-button color="primary" class="perlss-click-button-white">BACK</button>
+    <button mat-flat-button color="primary" class="perlss-click-button-white-noborder">SAVE
+      AND EXIT</button>
+    <button mat-flat-button color="primary" class="perlss-click-button">NEXT</button>
+  </div>
+</form>

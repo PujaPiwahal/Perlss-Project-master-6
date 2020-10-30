@@ -1,0 +1,513 @@
+.cdk-global-overlay-wrapper {
+
+  .cdk-overlay-pane {
+
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    max-width: 1000px;
+    border: none;
+
+    > mat-dialog-container {
+      margin: 0;
+      padding: 0;
+      border-top-left-radius: .4vw;
+      border-bottom-left-radius: .4vw;
+      border-top-right-radius: .4vw;
+      border-bottom-right-radius: .4vw;
+      border-radius: .4vw;
+      border: 2px solid #134597;
+      position: relative;
+     
+      p {
+        margin: 0 0 0.5vw 0 !important;
+        padding: 0 !important;
+      }
+
+      .buttons {
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        overflow: hidden;
+        width: 100%;
+        margin: 0;
+        height: 4vw;
+        padding: 0 3vw;
+        
+        > button.mat-focus-indicator.mat-flat-button.mat-button-base.mat-primary {
+          float: right;
+          display: block;
+          margin: 0.8vw 0 0 .5vw;
+          padding: .3vw .6vw;
+          font-size: 0.9vw;
+          line-height: 1.1vw;
+        } 
+      }
+      
+      mat-form-field.mat-form-field {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        padding: 0 0 0.5vw 0;
+
+        div.mat-form-field-subscript-wrapper {
+          > div {
+            mat-error {
+              font-size: 0.8vw;
+              height: auto;
+              width: 90%;
+            }
+          }
+        }
+
+        > .mat-form-field-wrapper {
+          > .mat-form-field-flex {
+
+            > div.mat-form-field-infix {
+
+              > input {
+                height: 1.4vw;
+                padding: 0.3vw;
+                font-size: 0.8vw;
+                line-height: 1vw;
+                margin: 0.3vm 0 0 0;
+                width: 100%;
+              }
+
+              > input:focus, input.ng-touched.ng-valid {
+                
+                  & + span.mat-form-field-label-wrapper {
+                    
+                    > label.mat-form-field-label {
+                    
+                      > mat-label.req {
+                        top: -0.55vw;
+                      }
+                    }
+                  }
+              }
+
+              > span.mat-form-field-label-wrapper {
+
+                mat-error {
+                  font-size: 0.8vw;
+                }
+
+                > label.mat-form-field-label {
+
+                  padding: 0.3vw 0 0 0.2vw;
+
+                  > mat-label.req {
+                    margin: 0 0 0.3vw 1.2vw;
+                    position: relative;
+                    top: -0.2vw;
+                    padding: 0.1vw 0 0 0.2vw;
+                    font-size: 0.7vw;
+
+                    &::before {
+                      font-size:0.9vw;
+                      padding: 0;
+                      margin:0;
+                      text-indent:0;
+                      height: 0.7vw;
+                      left: 0;
+                      top: 0.1vw;
+                    }
+                  }
+                }
+              }
+              
+            }
+          }
+          > div {
+            height: auto;
+            width: 100%;
+            overflow:hidden;
+            .mat-form-field-subscript-wrapper {
+              height: auto;
+              display: block;
+              overflow: hidden;
+              width: 100%;
+              padding: 0;
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      > app-planned-transition-popup {
+
+        overflow: hidden;
+        height: auto;
+        width: 100%;
+        display: block;
+      
+      .checkbox-group {
+
+        padding: 0.7vw 0 0 0;
+        margin: 0 0 1vw 0;
+        width: calc(100% - 2vw);
+        overflow: hidden;
+        height: auto;
+        
+        > mat-label {
+          padding: 0 0 0.5vw 0.1vw;
+          display: inline-block;
+          margin: 0;
+          font-weight: 500;
+          font-size: 0.9vw;
+          + mat-error {
+            padding: 0;
+            margin: -0.3vw 0 0 0.1vw;
+          }
+        }
+
+        mat-error {
+          font-size:0.7vw;
+        }
+
+
+        div.inline {
+
+          height: auto;
+          width: 100%;
+
+          > mat-checkbox {
+            display: block;
+            float: left;
+            width: auto;
+          }
+
+          div.inline-wrapper {
+            overflow: visible;
+            width: 16vw;
+            height: 2vw;
+            display: block;
+            float: left;
+            margin: -0.3vw 0 1vw 0.3vw;
+
+            input[type='text'] {
+              width: 16vw;
+              margin: 0;
+              height: 1.6vw;
+              padding: 0.3vw;
+              font-size: 0.8vw;
+              border: 1px solid #CCCCCC;
+              border-radius: 0.2vw;
+              display: inline-block;
+
+              &.is-invalid {
+                border-color: red;
+              }
+
+              mat-error {
+                margin: 0 0 0 0.1vw;
+                font-size: 0.9vw;
+              }
+            }
+
+          }
+        }
+
+        mat-checkbox {
+          margin: 0 0 0 .5vw;
+          padding: 0;
+          height: auto;
+          display: block;
+
+          .mat-checkbox-layout {
+
+            margin: 0 0 0.9vw 0;
+            padding: 0;
+
+            .mat-checkbox-inner-container {
+              padding: 0;
+              left: 0.2vw;
+              height: 0.9vw;
+              width: 0.9vw;
+            }
+
+            .mat-checkbox-label {
+              padding: 0;
+              position: static;
+              margin: 0 0 0 0.4vw;
+              display: inline-block;
+              font-size: 0.9vw;
+              line-height: 1.1vw;
+
+              mat-label {
+                padding: 0;
+                margin: 0;
+              }
+
+            }
+          }
+          
+          &.w2 {
+            width: 43vw;
+          }
+         
+          mat-label {
+            margin-right: 2vw;
+          }
+        }
+      }
+  
+      .header {
+
+        width: 100%;
+        height: 3.5vw;
+        overflow: hidden;
+        display: block;
+        border-bottom: 1px solid #aaaaaa;
+        position: relative;
+
+        h1 {
+          font-size: 1.5vw;
+          float: left;
+          font-weight: 700; 
+          color: #265ba5;
+          margin: 1vw 0 1.3vw 3vw;
+          width: calc(100% - 8vw);
+        }
+
+        mat-icon {
+          display: block;
+          padding: 0;
+          background: transparent;
+          border: none;
+          font-size: 2vw;
+          width: 2vw;
+          height: 2vw;
+          line-height: 2.2vw;
+          margin: 0;
+          position: absolute;
+          top: 0.7vw;
+          right: 1vw;
+          color: #aaaaaa;
+        }
+      }
+
+      .dialogContent {
+
+        height: auto;
+        overflow-y: auto;
+        position: absolute;
+        top: 3.5vw;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0;
+
+        h2 {
+          font-family: 'Open Sans';
+          margin: 0.8vw 0 0.5vw 0;
+        }
+
+
+        .control {
+          margin-bottom: 1vw;
+          overflow: hidden;
+          height: auto;
+          width: 100%;
+          display: block;
+
+          mat-error.mat-error {
+            font-size: 0.8vw;
+            display: block;
+            width: 100%;
+            width: calc(100% - 3vm);
+          }
+          
+          > label { 
+            display: block;
+            float: none;
+            margin: 0;
+            padding: 0 0 0.3vw 1.6vw;
+            font-size: 1vw;
+            line-height: 1.3vw;
+            height: auto;
+            overflow: hidden;
+
+            &.req {
+              + mat-radio-group, + mat-error + mat-radio-group {
+                margin: 0 0 0 1.85vw;
+              }
+
+              + mat-error {
+                  margin: -0.2vw 0 0 1.85vw;
+              }
+            }
+          }
+
+          > mat-form-field {
+            clear: all;
+            display: block;
+            width: 100%;
+          }
+        }
+
+        
+
+        mat-radio-group {
+          display: block;
+          width: 10vw;
+          padding: 0;
+          margin: 0 0 0 1.4vw;
+
+          .mat-radio-container {
+            margin: 0.4vw 0.5vw 0 0;
+            width: 1vw;
+            height: 1vw;
+            left: 0.25vw;
+            display: inline-block;
+
+
+            .mat-radio-outer-circle, .mat-radio-inner-circle {
+              width: 100%;
+              height: 100%;
+            }
+
+          }
+                    
+          .mat-radio-label-content {
+
+            font-size: .9vw;
+            line-height: 1.1vw;
+            padding: 0 0 0 0.2vw;
+            margin: 0;
+            position: relative;
+            top: 0.2vw;
+            display: inline-block;
+          }
+
+        }
+
+        mat-radio-button {
+          display: block;
+          float: none;
+          margin: 0;
+          padding: 0 0.2vw;
+          height: 1.8vw;
+        }
+
+        .req {
+
+          text-indent: -1vw;
+          padding-left: 1.4vw;
+          width: calc(100% - 3vw);
+
+          &::before {
+            content: "*";
+            color: #e21515;
+            position: relative;
+            display: inline-block;
+            font-size: 1.3vw;
+            margin-left: 0.3vw;
+            width: 0.5vw;
+            left: 0.2vw;
+            top: 0.3vw;
+          }
+        }
+
+        .textArea {
+
+          margin: 0 0 1vw 0;
+
+          label, mat-label {
+            font-size: 1vw;
+            line-height: 1.2vw;
+          }
+
+          label {
+            margin-left: 0;
+            width: calc(100%-2vw);
+          }
+
+          > textarea {
+            width: calc(100% - 2vw);
+            height: 6vw;
+            margin: 0.2vw 0 0 0.1vw;
+            font-size: 0.9vw !important;
+            line-height: 1.1vw !important;
+            padding: 0.2vw;
+            display: block;
+          }
+
+          > p {
+            text-align: right;
+            display:block;
+            color: #999999;
+            font-size: 0.8vw !important;
+            line-height: 0.9vw !important;
+            margin: 0.2vw 2.05vw 0 0 !important;
+          }
+        }
+
+        .w40 {
+          width: 40%;
+        }
+
+        .scroller {
+
+          padding: 0.3vw 3.2vw 0.9vw 3.2vw;
+          width: 100%;
+          overflow: auto;
+          height: auto;
+          max-height: calc(100% - 7.5vh);
+
+          &.noPad {
+            padding: 0;
+          }
+
+          .padded {
+            padding: 0.3vw 3.2vw 0.9vw 3.2vw;
+          }
+
+          .row { 
+            margin: 0; padding: 0;
+          }
+
+          .message {
+            background: #f6faff;
+            padding: 0.6vw 3.1vw 0.5vw 3.1vw;
+
+            > p {
+              font-size: 0.9vw;
+              line-height: 1.2vw;
+            }
+
+            * :last-child {
+              margin-bottom: 0;
+            }
+          }
+
+          p {
+            font-size: 1vw;
+            line-height: 1.3vw;
+            margin: 0.5vw 0.5vw 1.3vw 0.2vw;
+            padding: 0;
+            
+
+            + h2 {
+              border-top: 1px solid #aaaaaa;
+            }
+
+          }
+
+          h2 {
+            font-size: 1.2vw;
+            line-height: 1.4vw;
+            font-weight: 700;
+            margin: 0;
+            padding: 1.1vw 0 .3vw 0;
+            color: #547E1A;
+          }
+        }
+      }
+      }
+    }
+  }
+}

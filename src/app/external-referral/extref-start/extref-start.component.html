@@ -1,0 +1,95 @@
+<div>
+  <form [formGroup]="referralForm">
+    <div class="h8">
+      <mat-label class="sub-heading">Start Referral</mat-label>
+      <div class="required" style="float: right;">*Required</div>
+      <mat-divider></mat-divider>
+      <mat-card style="background-color: #F6FAFF;">
+        <div>Note: "You" in the application is the person who wants services.</div>
+        <div style="padding-left: 32px;">
+          <mat-icon class="red-icon">info_outline</mat-icon> This is a tool tip icon used across the application for short
+          descriptions.
+        </div>
+      </mat-card>
+      <br><br>
+      <div>
+        <b>Employment and Community First CHOICES</b> is a program that provides services and supports to people who have
+        an intellectual or other developmental disability (I/DD) in their homes and communities.
+        These types of services are called home and community-based services or HCBS.
+      </div>
+      <br>
+      <br>
+      <div>
+        <mat-label class="required-color">*</mat-label> <b>Do you have an intellectual and/or developmental disability? (Select
+          ALL the apply)</b>
+        <br>
+        <mat-label style="padding-left: 16px;">
+          <input formControlName="intelDisableSw" type="checkbox"/> Intellectual Disability<mat-icon
+            class="red-icon" matTooltip="This means you have an IQ of 70 or below. This makes it harder for you
+             to do at least two of these things: learn, communicate, take care of yourself, stay safe and healthy,
+              make decisions, work, live independently, do things in the community, use community services and interact
+              with other people. These problems must have started before the age of 18.">info_outline</mat-icon>
+        </mat-label>
+        <br>
+        <mat-label style="padding-left: 16px;">
+          <input formControlName="devDisableSw" type="checkbox" (change)="onDevlopDisablitySelect($event)" />
+          Developmental Disability<mat-icon class="red-icon" matTooltip="This means you have physical or mental health problems
+          that started before the age of 22 and are expected to continue. Because of those problems, you need help to do at least
+          three of these things: learn, communicate, walk, take care of yourself, make decisions, work and live independently.">info_outline</mat-icon>
+        </mat-label>
+        <br>
+        <div style="margin-left: 30px;" *ngIf="isDevlopmentDisability">
+          <div class="row">
+            <div>
+              <mat-form-field appearance="outline" style="width: 350px !important;">
+                <mat-label class="required-color">*</mat-label>
+                <mat-label>List the diagnosis (If none, Please enter 'None')</mat-label>
+                <textarea matInput placeholder="List the diagnosis" formControlName="diagnosisTxt" maxlength="2000" rows="3"
+                [ngClass]="{ 'is-invalid': (getData().diagnosisTxt.touched || submitted) && getData().diagnosisTxt.errors }"></textarea>
+                <mat-hint align="end">{{getData().diagnosisTxt.value ? getData().diagnosisTxt.value.length : 0}} / 2000</mat-hint>
+                <mat-error *ngIf="getData().diagnosisTxt.errors !== null">
+                  <mat-error
+                    *ngIf="getData().diagnosisTxt.errors.maxLength == null && !getData().diagnosisTxt.errors.pattern && !getData().diagnosisTxt.errors.required">
+                    Cannot exceed 2000 characters</mat-error>
+                  <mat-error *ngIf="getData().diagnosisTxt.touched && getData().diagnosisTxt.errors.required">{{customValidation.A1}}</mat-error>
+                  <mat-error *ngIf="getData().diagnosisTxt.errors.pattern && !getData().diagnosisTxt.errors.required">{{customValidation.A2}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div>Services in Employment and Community First CHOICES will help you get or keep a job and live as independently
+          as possible in the community. They will help you do things in the community that you want to do—to help you
+          build relationships and reach your goals. If you live at home with your family, they will also help your family
+          support you in planning for and reaching your goals.</div>
+        <br><br>
+        <div>
+          <mat-label><b>Do you want to submit a referral for Employment and Community First CHOICES?</b></mat-label>
+        </div>
+        <div>If you do, please click on the Next button below to continue with submitting a new referral. Be sure you
+          answer all of the questions that are applicable."</div>
+        <br>
+        <div>If you have already submitted a referral, <mat-label style="color:red"><b>STOP. DO NOT SUBMIT</b></mat-label>
+          another referral. If you have Medicaid, call your MCO. If you don't have Medicaid, call the DIDD office in your
+          area. Do you need the phone number? </div>
+        <div>Click <a style="color:blue" href="#"><u>"Contact Us."</u></a></div>
+    
+        <br><br>
+        <div class="row" style="margin-left: 2px; padding-top: 10px;margin-bottom:50px;">
+          <div class="col" style="text-align: right;">
+            <button mat-flat-button color="primary" style="font-size: 20px; padding: 5px 30px;"
+            matStepperNext  class="perlss-click-button" (click)='next()'>NEXT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <mat-divider style="margin-bottom: 10px;"></mat-divider>
+    <div class='footermainText'>WARNING! STATE OF TENNESSEE, DIVISION OF TENNCARE GOVERNMENT SYSTEM.</div>
+    <div class='footerText' style="margin-bottom: 50px;">
+Unauthorized access is prohibited by Public Law 99-474 "The Computer Fraud and Abuse Act of 1986". Use of this system constitutes CONSENT TO MONITORING AT ALL TIMES and is not subject to ANY expectation of privacy. Unauthorized use of or access to this system may subject you to civil or criminal penalties under state or federal law. This statement is being posted by the Division of TennCare.
+    </div>
+</div>
+    

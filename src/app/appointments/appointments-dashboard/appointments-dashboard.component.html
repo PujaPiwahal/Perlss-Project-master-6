@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="left">
+    <div><mat-icon class="icon-style" [inline]="true">event_available</mat-icon></div>
+    <div class="box1Text" routerLink="/dashboard/appointments/search">SEARCH OR ADD<br>APPOINTMENTS</div>
+  </div>
+  <div class="right">
+    <div class="box2Heading">Appointments</div>
+    <div class="row" style="padding-left: 36px;padding-top: 15px;">
+      <div style="padding-bottom: 16px;" class="col-md-7" routerLink="/dashboard/appointments/search"><mat-icon class="icon1">info_outline</mat-icon><b>Upcoming<br>Appointments</b></div>
+      <div class="col-md-5 upcomingAppoint" (click)="navigateToSearch('upcomingAppointments')">{{ upcomingAppointments}}</div>
+    </div>
+    <mat-divider class="perlss-section-divider"></mat-divider>
+    <div class="row" style="padding-left: 36px">
+      <div class="col-md-7">
+        <mat-icon class="icon2">info_outline</mat-icon><b>Missed<br>Appointments</b></div>
+      <div class="col-md-5 missedAppoint" (click)="navigateToSearch('missedAppointments')">{{ missAppointments}}</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<ng-container *ngIf="calendarOptions">
+
+<full-calendar [options]="calendarOptions" style="height: auto;width: 100%;margin-top: 50px"></full-calendar>
+
+</ng-container>
+

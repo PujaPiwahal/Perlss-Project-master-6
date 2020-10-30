@@ -1,0 +1,75 @@
+
+::ng-deep .mat-form-field {
+    width: 100%;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #f6faff;
+    border-radius: 5px;
+    border-color: #ced4da;
+  }
+  
+  .question-container{
+    padding-top:15px;
+  }
+  
+  .radio-container{
+    padding-top: 2px;
+    margin-left: 4px;
+  }
+  .checkbox-element {
+    position: relative;
+    top: 20%;
+    transform: translateY(-20%);
+  }
+  .red-icon {
+    color: red;
+    transform: scale(0.8);
+  }
+  
+  
+  .perlss-section-divider {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+    min-width: fit-content;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #f6faff;
+    border-radius: 5px;
+    border-color: #ced4da;
+  }
+  
+  .body-font-style {
+    font-size: 14px;
+    padding-left: 20px;
+  }
+  
+  .page-sub-heading {
+    font-weight: bold;
+    color: #ed6053;
+    font-size: 24px;
+    font-family: 'Permian Slab';
+    padding-bottom: 15px;
+  }
+  
+  .sub-heading {
+    font-family: "Permian Slab";
+    letter-spacing: 50;
+    font-weight: bold;
+    font-size: 26px;
+    color: #174a7c;
+  }
+  .required {
+    float: right;
+    color: #ed6053;
+    font-family: "Open Sans";
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .required-color {
+    color: #ed6053;
+  }
+  

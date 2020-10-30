@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+  <div class="row">
+    <div class="col-md-4" (click)="startReferral()">
+        <mat-card class= "dashboard-card">
+          <mat-card-content>
+            <mat-icon class="dashboard-icon">note_add</mat-icon>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="submit-text"> SUBMIT A NEW REFERRAL </div>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class= "dashboard-card">
+        <mat-card-title class="dashboard-card-header">New ECF Referrals</mat-card-title>
+        <mat-divider class="dashboard-card-divider"></mat-divider>
+        <mat-card-content>
+          <div class="pending-submission">Pending Submission</div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="due-text"><u>8</u></div>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class= "dashboard-card">
+        <mat-card-title class="dashboard-card-header">Intake Visit</mat-card-title>
+        <mat-divider class="dashboard-card-divider"></mat-divider>
+        <mat-card-content>
+            <div class="row">
+              <div class="col">
+                Due in next 5 days
+              </div>
+              <div class="col">
+                <span class="due-number"><u>12</u></span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col">
+                Intake Visit Past Due
+              </div>
+              <div class="col">
+                <span class="past-due-number"><u>12</u></span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="total-container">
+              <div class="row">
+                <div class="col">
+                  Total Pending
+                </div>
+                <div class="col">
+                  <span class="total-pending-number"><u>24</u></span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <mat-divider class="perlss-section-divider"></mat-divider>
+
+  <div class="row">
+    <div class="col-md-6">
+      <button mat-flat-button color="primary" class="perlss-click-orange-button" (click)="initiateIntakeClicked()">Initiate Intake</button>
+    </div>
+  </div>
+</div>
+

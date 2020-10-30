@@ -1,0 +1,135 @@
+<form [formGroup]="PaeWelcomeForm" class="responsive" (ngSubmit)="onSubmit()">
+
+	<div class="page noPad">
+
+		<div class="testButtons" *ngIf="!showResult">
+			<button (click)="getByPaeId()">Get by PaeId</button>
+			<button (click)="getByTaskId()">Get by TaskId</button>
+			<p *ngIf="showWaiting">Requesting (please wait) ...<p>
+			<textarea *ngIf="error?.length > 0">{{error}}</textarea>
+		</div>
+		<ng-container *ngIf="showResult">
+			<div class="applicantData">
+				<ng-container *ngFor="let row of applicantData">
+					<ng-container *ngIf="row == 'separator'">
+						<hr />
+					</ng-container>
+					<div *ngIf="row !== 'separator'">
+						<div *ngFor="let item of row">
+							<label>{{item.label}}</label>
+							<div *ngIf="item.value">{{item.value}}</div>
+							<div *ngIf="!item.value" class="tbd">TBD</div>
+						</div>
+					</div>
+				</ng-container>
+			</div>
+
+			<div class="padded">
+
+				<h3>PAE Action</h3>
+
+				<div class="row">
+					<mat-form-field appearance="outline" class="width40">
+						<mat-label class="req">What would you like to do?</mat-label>
+						<mat-select #choosedValue (valueChange)="onActionChange(choosedValue.value)" formControlName="action"
+							[ngClass]="{ 'is-invalid': f.action.touched && f.action.errors }">
+							<mat-option value="paeSubmit">PAE Submission</mat-option>
+							<mat-option value="addSSI" *ngIf="statusIsBlueCare">Add SSI Application Status</mat-option>
+							<mat-option value="addCost">Add Cost of Care</mat-option>
+							<mat-option value="closeRef">Close Referral</mat-option>
+							<mat-option value="safetyEval">Safety Evaluation</mat-option>
+						</mat-select>
+						<mat-error *ngIf="f.action.errors && f.action.touched && f.action.errors.required">
+							{{customValidation.A1}}
+						</mat-error>
+					</mat-form-field>
+					<div class="float">
+						<div class="greenBorder" *ngIf="statusAction == 'safetyEval'">
+							<label>Safety Evaluation Due Date:</label>
+							<p>{{safetyEvaluationDueDate}}</p>
+						</div>
+					</div>
+				</div>
+
+				<ng-container *ngIf="statusAction == 'closeRef'">
+					<div class="row">
+						<mat-form-field appearance="outline" class="width40">
+							<mat-label class="req">Select Closure Reason</mat-label>
+							<mat-select #choosedValue (valueChange)="onActionChange(choosedValue.value)" formControlName="closureReason"
+								[ngClass]="{ 'is-invalid': f.action.touched && f.action.errors }">
+								<mat-option value="moved">Moved out of State</mat-option>
+							</mat-select>
+							<mat-error *ngIf="f.action.errors && f.action.touched && f.action.errors.required">
+								{{customValidation.A1}}
+							</mat-error>
+						</mat-form-field>
+					</div>
+
+					<h3>Comments</h3>
+					<div class="row width60 textArea">
+						<textarea maxlength="2000" formControlName="closureComments" (keyup)="updateClosureComments($event)"></textarea>
+						<p>{{closureComments.length}}/2000</p>
+					</div>
+
+					<div class="alert">
+						<label>ALERT:</label>
+						<p>If you close the applicant's Referral, then the applicant will need
+						to reapply in order to be considered again for an LTSS Program.</p>
+					</div>
+
+					<div class="row">
+						<div class="solitaryCheckbox">
+							<mat-checkbox formControlName="attest">
+								<mat-label class="req">I attest that all details for withdrawing are recorded above and I 
+								understand that the applicant will be removed from the process.</mat-label>
+							</mat-checkbox>
+						</div>
+					</div>
+				</ng-container>
+
+				<div class="row" *ngIf="statusAction === 'addSSI'">
+					<mat-form-field appearance="outline" class="width40">
+						<mat-label class="req">What would you like to do?</mat-label>
+						<mat-select #choosedValue (valueChange)="onSsiStatusChange(choosedValue.value)" formControlName="ssiStatus"
+							[ngClass]="{ 'is-invalid': f.ssiStatus.touched && f.ssiStatus.errors }">
+							<mat-option value="pending">SSI Pending</mat-option>
+							<mat-option value="denied">SSI Denied</mat-option>
+							<mat-option value="close">Non-compliant</mat-option>
+						</mat-select>
+						<mat-error *ngIf="f.ssiStatus.errors && f.ssiStatus.touched && f.ssiStatus.errors.required">
+							{{customValidation.A1}}
+						</mat-error>
+					</mat-form-field>
+				</div>
+
+				<div class="row" *ngIf="statusAction == 'addCost'">
+					<mat-form-field appearance="outline" class="width40">
+						<mat-label class="req">Average cost of Care for Individual</mat-label>
+						<input matInput formControlName="statusAverageCostOfCare" placeholder="Average cost of Care for Individual">
+						<mat-error *ngIf="f.statusAverageCostOfCare.errors && f.statusAverageCostOfCare.touched && f.statusAverageCostOfCare.errors.required">
+							{{customValidation.A1}}
+						</mat-error>
+					</mat-form-field>
+				</div> 
+
+				<div class="row" *ngIf="statusAction == 'safetyEval'">
+					<mat-radio-group (change)="onExtensionChange($event)" formControlName="requestExtension">
+						<mat-label class="req">Would you like to request an extension?</mat-label>
+						<mat-radio-button [checked]=true value="yes">Yes</mat-radio-button>
+						<mat-radio-button value="no">No</mat-radio-button>
+					</mat-radio-group>
+					<div class="note red">
+						<p><span>Note:</span> Extension must be based on the reasonable needs or request of the
+							applicant.</p>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+	</div>
+	<div class="bottomBar">
+		<button *ngIf="!showSubmitButton" mat-flat-button color="primary" type="submit" class="perlss-click-button"
+			(click)="onNextClick()">NEXT</button>
+		<button *ngIf="showSubmitButton" mat-flat-button color="primary" type="submit" class="perlss-click-button"
+			(click)="onSubmitClick()">Submit</button>
+	</div>
+</form>

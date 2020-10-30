@@ -1,0 +1,34 @@
+.applicant-sub-heading {
+  font-weight: bold;
+  color: #547E1A;
+  font-size: 22px;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+#applicantName {
+  border: 2px solid;
+  border-color: #4D7E20;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+#phone-number-input {
+  padding-bottom: 40px;
+}
+
+.checkbox-element {
+  position: relative;
+  top: 20%;
+  transform: translateY(-20%);
+}
+.required-color {
+  color: #EE3524;
+}

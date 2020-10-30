@@ -1,0 +1,53 @@
+.update-app{
+    padding-left: 135px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+}
+.Cancel-app{
+    padding-left: 135px;
+    padding-bottom: 20px;
+}
+
+.cancel-button-content {
+    color:#174A7C;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin-right: 32px;
+    font-weight: 550;
+}
+
+.field-content {
+    margin-left: 45px;
+}
+  
+h3 {
+    font-family: 'Permian Slab';
+    letter-spacing: 50;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: #174A7C;
+}
+  
+hr {
+    margin-top: 2px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+  
+.close-icon {
+    transform: scale(1.0);
+    cursor: pointer;
+    color: #8b99ac;
+}
+
+.row-header {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 17px 0 0 0;
+}
+
+.dialog-container mat-dialog-container {
+    padding: 0px !important;
+    overflow:hidden !important;
+  }
+
+  

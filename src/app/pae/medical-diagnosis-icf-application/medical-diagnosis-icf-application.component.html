@@ -1,0 +1,231 @@
+<div class="popup-header-container">
+  <div class="row">
+    <div class="col-md-8" style="width: 100% !important;"></div>
+    <div class="col-md-4">
+      <table id="applicantName">
+        <tr>
+          <th> <b>APPLICANT NAME : </b> Jessica Jones</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<mat-divider class="perlss-horizontal-divider"></mat-divider>
+<div class="note-container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-label>NOTE: Only medical diagnoses that relate to level of care approval are needed in this section.
+        Unrelated medical diagnoses do not need to be listed.
+      </mat-label>
+    </div>
+  </div>
+</div>
+
+<div class="form-container">
+  <form [formGroup]="medicalDiagnosis" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>Does the applicant have an Intellectual Disability?</mat-label>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="intellectualDisabilitySw" (change)="switchIntellectualDisability($event)">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="showPsychologicalSection">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label class="required-class">*</mat-label>Has the applicant had a psychological evaluation done?
+        </div>
+        <div *ngIf="getFormData().physEvalSw.hasError('required') && (getFormData().physEvalSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="physEvalSw" (change)="switchPsychologicalEvaluation($event)">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="showDocumentSection">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label class="required-class">*</mat-label>Please provide the documentation details you have from the list
+          below.
+        </div>
+        <div class="radio-container">
+          <ng-select formControlName="medDocumentCd" [items]="meidicalDiagnosis" bindLabel="name"
+            placeholder="Select item" appendTo="body" multiple="true" (change)="selectDocument($event)">
+          </ng-select>
+          <mat-error *ngIf="getFormData().medDocumentCd.errors">
+            <mat-error *ngIf="getFormData().medDocumentCd.touched && getFormData().medDocumentCd.errors.required">
+              {{customValidation.A1}}
+            </mat-error>
+          </mat-error>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="showOtherSection">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>If Other, describe:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().docDetailsDesc.errors !== null">
+          <mat-error
+            *ngIf="getFormData().docDetailsDesc.errors.maxLength == null && !getFormData().docDetailsDesc.errors?.invalidName && !getFormData().justification.errors.required">
+            Cannot exceed 2000 characters
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="docDetailsDesc"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="showLevelIntellectualSection">
+      <div class="col-md-12">
+        <mat-label class="required-class">*</mat-label>Level of Intellectual Disability
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Select an option
+          </mat-label>
+          <mat-select formControlName="levelIntelDisabilityCd">
+            <mat-option value="L">Low</mat-option>
+            <mat-option value="M">Moderate</mat-option>
+            <mat-option value="H">High</mat-option>
+          </mat-select>
+          <mat-error *ngIf="getFormData().levelIntelDisabilityCd.errors">
+            <mat-error
+              *ngIf="getFormData().levelIntelDisabilityCd.touched && getFormData().levelIntelDisabilityCd.errors.required">
+              {{customValidation.A1}}
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="col-md-6">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>IQ Test Score
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="iqTestScore">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>IQ Test Date
+          </mat-label>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="iqTestDt">
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>
+            <mat-label class="required-class">*</mat-label>Describe the type of IQ Test:
+          </mat-label>
+        </div>
+        <mat-error *ngIf="getFormData().iqTestDesc.errors !== null">
+          <mat-error
+            *ngIf="getFormData().iqTestDesc.errors.maxLength == null && !getFormData().iqTestDesc.errors?.invalidName && !getFormData().iqTestDesc.errors.required">
+            Cannot exceed 2000 characters
+          </mat-error>
+        </mat-error>
+        <div class="radio-container">
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="iqTestDesc"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label class="required-class">Chronic Diagnoses</mat-label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label class="required-class">*</mat-label>Does the applicant have a presenting chronic diagnosis as
+          determined by a
+          medical professional?
+        </div>
+        <div
+          *ngIf="getFormData().chronicDiagnosisSw.hasError('required') && (getFormData().chronicDiagnosisSw.touched || submitted)">
+          <mat-error>{{customValidation.A1}}</mat-error>
+        </div>
+        <div class="radio-container">
+          <mat-radio-group formControlName="chronicDiagnosisSw" (change)="switchChronicDiagnoses($event)">
+            <div>
+              <mat-radio-button value="Y">Yes</mat-radio-button>
+            </div>
+            <div>
+              <mat-radio-button value="N">No</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="showPresentingChronicDiagnosis">
+      <div class="col-md-12">
+        <div class="question-container">
+          <mat-label>Please select all presenting chronic diagnoses from the list below for which a functional deficit
+            exists.</mat-label>
+        </div>
+        <mat-label class="required-class">*</mat-label>Medical Diagnosis
+        <br>
+        <ng-select formControlName="medicalDiagnosisCdList" [items]="meidicalDiagnosis" bindLabel="name"
+          placeholder="Select item" appendTo="body" multiple="true" (change)="selectMedicalDiagnosis($event)">
+        </ng-select>
+        <mat-error *ngIf="getFormData().medicalDiagnosisCdList.errors">
+          <mat-error
+            *ngIf="getFormData().medicalDiagnosisCdList.touched && getFormData().medicalDiagnosisCdList.errors.required">
+            {{customValidation.A1}}</mat-error>
+        </mat-error>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="row" style="margin-left: 2px; padding-top: 50px;">
+      <div class="col-md-2" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+          class="perlss-click-button-white" (click)="goBack()">BACK</button>
+      </div>
+      <div class="col-md-4" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+          class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+      </div>
+      <div class="col-md-6" style="text-align: right;">
+        <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;"
+          class="perlss-click-button">NEXT</button>
+      </div>
+    </div>
+  </form>
+</div>

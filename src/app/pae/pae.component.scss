@@ -1,0 +1,334 @@
+
+mat-sidenav-content.mat-drawer-content.mat-sidenav-content.perlss-sidenav-content {
+  mat-card.mat-card.mat-focus-indicator {
+    mat-card-header.mat-card-header.perlss-page-header-card {
+      width: 100%;
+      position: relative;
+
+      .required {
+        display: block;
+        text-align: right;
+        right: 3vw;
+        bottom: 0.2vw;
+        width: 10vw;
+        float: right;
+        font-size: .7vw;
+        color: #a30e0e;
+        span {
+          position: relative;
+          top: 0.1vw;
+          font-size: 1vw;
+        }
+      }
+    }
+  }
+}
+
+
+.perlss-sidenav-container {
+  left: 0;
+  right: 0;
+  padding: 0;
+  background: #eee;
+  width: 100%;
+
+  background: pink;
+}
+
+mat-sidenav-content.perlss-sidenav-content {
+
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  
+  > mat-card {
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;    
+  }
+ 
+  > .perlss_page_content {
+    position: absolute;
+    top: 115px;
+    padding: 2.5vw;
+    left: 0;
+    right: 0;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    bottom: 0;
+  }
+}
+
+.required {
+
+  > span {
+    font-size: 2vw;
+  }
+  position: absolute;
+  right: 3vm;
+   
+  
+  right: 3vm;
+  font-size: 1.4vw;
+  color: #a30e0e;
+  padding: 0 3vm 2vm 0;
+  font-size: 1.2vm;
+}
+    
+.pae-app-container {
+  margin: 0 !important;
+
+  background: pink !important;
+}
+
+.perlss-account-card{
+  height: 80px;
+  width: 260px;
+  position: relative;
+  top: 45px;
+}
+
+.pae-back {
+  color: #1B365D;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.perlss-page-header-card{
+  min-height: 80px;
+  transform: translateY(12%);
+  width: 100%;
+}
+
+
+
+#perlss-sidenavbar{
+  width:280px;
+
+}
+.perlss-sidenav-content{
+  background-color: white;
+  margin-left: 280px;
+  z-index: 3;
+  border-left: solid 15px #EEEEEE;
+}
+
+.sidenav-menu-toggle-icon{
+  font-size: 35px;
+  cursor: pointer;
+  color: #ED6053;
+}
+.sidenav-menu-toggle-icon-closed{
+  font-size: 35px;
+  cursor: pointer;
+  color: #ED6053;
+}
+.perlss-account-name{
+  color: #174A7C;
+  font-family: "Open Sans";
+}
+
+
+// mat-drawer-inner-container {
+//   background: pink;
+// }
+
+.mat-card-subtitle {
+  color: #174A7C;
+  font-family: "Open Sans";
+}
+// #sideNavMenu-main{
+//   margin-left: 5px;
+//   padding: 15px;
+//   font-family: "Open Sans";
+//   font-weight: 600;
+// }
+
+.sidenav-menu-icon {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-top: 2px;
+  width: 60px;
+  position: fixed;
+  color:  #1B365D;
+}
+.sidenav-menu-details{
+
+  padding-bottom: 15px;
+  color: #303F47;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.sidenav-submenu-details{
+  margin-left: 45px;
+  padding-bottom: 15px;
+  color: #303F47;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.pageError {
+  font-size: 15px;
+  margin: 20px 0 0 0;
+}
+
+.sideNavMenu-main {
+
+    position: absolute;
+  width: 100%;
+  overflow: hidden;
+  top: 113px;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+
+  > div {
+    display:block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    > div {
+
+      margin: 4px 4px 19px 4px;
+      padding: 0;
+      width: calc(100% - 8px);
+      overflow: hidden;
+      height: auto;
+      cursor: pointer;
+      &:focus { 
+        outline: none;
+      }
+
+      &:first-child {
+        margin-top: 19px;
+      }
+      
+      > div.parent {
+
+        margin: 0;
+        padding: 4px 0 6px 0;
+        width: 100%;
+        height: auto;
+        &:focus { 
+          outline: none;
+        }
+
+        &:hover {
+          background: #eaeeff;
+        }
+        
+        > mat-icon {
+          color: #FF8800;
+          margin: 1px 4px 0 12px;
+          padding: 0;
+          font-size: 24px;
+          line-height: 24px;
+          width: 26px;
+          height: 18px;
+          display: block;
+          float: left;
+        
+          &.green {
+            color: green;
+          }
+        }
+
+        p {
+          display: block;
+          font-weight: 600;
+          margin: 3px 0 0 0;
+          padding: 0;
+          overflow: hidden;
+          width: calc(100% - 90px);
+          float: left;
+          line-height: 19px;
+          font-size: 15px;
+
+          + mat-icon {
+              display: block;
+              margin: 0 19px 0 0;
+              padding: 0;
+              float: right;
+              height: 19px;
+              width: 19px;
+              font-size: 23px;
+              color: #999999;
+          }
+        }
+
+        + div {
+          width: 100%;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+
+          > p { 
+            font-size: 10px;
+            font-style: italic;
+            display: block;
+            margin: 5px 10px 0 50px;
+            width: calc(100% - 60px);
+          }
+
+          > div {
+
+            > div.selectedChild {
+              background: #cbdcf3;
+
+              &:hover {
+                background: #cbdcf3;
+              }
+            }
+
+            > div.disabled {
+              color: #cccccc;
+              cursor: not-allowed;
+
+              &:hover {
+                background: transparent;
+              }
+            }
+
+            > div {
+
+              padding: 3px;
+              margin: 10px 0 0 0;
+              width: calc(100% - 5px - 4px);
+            
+              &:focus { 
+                outline: none;
+              }
+            
+              &:hover {
+                background: #eaeeff;
+              }
+
+              > div {
+                width: calc(100% - 77px);
+                font-size: 15px;
+                line-height: 17px;
+                margin: 3px 0 3px 51px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

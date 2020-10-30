@@ -1,0 +1,583 @@
+<div class="row" style="width: 100%">
+  <div class="col-md-8" style="width: 100% !important;"></div>
+  <div class="col-md-4">
+    <table id="applicantName">
+      <tr>
+        <th> <b>APPLICANT NAME : </b> Jessica Jones</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div style="width: 95%; padding: 26px">
+  <form [formGroup]="myForm" (ngSubmit)="next()">
+    <div class="">
+      <div class="row">
+        <div class="col-md-12 main_heading">
+          Transfers
+        </div>
+      </div>
+      <div class="transfer_sub_container">
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of transfer to and from bed, chair, or toilet without physical
+              assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of transfer to and from bed, chair, or toilet unless physical assistance is
+              provided by others 1-3 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of transfer to and from bed, chair, or toilet unless physical assistance is
+              provided by others 4-6 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of transfer to and from bed, chair, or toilet without physical assistance 7
+              days per week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>Can applicant transfer to and from bed, chair, or toilet
+            without physical help from others?</b>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              Select an option
+            </mat-label>
+            <mat-select formControlName="transferWithoutHelpCd">
+              <mat-option value="always">Always</mat-option>
+              <mat-option value="usually">Usually</mat-option>
+              <mat-option value="usuallyNot">Usually Not</mat-option>
+              <mat-option value="never">Never</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.transferWithoutHelpCd.errors">
+              <mat-error *ngIf="f.transferWithoutHelpCd.touched && f.transferWithoutHelpCd.errors.required">{{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="question-container">
+      <div class="row">
+        <div class="col-md-12 main_heading">
+          Mobility
+        </div>
+      </div>
+      <div class="transfer_sub_container">
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of walking without physical assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of walking unless physical assistance is provided by others 1-3 days per
+              week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of walking unless physical assistance is provided by others 4-6 days per
+              week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of walking without physical assistance 7 days per week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>Can applicant walk without physical help from others?</b>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              Select an option
+            </mat-label>
+            <mat-select formControlName="walkWithoutHelpCd" (selectionChange)="onChangewalkWithoutHelpCd($event.value)">
+              <mat-option value="always">Always</mat-option>
+              <mat-option value="usually">Usually</mat-option>
+              <mat-option value="usuallyNot">Usually Not</mat-option>
+              <mat-option value="never">Never</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.walkWithoutHelpCd.errors">
+              <mat-error *ngIf="f.walkWithoutHelpCd.touched && f.walkWithoutHelpCd.errors.required">{{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <br *ngIf="subWheelChairCapableCd">
+    <mat-divider *ngIf="subWheelChairCapableCd"></mat-divider>
+    <br *ngIf="subWheelChairCapableCd">
+    <div class="question-container" *ngIf="subWheelChairCapableCd">
+      <div class="transfer_sub_container">
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of mobility without physical assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of wheelchair mobility unless physical assistance is provided by others 1-3
+              days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of wheelchair mobility unless physical assistance is provided by others 4-6
+              days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of wheelchair mobility without physical assistance 7 days per week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>If walking is not feasible, is applicant capable of using a
+            wheelchair, either manual or electric?</b>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              Select an option
+            </mat-label>
+            <mat-select formControlName="wheelChairCapableCd">
+              <mat-option value="always">Always</mat-option>
+              <mat-option value="usually">Usually</mat-option>
+              <mat-option value="usuallyNot">Usually Not</mat-option>
+              <mat-option value="never">Never</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.wheelChairCapableCd.errors">
+              <mat-error *ngIf="f.wheelChairCapableCd.touched && f.wheelChairCapableCd.errors.required">
+                {{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="question-container">
+      <div class="row">
+        <div class="col-md-12 main_heading">
+          Eating
+        </div>
+      </div>
+      <div class="transfer_sub_container">
+
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of eating prepared meals or administering tube feedings without
+              assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of eating prepared meals or administering tube feedings unless physical
+              assistance is provided by others 1-3 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of eating prepared meals or administering tube feedings unless physical
+              assistance is provided by others 4-6 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of eating prepared meals or administering tube feedings without physical
+              assistance 7 days per week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>Can the applicant eat prepared meals without physical help
+            from others?</b>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              Select an option
+            </mat-label>
+            <mat-select formControlName="eatWithoutHelpCd">
+              <mat-option value="always">Always</mat-option>
+              <mat-option value="usually">Usually</mat-option>
+              <mat-option value="usuallyNot">Usually Not</mat-option>
+              <mat-option value="never">Never</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.eatWithoutHelpCd.errors">
+              <mat-error *ngIf="f.eatWithoutHelpCd.touched && f.eatWithoutHelpCd.errors.required">{{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="question-container">
+      <div class="row">
+        <div class="col-md-12 main_heading">
+          Toileting
+        </div>
+      </div>
+      <div class="transfer_sub_container">
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of toileting without assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of toileting unless physical assistance is provided by others 1-3 days per
+              week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of toileting unless physical assistance is provided by others 4-6 days per
+              week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of toileting without physical assistance 7 days per week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>Can applicant toileting without physical help from
+            others?</b>
+          <p>(This does not including transferring)</p>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              Select an option
+            </mat-label>
+            <mat-select formControlName="toiletWithoutHelpCd">
+              <mat-option value="always">Always</mat-option>
+              <mat-option value="usually">Usually</mat-option>
+              <mat-option value="usuallyNot">Usually Not</mat-option>
+              <mat-option value="never">Never</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.toiletWithoutHelpCd.errors">
+              <mat-error *ngIf="f.toiletWithoutHelpCd.touched && f.toiletWithoutHelpCd.errors.required">{{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>Is the applicant incontient?</b>
+          <mat-error *ngIf="submitted && f.applicantIncontSw.errors && f.applicantIncontSw.errors?.required">{{customValidation.A1}}</mat-error>
+          <div class="radio-container">
+            <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeapplicantIncontSw($event)">
+              <div>
+                <mat-radio-button value="Y">Yes</mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button value="N">No</mat-radio-button>
+              </div>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br *ngIf="toiletingSubSection">
+    <mat-divider *ngIf="toiletingSubSection"></mat-divider>
+    <br>
+    <div class="question-container" *ngIf="toiletingSubSection">
+      <div class="transfer_sub_container">
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of performing incontinence care without assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Is incapable of performing incontinence care and required physical assistance is provided by others
+              1-3 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of performing incontinence care and required physical assistance is provided by
+              others 4-6 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of performing incontinence care and requires physical assistance 7 days per
+              week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label><b>Select Incontinency Types(s)</b>
+          <div class="radio-container-checkbox">
+            <div style="padding-right: 20px">
+              <mat-checkbox value="Y">Bladder</mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox value="N">Bowel</mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label> <b>Can the applicant perform incontient care without physical
+            assistance from another person on an ongoing basis?</b>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>
+              Select an option
+            </mat-label>
+            <mat-select formControlName="incontWithoutHelpCd">
+              <mat-option value="always">Always</mat-option>
+              <mat-option value="usually">Usually</mat-option>
+              <mat-option value="usuallyNot">Usually Not</mat-option>
+              <mat-option value="never">Never</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.incontWithoutHelpCd.errors">
+              <mat-error *ngIf="f.incontWithoutHelpCd.touched && f.incontWithoutHelpCd.errors.required">
+                {{customValidation.A1}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="question-container">
+      <div class="row">
+        <div class="col-md-8">
+          <mat-label class="required-color">*</mat-label> <b>Does the applicant have a Catheter/Ostomy?</b>
+          <mat-error *ngIf="submitted && f.catheterOstomySw.errors && f.catheterOstomySw.errors?.required">{{customValidation.A1}}</mat-error>
+          <div class="radio-container">
+            <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="catheterOstomySw"
+              (change)="onChangecatheterOstomySw($event)">
+              <div class="row" style="margin-left: 15px;">
+                <mat-radio-button value="Y">Yes</mat-radio-button>
+              </div>
+              <div class="row" style="margin-left: 15px;">
+                <mat-radio-button value="N">No</mat-radio-button>
+              </div>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <div class="transfer_sub_container" *ngIf="toggleCatheterOstomy">
+        <div class="row">
+          <div class="col-md-2">
+            <b>Always:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is always capable of performing catheter/ostomy care without assistance.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of performing catheter/ostomy care and required physical assistance is provided
+              by others 1-3 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Usually Not:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is incapable of performing catheter/ostomy care and required physical assistance is provided
+              by others 4-6 days per week.</span>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <b>Never:</b>
+          </div>
+          <div class="col-md-8">
+            <span>Applicant is never capable of performing catheter/ostomy care and requires physical assistance 7 days
+              per week.</span>
+          </div>
+        </div>
+      </div>
+      <br>
+        <div class="row" *ngIf="toggleCatheterOstomy">
+          <div class="col-md-8">
+            <mat-label class="required-color">*</mat-label><b>Can the applicant perform catheter/ostomy care without
+              physical assistance from another person on an ongoing basis?</b>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>
+                Select an option
+              </mat-label>
+              <mat-select formControlName="cathOstWithoutHelpCd">
+                <mat-option value="always">Always</mat-option>
+                <mat-option value="usually">Usually</mat-option>
+                <mat-option value="usuallyNot">Usually Not</mat-option>
+                <mat-option value="never">Never</mat-option>
+              </mat-select>
+              <mat-error *ngIf="f.cathOstWithoutHelpCd.errors">
+                <mat-error *ngIf="f.cathOstWithoutHelpCd.touched && f.cathOstWithoutHelpCd.errors.required">{{customValidation.A1}}
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="row" style="margin-left: 2px; padding-top: 50px;">
+      <div class="col-md-2" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+          class="perlss-click-button-white">BACK</button>
+      </div>
+      <div class="col-md-4" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+          class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+      </div>
+      <div class="col-md-6" style="text-align: right;">
+        <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;"
+          class="perlss-click-button">NEXT</button>
+      </div>
+    </div>
+  </form>
+</div>

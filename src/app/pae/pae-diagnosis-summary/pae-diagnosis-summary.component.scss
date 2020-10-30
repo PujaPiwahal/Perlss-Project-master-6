@@ -1,0 +1,74 @@
+.popup-header-container {
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    margin-left: 10px;
+}
+
+#applicantName {
+    border: 2px solid;
+    border-color: #4d7e20;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-container {
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+
+.required-class {
+    color: #ed6053;
+}
+
+.question-container {
+    padding-top: 2vw;
+}
+
+.summary_container {
+    border: 1px solid grey;
+}
+
+.summary_heading_row {
+    background: #cbdcf3;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 5px;
+}
+
+.summary_data_row {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 8px;
+}
+
+.status_label {
+    position: absolute;
+}
+
+.close-icon {
+    color: #ed6053;
+}
+
+.documentation_heading_row {
+    background: #cbdcf3;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 5px;
+}
+
+.status_tick {
+    color: green;
+}
+
+.status_delete {
+    color: #ed6053;
+}
+
+.hyper_link_button {
+    cursor: pointer;
+}

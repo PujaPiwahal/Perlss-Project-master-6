@@ -1,0 +1,130 @@
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+  min-width: fit-content;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #f6faff;
+  border-radius: 5px;
+  border-color: #ced4da;
+}
+
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.mat-elevation-z8-boarder {
+  border: #1B365D;
+}
+
+.red-icon {
+  color: red;
+  transform: scale(0.8);
+}
+.sub-heading {
+  font-family: "Permian Slab";
+  letter-spacing: 50;
+  font-weight: bold;
+  font-size: 32px;
+  color: #174a7c;
+}
+.required {
+  display: inline-block;
+  float: right;
+  color: #ed6053;
+  font-family: "Open Sans";
+  font-size: 14px;
+  margin-top: 20px;
+}
+.required-color {
+  color: #ed6053;
+}
+.page-sub-heading {
+  font-weight: bold;
+  color: #ed6053;
+  font-size: 24px;
+}
+.perlss-section-divider {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#applicant-physical-address {
+  margin-left: 5px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+#searchPersonTable {
+  width: 100%;
+  -moz-box-shadow: 0 0 1px 1px #888;
+  -webkit-box-shadow: 0 0 1px 1px#888;
+  box-shadow: 0 0 1px 1px #888;
+}
+#searchPersonTable th {
+  text-align: center;
+  color: #547e1a;
+  padding: 25px;
+}
+
+#addressTable {
+  text-align: center;
+  width: 100%;
+  -moz-box-shadow: 0 0 1px 1px #888;
+  -webkit-box-shadow: 0 0 1px 1px#888;
+  box-shadow: 0 0 1px 1px #888;
+}
+#addressTable td {
+  padding: 20px;
+}
+#searchPersonTable tr {
+  border: 0.5px solid #174a7c;
+}
+
+#searchPersonTable td {
+  text-align: center;
+  background-color: #edf4fb;
+  padding: 10px;
+}
+
+

@@ -1,0 +1,761 @@
+<div class="row" style="width: 100%">
+    <div class="col-md-8" style="width: 100% !important;"></div>
+    <div class="col-md-4">
+      <table id="applicantName">
+        <tr>
+          <th> <b>APPLICANT NAME : </b> Jessica Jones</th>
+        </tr>
+      </table>
+    </div>
+</div>
+
+<div style="width: 95%; padding: 26px">
+    <form [formGroup]="myForm" (ngSubmit)="next()">
+      <div class="">
+        <div class="row">
+          <div class="col-md-12 main_heading">
+              Orientation
+           </div>
+         </div>
+         <div class="transfer_sub_container">
+           <div class="row">
+             <div class="col-md-2">
+               <b>Always:</b>
+              </div>
+              <div class="col-md-8">
+                <span>Applicant is always oriented to person, place and event/situation.</span>
+               </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-2">
+                <b>Usually:</b>
+               </div>
+               <div class="col-md-8">
+                 <span>Applicant is not oriented to person or place or event/situation 1-3 days per week.</span>
+                </div>
+             </div>
+             <br>
+             <div class="row">
+               <div class="col-md-2">
+                 <b>Usually Not:</b>
+                </div>
+                <div class="col-md-8">
+                  <span>Applicant is not oriented to person or place or event/situation 4-6 days per week.</span>
+                 </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-2">
+                  <b>Never:</b>
+                 </div>
+                 <div class="col-md-8">
+                   <span>Applicant is never oriented to person or place or event/situation  7 days per week.</span>
+                  </div>
+               </div>
+             </div>
+             <br>
+            <div class="row">
+              <div class="col-md-8">
+                <mat-label class="required-color">*</mat-label>
+                <b>Is applicant oriented to PERSON(fails to remember own name or
+                  recognizes family), PLACE(does not know residence is a NF), or
+                  event/situation (e.g., is unaware of current circumstances in order
+                  to make decisions that prevent risk of harm)?
+                </b>
+               </div>
+               <div class="col-md-4">
+                 <mat-form-field appearance="outline">
+                   <mat-label>
+                     Select an option
+                   </mat-label>
+                   <mat-select formControlName="prefPhoneTypCd">
+                     <mat-option value="always">Always</mat-option>
+                     <mat-option value="usually">Usually</mat-option>
+                     <mat-option value="usuallyNot">Usually Not</mat-option>
+                     <mat-option value="never">Never</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f.prefPhoneTypCd.errors">
+                      <mat-error *ngIf="f.prefPhoneTypCd.touched && f.prefPhoneTypCd.errors.required">{{customValidation.A1}}
+                      </mat-error>
+                    </mat-error>
+                 </mat-form-field>
+                </div>
+             </div>
+       </div>
+       <br>
+       <mat-divider></mat-divider>
+       <br>
+       <div class="question-container">
+         <div class="row">
+           <div class="col-md-12 main_heading">
+               Expressive Communication
+            </div>
+          </div>
+          <div class="transfer_sub_container">
+           <div class="row">
+             <div class="col-md-2">
+               <b>Always:</b>
+              </div>
+              <div class="col-md-8">
+                <span> Applicant is always capable of reliably communicating basic needs and wants.</span>
+               </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-2">
+                <b>Usually:</b>
+               </div>
+               <div class="col-md-8">
+                 <span>Applicant is incapable of reliably communicating basic needs and wants and requires continual intervention 1-3 days per week.</span>
+                </div>
+             </div>
+             <br>
+             <div class="row">
+               <div class="col-md-2">
+                 <b>Usually Not:</b>
+                </div>
+                <div class="col-md-8">
+                  <span>Applicant is incapable of reliably communicating basic needs and wants, and requires continual intervention 4-6 days per week.</span>
+                 </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-2">
+                  <b>Never:</b>
+                 </div>
+                 <div class="col-md-8">
+                   <span>Applicant is never capable of reliably communicating basic needs and wants, and requires continual intervention 7 days per week.</span>
+                  </div>
+               </div>
+              </div>
+              <br>
+             <div class="row">
+               <div class="col-md-8">
+                 <mat-label class="required-color">*</mat-label><b>Can applicant reliably communicate basic wants and needs?</b>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field appearance="outline">
+                    <mat-label>
+                      Select an option
+                    </mat-label>
+                    <mat-select formControlName="mobility" (selectionChange)="onChangeMobility($event.value)">
+                      <mat-option value="always">Always</mat-option>
+                      <mat-option value="usually">Usually</mat-option>
+                      <mat-option value="usuallyNot">Usually Not</mat-option>
+                      <mat-option value="never">Never</mat-option>
+                     </mat-select>
+                     <mat-error *ngIf="f.mobility.errors">
+                       <mat-error *ngIf="f.mobility.touched && f.mobility.errors.required">{{customValidation.A1}}
+                       </mat-error>
+                     </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+        </div>
+         <br>
+         <mat-divider></mat-divider>
+         <br>
+         <div class="question-container">
+           <div class="row">
+             <div class="col-md-12 main_heading">
+                 Receptive Communication
+              </div>
+            </div>
+            <div class="transfer_sub_container">
+             <div class="row">
+               <div class="col-md-2">
+                 <b>Always:</b>
+                </div>
+                <div class="col-md-8">
+                  <span>Applicant is always capable of understanding and following very simple instructions and commands without continual intervention.</span>
+                 </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-2">
+                  <b>Usually:</b>
+                 </div>
+                 <div class="col-md-8">
+                   <span>Applicant is incapable of understanding and following very simple instructions and commands without continual intervention 1-3 days per week.</span>
+                  </div>
+               </div>
+               <br>
+               <div class="row">
+                 <div class="col-md-2">
+                   <b>Usually Not:</b>
+                  </div>
+                  <div class="col-md-8">
+                    <span>Applicant is incapable of understanding and following very simple instructions and commands without continual intervention 4-6 days per week.</span>
+                   </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-2">
+                    <b>Never:</b>
+                   </div>
+                   <div class="col-md-8">
+                     <span>Applicant is never capable of understanding and following very simple instructions and commands without continual intervention 7 days per week.</span>
+                    </div>
+                 </div>
+                </div>
+                <br>
+               <div class="row">
+                 <div class="col-md-8">
+                   <mat-label class="required-color">*</mat-label><b>Can applicant understand and follow very simple instructions without continual intervention?</b>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field appearance="outline">
+                    <mat-label>
+                      Select an option
+                    </mat-label>
+                    <mat-select formControlName="eating">
+                      <mat-option value="always">Always</mat-option>
+                      <mat-option value="usually">Usually</mat-option>
+                      <mat-option value="usuallyNot">Usually Not</mat-option>
+                      <mat-option value="never">Never</mat-option>
+                     </mat-select>
+                     <mat-error *ngIf="f.eating.errors">
+                       <mat-error *ngIf="f.eating.touched && f.eating.errors.required">{{customValidation.A1}}
+                       </mat-error>
+                     </mat-error>
+                  </mat-form-field>
+                  </div>
+                </div>
+          </div>
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+          <div class="question-container">
+            <div class="row">
+              <div class="col-md-12 main_heading">
+                  Medication
+               </div>
+             </div>
+             <div class="transfer_sub_container">
+              <div class="row">
+                <div class="col-md-2">
+                  <b>Always:</b>
+                 </div>
+                 <div class="col-md-8">
+                   <span>Applicant is always capable of self-administration of prescribed medications.</span>
+                  </div>
+               </div>
+               <br>
+               <div class="row">
+                 <div class="col-md-2">
+                   <b>Usually:</b>
+                  </div>
+                  <div class="col-md-8">
+                    <span>Applicant is incapable of self-administration of prescribed medications without physical intervention 1-3 days per week.</span>
+                   </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-2">
+                    <b>Usually Not:</b>
+                   </div>
+                   <div class="col-md-8">
+                     <span>Applicant is incapable of self-administration of prescribed medications without physical intervention 4-6 days per week.</span>
+                    </div>
+                 </div>
+                 <br>
+                 <div class="row">
+                   <div class="col-md-2">
+                     <b>Never:</b>
+                    </div>
+                    <div class="col-md-8">
+                      <span>Applicant is never capable of self-administration of prescribed medications without physical intervention 7 days per week.</span>
+                     </div>
+                  </div>
+                  </div>
+                  <br>
+                <div class="row">
+                  <div class="col-md-8">
+                    <mat-label class="required-color">*</mat-label><b>Is applicant physically or cognitively able to self-administer medications with limited assistance from others? This excludes sliding scale insulin which is documented in the Medication section.</b>
+                   </div>
+                   <div class="col-md-4">
+                     <mat-form-field appearance="outline">
+                     <mat-label>
+                       Select an option
+                     </mat-label>
+                     <mat-select formControlName="toileting">
+                       <mat-option value="always">Always</mat-option>
+                       <mat-option value="usually">Usually</mat-option>
+                       <mat-option value="usuallyNot">Usually Not</mat-option>
+                       <mat-option value="never">Never</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="f.toileting.errors">
+                        <mat-error *ngIf="f.toileting.touched && f.toileting.errors.required">{{customValidation.A1}}
+                        </mat-error>
+                      </mat-error>
+                   </mat-form-field>
+
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-8">
+                     <mat-label class="required-color">*</mat-label><b>Please list medications for which assistance is needed:</b>
+                     <div class="radio-container">
+                       <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Pills / Tablets
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              ADD DETAILS
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-label class="required-color">*</mat-label><b>Can the applicant self-administer?</b>
+                              <div class="radio-container">
+                                <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeToilet($event)">
+                                  <div>
+                                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                                  </div>
+                                  <div>
+                                    <mat-radio-button value="N">No</mat-radio-button>
+                                  </div>
+                                </mat-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="question-container">
+                                <mat-label>
+                                  Provide an explanation regarding why the applicant is unable to self-administer with limited help from others
+                                </mat-label>
+                              </div>
+                              <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+                                <mat-error
+                                  *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+                                  Cannot exceed 2000 characters</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+                                </mat-error>
+                              </mat-error>
+                              <div class="radio-container">
+                                <mat-form-field appearance="outline">
+                                  <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                            <div class="col-md-4" style="text-align: left;">
+                              <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">SAVE</button>
+                            </div>
+                            <div class="col-md-4" style="text-align: left;">
+                              <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Cancel</button>
+                            </div>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Eyes Drops
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              ADD DETAILS
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-label class="required-color">*</mat-label><b>Can the applicant self-administer?</b>
+                              <div class="radio-container">
+                                <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeToilet($event)">
+                                  <div>
+                                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                                  </div>
+                                  <div>
+                                    <mat-radio-button value="N">No</mat-radio-button>
+                                  </div>
+                                </mat-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="question-container">
+                                <mat-label>
+                                  Provide an explanation regarding why the applicant is unable to self-administer with limited help from others
+                                </mat-label>
+                              </div>
+                              <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+                                <mat-error
+                                  *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+                                  Cannot exceed 2000 characters</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+                                </mat-error>
+                              </mat-error>
+                              <div class="radio-container">
+                                <mat-form-field appearance="outline">
+                                  <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                            <div class="col-md-4" style="text-align: left;">
+                              <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">SAVE</button>
+                            </div>
+                            <div class="col-md-4" style="text-align: left;">
+                              <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Cancel</button>
+                            </div>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Inhaler / Nebulizer
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              ADD DETAILS
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-label class="required-color">*</mat-label><b>Can the applicant self-administer?</b>
+                              <div class="radio-container">
+                                <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeToilet($event)">
+                                  <div>
+                                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                                  </div>
+                                  <div>
+                                    <mat-radio-button value="N">No</mat-radio-button>
+                                  </div>
+                                </mat-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="question-container">
+                                <mat-label>
+                                  Provide an explanation regarding why the applicant is unable to self-administer with limited help from others
+                                </mat-label>
+                              </div>
+                              <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+                                <mat-error
+                                  *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+                                  Cannot exceed 2000 characters</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+                                </mat-error>
+                              </mat-error>
+                              <div class="radio-container">
+                                <mat-form-field appearance="outline">
+                                  <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                            <div class="col-md-4" style="text-align: left;">
+                              <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">SAVE</button>
+                            </div>
+                            <div class="col-md-4" style="text-align: left;">
+                              <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Cancel</button>
+                            </div>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Topical / Patches
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              ADD DETAILS
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-label class="required-color">*</mat-label><b>Can the applicant self-administer?</b>
+                              <div class="radio-container">
+                                <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeToilet($event)">
+                                  <div>
+                                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                                  </div>
+                                  <div>
+                                    <mat-radio-button value="N">No</mat-radio-button>
+                                  </div>
+                                </mat-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="question-container">
+                                <mat-label>
+                                  Provide an explanation regarding why the applicant is unable to self-administer with limited help from others
+                                </mat-label>
+                              </div>
+                              <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+                                <mat-error
+                                  *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+                                  Cannot exceed 2000 characters</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+                                </mat-error>
+                              </mat-error>
+                              <div class="radio-container">
+                                <mat-form-field appearance="outline">
+                                  <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                            <div class="col-md-4" style="text-align: left;">
+                              <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">SAVE</button>
+                            </div>
+                            <div class="col-md-4" style="text-align: left;">
+                              <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Cancel</button>
+                            </div>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Injections
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              ADD DETAILS
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-label class="required-color">*</mat-label><b>Can the applicant self-administer?</b>
+                              <div class="radio-container">
+                                <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeToilet($event)">
+                                  <div>
+                                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                                  </div>
+                                  <div>
+                                    <mat-radio-button value="N">No</mat-radio-button>
+                                  </div>
+                                </mat-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="question-container">
+                                <mat-label>
+                                  Provide an explanation regarding why the applicant is unable to self-administer with limited help from others
+                                </mat-label>
+                              </div>
+                              <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+                                <mat-error
+                                  *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+                                  Cannot exceed 2000 characters</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+                                </mat-error>
+                              </mat-error>
+                              <div class="radio-container">
+                                <mat-form-field appearance="outline">
+                                  <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                            <div class="col-md-4" style="text-align: left;">
+                              <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">SAVE</button>
+                            </div>
+                            <div class="col-md-4" style="text-align: left;">
+                              <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Cancel</button>
+                            </div>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Meds via Tube (G tube, J tube, NG tube..)
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              ADD DETAILS
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-label class="required-color">*</mat-label><b>Can the applicant self-administer?</b>
+                              <div class="radio-container">
+                                <mat-radio-group formControlName="applicantIncontSw" (change)="onChangeToilet($event)">
+                                  <div>
+                                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                                  </div>
+                                  <div>
+                                    <mat-radio-button value="N">No</mat-radio-button>
+                                  </div>
+                                </mat-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="question-container">
+                                <mat-label>
+                                  Provide an explanation regarding why the applicant is unable to self-administer with limited help from others
+                                </mat-label>
+                              </div>
+                              <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors !== null">
+                                <mat-error
+                                  *ngIf="getFormData().indvTransCrimJustTxt.errors.maxLength == null && !getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">
+                                  Cannot exceed 2000 characters</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.touched && getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A1}}</mat-error>
+                                <mat-error *ngIf="getFormData().indvTransCrimJustTxt.errors?.invalidName && !getFormData().indvTransCrimJustTxt.errors.required">{{customValidation.A2}}
+                                </mat-error>
+                              </mat-error>
+                              <div class="radio-container">
+                                <mat-form-field appearance="outline">
+                                  <textarea matInput formControlName="indvTransCrimJustTxt"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                            <div class="col-md-4" style="text-align: left;">
+                              <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">SAVE</button>
+                            </div>
+                            <div class="col-md-4" style="text-align: left;">
+                              <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Cancel</button>
+                            </div>
+                          </div>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+             <br>
+            <mat-divider></mat-divider>
+            <br>
+            <div class="question-container">
+              <div class="row">
+                <div class="col-md-12 main_heading">
+                    Behavior
+                 </div>
+               </div>
+               <div class="transfer_sub_container">
+                <div class="row">
+                  <div class="col-md-2">
+                    <b>Always:</b>
+                   </div>
+                   <div class="col-md-8">
+                     <span>Applicant always requires persistent staff or caregiver intervention due to an established and persistent pattern of behavioral problems 7 days per week.</span>
+                    </div>
+                 </div>
+                 <br>
+                 <div class="row">
+                   <div class="col-md-2">
+                     <b>Usually:</b>
+                    </div>
+                    <div class="col-md-8">
+                      <span>Applicant requires persistent staff or caregiver intervention due to an established and persistent pattern of behavioral problems 4-6 days per week.</span>
+                     </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <b>Usually Not:</b>
+                     </div>
+                     <div class="col-md-8">
+                       <span>Applicant requires persistent staff or caregiver intervention due to an established and persistent pattern of behavioral problems 1-3 days per week.</span>
+                      </div>
+                   </div>
+                   <br>
+                   <div class="row">
+                     <div class="col-md-2">
+                       <b>Never:</b>
+                      </div>
+                      <div class="col-md-8">
+                        <span>Applicant requires persistent intervention due to an established and persistent pattern of behavioral problems.</span>
+                       </div>
+                    </div>
+                   </div>
+                   <br>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <mat-label class="required-color">*</mat-label><b>Does applicant require persistent intervention for an established and persistent pattern of behavioral problems not primarily related to a mental health or substance abuse disorder?</b>
+                     </div>
+                     <div class="col-md-4">
+                       <mat-form-field appearance="outline">
+                       <mat-label>
+                         Select an option
+                       </mat-label>
+                       <mat-select formControlName="eating">
+                         <mat-option value="always">Always</mat-option>
+                         <mat-option value="usually">Usually</mat-option>
+                         <mat-option value="usuallyNot">Usually Not</mat-option>
+                         <mat-option value="never">Never</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="f.eating.errors">
+                          <mat-error *ngIf="f.eating.touched && f.eating.errors.required">{{customValidation.A1}}
+                          </mat-error>
+                        </mat-error>
+                     </mat-form-field>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-12">
+                       <div class="question-container">
+                         <mat-label class="required-color">*</mat-label>Please specify the behavioral problems requiring continual staff or caregiver intervention:
+                       </div>
+                       <div class="add_behavior_section">
+                         <div class="row behavior_heading">
+                           <div class="col-md-6">
+                             <mat-label>
+                               Behavior Type
+                             </mat-label>
+                           </div>
+                           <div class="col-md-6">
+                             <mat-label>
+                               Intervention
+                             </mat-label>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <mat-form-field appearance="outline">
+                               <input matInput placeholder="Text box to enter behavior type">
+                             </mat-form-field>
+                           </div>
+                           <div class="col-md-6">
+                             <mat-form-field appearance="outline">
+                               <input matInput placeholder="Text box to enter intervention details">
+                             </mat-form-field>
+                           </div>
+                         </div>
+                       </div>
+
+                       <div class="row" style="margin-left: 2px; padding-top: 50px;">
+                         <div class="col-md-4" style="text-align: left;">
+                           <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">Add Behavior</button>
+                         </div>
+                       </div>
+                    </div>
+                  </div>
+             </div>
+             <br>
+             <mat-divider></mat-divider>
+             <br>
+
+       <div class="row" style="margin-left: 2px; padding-top: 50px;">
+         <div class="col-md-2" style="text-align: left;">
+           <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white">BACK</button>
+         </div>
+         <div class="col-md-4" style="text-align: left;">
+           <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;" class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+         </div>
+         <div class="col-md-6" style="text-align: right;">
+           <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;" class="perlss-click-button">NEXT</button>
+         </div>
+       </div>
+    </form>
+</div>

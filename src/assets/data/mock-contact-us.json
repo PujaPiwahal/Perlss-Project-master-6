@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1",
+    "typeCd": "TennCare’s Main Line:",
+    "description": "TennCare",
+    "contactInformation": "1-800-342-3145"
+},
+{
+  "id": "2",
+  "typeCd": "LTSS Help Desk:",
+  "description": "Questions regarding the Pre-Admission Evaluation (PAE) and Medical Eligibility should be directed here.",
+  "contactInformation": "1-877-224-0219"
+},
+{
+  "id": "3",
+  "typeCd": "TennCare Connect:",
+  "description": "Questions regarding Medicaid Financial Eligibility should be directed here.",
+  "contactInformation": "855-259-0701"
+}
+
+]

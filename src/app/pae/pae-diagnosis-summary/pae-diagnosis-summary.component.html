@@ -1,0 +1,106 @@
+<div class="popup-header-container">
+    <div class="row">
+        <div class="col-md-8" style="width: 100% !important;"></div>
+        <div class="col-md-4">
+            <table id="applicantName">
+                <tr>
+                    <th> <b>APPLICANT NAME : </b> Jessica Jones</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="question-container">
+                <mat-label class="required-class">Summary</mat-label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="question-container">
+                <mat-label>Please make sure to provide the details for each section below. If you have supporting
+                    documentation, select the cloud
+                    icon to upload the documents.</mat-label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="summary_container">
+        <div class="row summary_heading_row">
+            <div class="col-md-4">
+                <mat-label><b>Diagnosis Summary</b></mat-label>
+            </div>
+            <div class="col-md-4">
+                <mat-label><b>Status</b></mat-label>
+            </div>
+            <div class="col-md-4">
+                <mat-label><b>User Actions</b></mat-label>
+            </div>
+        </div>
+        <div class="row summary_data_row">
+            <div class="col-md-4">
+                <mat-label>Medical Diagnosis</mat-label>
+            </div>
+            <div class="col-md-4">
+                <mat-icon class="close-icon">highlight_off</mat-icon>
+                <mat-label class="status_label">
+                    Incomplete
+                </mat-label>
+            </div>
+            <div class="col-md-4">
+                <a (click)="gotoDetailPage()" class="hyper_link_button">
+                    <mat-label><b>Go To Details</b></mat-label>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="Documentation_section" *ngIf="showDocumentationSection">
+        <br>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <br>
+        <div class="summary_container">
+            <div class="row documentation_heading_row">
+                <div class="col-md-12">
+                    <mat-label><b>Supporting Documentation</b></mat-label>
+                </div>
+            </div>
+            <div class="row summary_data_row">
+                <div class="col-md-4">
+                    <mat-label>Medical Diagnosis</mat-label>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-2">
+                    <span class="material-icons status_tick">
+                        done
+                    </span>
+                    <span class="material-icons status_delete">
+                        delete_sweep
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<mat-divider></mat-divider>
+<br>
+<div class="row" style="margin-left: 2px; padding-top: 50px;">
+    <div class="col-md-2" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+            class="perlss-click-button-white">BACK</button>
+    </div>
+    <div class="col-md-4" style="text-align: left;">
+        <button mat-flat-button color="primary" style="font-size: 24px; padding: 15px 35px;"
+            class="perlss-click-button-white-noborder">SAVE AND EXIT</button>
+    </div>
+    <div class="col-md-6" style="text-align: right;">
+        <button type="submit" mat-flat-button color="primary" style="font-size: 20px;  padding: 15px 35px;"
+            class="perlss-click-button">NEXT</button>
+    </div>
+</div>
