@@ -2,10 +2,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatRadioChange, MatRadioButton } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
-import { CustomvalidationService } from 'src/app/_shared/utility/customvalidation.service';
-import * as customValidation from '../../_shared/constants/validation.constants';
-import { MedicalDiagonsis } from '../Diagnosisdata';
-import { MedicalDiagnosisService } from '../../core/services/pae/medicalDiagnosis/medical-diagnosis.service';
+import { CustomvalidationService } from '../../../_shared/utility/customvalidation.service';
+import * as customValidation from '../../../_shared/constants/validation.constants';
+import { MedicalDiagonsis } from '../../Diagnosisdata';
+import { MedicalDiagnosisService } from '../../../core/services/pae/medicalDiagnosis/medical-diagnosis.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-medical-diagnosis-hcbs-application',

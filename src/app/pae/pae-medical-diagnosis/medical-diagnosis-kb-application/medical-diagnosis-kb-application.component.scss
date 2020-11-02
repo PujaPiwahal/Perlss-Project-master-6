@@ -74,7 +74,7 @@ mat-form-field {
 }
 
 .expansion_border {
-  border: 1px solid;
+  box-shadow: 0 0 1px 1px #888;
 }
 
 .details_button {
@@ -82,9 +82,9 @@ mat-form-field {
 }
 
 .add_diagnosis {
-  border: 1px solid;
+  box-shadow: 0 0 1px 1px #888;
   margin-left: 3px;
-  margin-top: 10px;
+  margin-top: -8px;
 }
 
 .cancel_btn {

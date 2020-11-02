@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="Documentation_section" *ngIf="showDocumentationSection">
+    <div class="Documentation_section">
         <br>
         <br>
         <mat-divider></mat-divider>
@@ -74,14 +74,19 @@
                 <div class="col-md-4">
                     <mat-label>Medical Diagnosis</mat-label>
                 </div>
-                <div class="col-md-6"></div>
-                <div class="col-md-2">
+                <div class="col-md-6">
+                    <input type="file" (change)="handleFileInput($event.target.files)">
+                </div>
+                <div class="col-md-2" *ngIf="showTick">
                     <span class="material-icons status_tick">
                         done
                     </span>
                     <span class="material-icons status_delete">
                         delete_sweep
                     </span>
+                </div>
+                <div class="col-md-2" *ngIf="showUploadBtn">
+                    <button type="submit" mat-flat-button color="primary" class="perlss-click-button">Upload</button>
                 </div>
             </div>
         </div>

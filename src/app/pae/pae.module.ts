@@ -20,12 +20,12 @@ import { PaeNutritionFeedingComponent } from './pae-nutrition-feeding/pae-nutrit
 import { PaeSafetyDeterminationFallHistoryComponent } from './pae-safety-determination-fall-history/pae-safety-determination-fall-history.component';
 import { PaeSelectProgramComponent } from './pae-select-program/pae-select-program.component';
 import { PaeWelcomeComponent } from './pae-welcome/pae-welcome.component';
-import { MedicalDiagnosisEcfApplicationComponent } from './medical-diagnosis-ecf-application/medical-diagnosis-ecf-application.component';
-import { MedicalDiagnosisHcbsApplicationComponent } from './medical-diagnosis-hcbs-application/medical-diagnosis-hcbs-application.component';
-import { MedicalDiagnosisKbApplicationComponent } from './medical-diagnosis-kb-application/medical-diagnosis-kb-application.component';
+import { MedicalDiagnosisEcfApplicationComponent } from './pae-medical-diagnosis/medical-diagnosis-ecf-application/medical-diagnosis-ecf-application.component';
+import { MedicalDiagnosisHcbsApplicationComponent } from './pae-medical-diagnosis/medical-diagnosis-hcbs-application/medical-diagnosis-hcbs-application.component';
+import { MedicalDiagnosisKbApplicationComponent } from './pae-medical-diagnosis/medical-diagnosis-kb-application/medical-diagnosis-kb-application.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { MedicalDiagonsisComponent } from './medical-diagonsis/medical-diagonsis.component';
-import { MedicalDiagnosisICFComponent } from './medical-diagnosis-icf-application/medical-diagnosis-icf-application.component';
+import { MedicalDiagonsisComponent } from './pae-medical-diagnosis/medical-diagonsis/medical-diagonsis.component';
+import { MedicalDiagnosisICFComponent } from './pae-medical-diagnosis/medical-diagnosis-icf-application/medical-diagnosis-icf-application.component';
 
 @NgModule({
   declarations: [PaeComponent,

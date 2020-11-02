@@ -2,35 +2,33 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatRadioChange, MatRadioButton } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
-import { CustomvalidationService } from 'src/app/_shared/utility/customvalidation.service';
-import * as customValidation from '../../_shared/constants/validation.constants';
-import { MedicalDiagonsis } from '../Diagnosisdata';
-import { MedicalDiagnosisService } from '../../core/services/pae/medicalDiagnosis/medical-diagnosis.service';
+import { CustomvalidationService } from '../../../_shared/utility/customvalidation.service';
+import * as customValidation from '../../../_shared/constants/validation.constants';
+import { MedicalDiagonsis } from '../../Diagnosisdata';
+import { MedicalDiagnosisService } from '../../../core/services/pae/medicalDiagnosis/medical-diagnosis.service';
 import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-medical-diagnosis',
+  selector: 'app-medical-diagnosis-ecf-application',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './medical-diagnosis-icf-application.component.html',
-  styleUrls: ['./medical-diagnosis-icf-application.component.scss']
+  templateUrl: './medical-diagnosis-ecf-application.component.html',
+  styleUrls: ['./medical-diagnosis-ecf-application.component.scss']
 })
-export class MedicalDiagnosisICFComponent implements OnInit {
+export class MedicalDiagnosisEcfApplicationComponent implements OnInit {
   meidicalDiagnosis: any;
   customValidation = customValidation;
   medicalDiagnosis: FormGroup;
   showPsychologicalSection = false;
   showDocumentSection = false;
+  documentList: string[] = ['ISP', 'School Records', 'Other'];
   showOtherSection = false;
   showLevelIntellectualSection = false;
   showPresentingChronicDiagnosis = false;
   submitted: boolean = false;
-  constructor(
-    private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private router: Router,
+    private medicalDiagnosisService: MedicalDiagnosisService,
     private customValidator: CustomvalidationService,
-    private medicalDiagonsis: MedicalDiagonsis,
-    private medicalDiagnosisService: MedicalDiagnosisService
-  ) { }
+    private medicalDiagonsis: MedicalDiagonsis) { }
 
   getFormData() {
     return this.medicalDiagnosis.controls;
@@ -38,29 +36,17 @@ export class MedicalDiagnosisICFComponent implements OnInit {
   ngOnInit(): void {
     this.meidicalDiagnosis = this.medicalDiagonsis.data;
     this.medicalDiagnosis = this.fb.group({
-      intellectualDisabilitySw: [''],
+      targetPopDiagnosisCd: ['', [Validators.required]],
       physEvalSw: [''],
       medDocumentCd: [''],
       levelIntelDisabilityCd: [''],
       iqTestScore: [''],
       iqTestDt: [''],
       iqTestDesc: [''],
-      chronicDiagnosisSw: ['', [Validators.required]],
+      chronicDiagnosisSw: [''],
       medicalDiagnosisCdList: [''],
       docDetailsDesc: ['']
     });
-  }
-
-  switchIntellectualDisability(matRadioChange: MatRadioChange) {
-    if (matRadioChange.value === 'Y') {
-      this.showPsychologicalSection = true;
-      this.medicalDiagnosis.get('physEvalSw').setValidators(Validators.required);
-    } else {
-      this.showPsychologicalSection = false;
-      this.medicalDiagnosis.get('physEvalSw').clearValidators();
-      this.showDocumentSection = false;
-      this.showLevelIntellectualSection = false;
-    }
   }
 
   switchPsychologicalEvaluation(matRadioChange: MatRadioChange) {
@@ -80,6 +66,7 @@ export class MedicalDiagnosisICFComponent implements OnInit {
   }
 
   selectDocument(event) {
+    console.log('value=====', event[0].name);
     if (event[0].name == 'Other') {
       this.showOtherSection = true;
     } else {
@@ -88,21 +75,34 @@ export class MedicalDiagnosisICFComponent implements OnInit {
   }
 
   switchChronicDiagnoses(matRadioChange: MatRadioChange) {
-    console.log("switchChronicDiagnoses====", matRadioChange)
     if (matRadioChange.value === 'Y') {
       this.showPresentingChronicDiagnosis = true;
-      this.medicalDiagnosis.get('medicalDiagnosisCdList').setValidators(Validators.required);
     } else {
       this.showPresentingChronicDiagnosis = false;
-      this.medicalDiagnosis.get('medicalDiagnosisCdList').clearValidators();
+    }
+  }
+
+  selectTargetPopulation(matSelectChange: MatSelectChange) {
+    console.log('value=====', matSelectChange.value);
+    if (matSelectChange.value == 'ID') {
+      this.showPsychologicalSection = true;
+      this.medicalDiagnosis.get('physEvalSw').setValidators(Validators.required);
+    } else {
+      this.showPsychologicalSection = false;
+      this.showLevelIntellectualSection = false;
+      this.showDocumentSection = false;
+      this.medicalDiagnosis.get('physEvalSw').clearValidators();
     }
   }
 
   selectMedicalDiagnosis(event) {
-    console.log("event====", event)
-    if (event.length <= 0) {
-      this.medicalDiagnosis.get('medicalDiagnosisCdList').clearValidators();
+    console.log("event===", this.medicalDiagnosis)
+    for (let i = 0; i < 0; i++) {
+      this.medicalDiagnosis.controls.medicalDiagnosisCdList.setValue({ "id": event[i].id })
+
     }
+
+
   }
 
   async onSubmit() {
@@ -120,6 +120,7 @@ export class MedicalDiagnosisICFComponent implements OnInit {
       }
     }
   }
+
   goBack() {
     this.router.navigate(['dashboard/pae/diagnosisSummary']);
   }

@@ -18,28 +18,30 @@ import { PaeNutritionFeedingComponent } from './pae-nutrition-feeding/pae-nutrit
 import { PaeSafetyDeterminationFallHistoryComponent } from './pae-safety-determination-fall-history/pae-safety-determination-fall-history.component';
 import { PaeSelectProgramComponent } from './pae-select-program/pae-select-program.component';
 import { PaeWelcomeComponent } from './pae-welcome/pae-welcome.component';
-import { MedicalDiagonsisComponent } from './medical-diagonsis/medical-diagonsis.component';
+import { MedicalDiagonsisComponent } from './pae-medical-diagnosis/medical-diagonsis/medical-diagonsis.component';
 
-const routes: Routes = [{ path: '', component: PaeComponent, children: [
-  {path: '', pathMatch: 'full', redirectTo: 'paeDashboard'},
-  {path: 'paeDashboard', component: PaeDashboardComponent, canActivate: [AuthGuard]},
-  {path: 'applicantInformation', component: PaeApplicantInformationComponent, canActivate: [AuthGuard]},
-  {path: 'contactInformation', component: PaeContactInformationComponent, canActivate: [AuthGuard]},
-  {path: 'livingArrangement', component: PaeLivingArrangementComponent, canActivate: [AuthGuard]},
-  {path: 'selectProgram', component: PaeSelectProgramComponent, canActivate: [AuthGuard]},
-  {path: 'appointment', component: PaeAppointmentComponent, canActivate: [AuthGuard]},
-  {path: 'diagnosisSummary', component: PaeDiagnosisSummaryComponent, canActivate: [AuthGuard]},
-  {path: 'capabilitiesNeedsPartOne', component: PaeCapabilitiesPartOneComponent, canActivate: [AuthGuard]},
-  {path: 'capabilitiesNeedsPartTwo', component: PaeCapabilitiesPartTwoComponent, canActivate: [AuthGuard]},
-  {path: 'activitiesPartTwo', component:PaeActivitiesPartTwoComponent, canActivate:[AuthGuard]},
-  {path: 'welcome', component:PaeWelcomeComponent, canActivate:[AuthGuard]},
-  {path: 'functionalAssessment', component:PaeFunctionalAssessmentSummaryComponent, canActivate:[AuthGuard]},
-  {path: 'fallHistory', component:PaeSafetyDeterminationFallHistoryComponent, canActivate:[AuthGuard]},
-  {path: 'nutritionFeeding', component:PaeNutritionFeedingComponent, canActivate:[AuthGuard]},
-  {path: 'activitiesDailyLivingPartOne', component:PaeActivityDailyLivingPartOneComponent, canActivate:[AuthGuard]},
-  {path: 'intensiveInterventions', component:PaeIntensiveInterventionsComponent, canActivate:[AuthGuard]},
-  {path: 'medicalDiagnosis', component: MedicalDiagonsisComponent, canActivate: [AuthGuard]}
-]}];
+const routes: Routes = [{
+  path: '', component: PaeComponent, children: [
+    { path: '', pathMatch: 'full', redirectTo: 'paeDashboard' },
+    { path: 'paeDashboard', component: PaeDashboardComponent, canActivate: [AuthGuard] },
+    { path: 'applicantInformation', component: PaeApplicantInformationComponent, canActivate: [AuthGuard] },
+    { path: 'contactInformation', component: PaeContactInformationComponent, canActivate: [AuthGuard] },
+    { path: 'livingArrangement', component: PaeLivingArrangementComponent, canActivate: [AuthGuard] },
+    { path: 'selectProgram', component: PaeSelectProgramComponent, canActivate: [AuthGuard] },
+    { path: 'appointment', component: PaeAppointmentComponent, canActivate: [AuthGuard] },
+    { path: 'diagnosisSummary', component: PaeDiagnosisSummaryComponent, canActivate: [AuthGuard] },
+    { path: 'capabilitiesNeedsPartOne', component: PaeCapabilitiesPartOneComponent, canActivate: [AuthGuard] },
+    { path: 'capabilitiesNeedsPartTwo', component: PaeCapabilitiesPartTwoComponent, canActivate: [AuthGuard] },
+    { path: 'activitiesPartTwo', component: PaeActivitiesPartTwoComponent, canActivate: [AuthGuard] },
+    { path: 'welcome', component: PaeWelcomeComponent, canActivate: [AuthGuard] },
+    { path: 'functionalAssessment', component: PaeFunctionalAssessmentSummaryComponent, canActivate: [AuthGuard] },
+    { path: 'fallHistory', component: PaeSafetyDeterminationFallHistoryComponent, canActivate: [AuthGuard] },
+    { path: 'nutritionFeeding', component: PaeNutritionFeedingComponent, canActivate: [AuthGuard] },
+    { path: 'activitiesDailyLivingPartOne', component: PaeActivityDailyLivingPartOneComponent, canActivate: [AuthGuard] },
+    { path: 'intensiveInterventions', component: PaeIntensiveInterventionsComponent, canActivate: [AuthGuard] },
+    { path: 'medicalDiagnosis', component: MedicalDiagonsisComponent, canActivate: [AuthGuard] }
+  ]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
