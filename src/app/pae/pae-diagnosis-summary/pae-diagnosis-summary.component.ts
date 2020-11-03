@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { PaeDiagnosisSummary } from '../../_shared/model/paeDiagnosis/paeDiagnosisSummary';
+import { paeDiagnosisSummaryService } from '../../core/services/pae/pae-diagnosis-summary.service'
 @Component({
   selector: 'app-pae-diagnosis-summary',
   templateUrl: './pae-diagnosis-summary.component.html',
@@ -9,9 +10,9 @@ import { Router } from '@angular/router';
 export class PaeDiagnosisSummaryComponent implements OnInit {
   showDocumentationSection: boolean = false;
   showUploadBtn: boolean = false;
-  ImageBaseData: string | ArrayBuffer = null;
+  ImageBaseData: any;
   showTick: boolean = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private paediagnosisSummaryService: paeDiagnosisSummaryService) { }
 
   ngOnInit(): void {
   }
@@ -36,24 +37,22 @@ export class PaeDiagnosisSummaryComponent implements OnInit {
   }
 
   uploadFile() {
+    console.log("this.ImageBaseData==", this.ImageBaseData)
     if (this.ImageBaseData == null) {
       alert("Please select file");
     } else {
       console.log("this.ImageBaseData ", this.ImageBaseData)
-      // var fileUplodVM: FileUplodVM = {
-      //   ImageBaseData: this.ImageBaseData.toString()
-      // }
-      // this.CreateItem(fileUplodVM).subscribe((res: any) => {
-      //   if (res) {
-      //     alert("Successfully uploded file");
-      //   } else {
-      //     alert("File upload failed");
-      //   }
+      var fileUplodVM: PaeDiagnosisSummary = {
+        document: this.ImageBaseData,
+        documentVO: '',
+        aplPdfTypeCd: '',
+        aplRequestId: '',
+        destinationCd: ''
+      }
 
-      // },
-      //   error => {
-      //     alert(error.message);
-      //   });
+      this.paediagnosisSummaryService.savePaeDiagnosisSummary(fileUplodVM).then((response) => {
+
+      })
     }
   }
 

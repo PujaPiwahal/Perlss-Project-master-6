@@ -86,7 +86,8 @@
                     </span>
                 </div>
                 <div class="col-md-2" *ngIf="showUploadBtn">
-                    <button type="submit" mat-flat-button color="primary" class="perlss-click-button">Upload</button>
+                    <button type="button" mat-flat-button color="primary" class="perlss-click-button"
+                        (click)="uploadFile()">Upload</button>
                 </div>
             </div>
         </div>
